@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>SQLite3 | 66ws</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="sqlite3是一个很方便的数据库管理工具,但是常规使用依然建议使用MYSQL  sqlite3 下载界面1.用sqlite3打开数据库,若不存在则创建数据库 sqlite3 DatabaseName.db .databases显示打开的数据库.exit 退出.help 帮助 2.创建和删除表sqlite3 create table &amp;lt;tablename&amp;gt; (Var1 Type1 ,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQLite3">
+<meta property="og:url" content="http://yoursite.com/2018/07/26/sqlite3/index.html">
+<meta property="og:site_name" content="66ws">
+<meta property="og:description" content="sqlite3是一个很方便的数据库管理工具,但是常规使用依然建议使用MYSQL  sqlite3 下载界面1.用sqlite3打开数据库,若不存在则创建数据库 sqlite3 DatabaseName.db .databases显示打开的数据库.exit 退出.help 帮助 2.创建和删除表sqlite3 create table &amp;lt;tablename&amp;gt; (Var1 Type1 ,">
+<meta property="og:locale" content="English,Chinese">
+<meta property="og:updated_time" content="2019-08-03T07:14:07.271Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SQLite3">
+<meta name="twitter:description" content="sqlite3是一个很方便的数据库管理工具,但是常规使用依然建议使用MYSQL  sqlite3 下载界面1.用sqlite3打开数据库,若不存在则创建数据库 sqlite3 DatabaseName.db .databases显示打开的数据库.exit 退出.help 帮助 2.创建和删除表sqlite3 create table &amp;lt;tablename&amp;gt; (Var1 Type1 ,">
+  
+    <link rel="alternate" href="/atom.xml" title="66ws" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">66ws</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-sqlite3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/26/sqlite3/" class="article-date">
+  <time datetime="2018-07-26T19:20:43.000Z" itemprop="datePublished">2018-07-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Program/">Program</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SQLite3
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>sqlite3是一个很方便的数据库管理工具,但是常规使用依然建议使用MYSQL</p>
+<hr>
+<p><a href="https://www.sqlite.org/download.html" target="_blank" rel="noopener">sqlite3 下载界面</a><br>1.用sqlite3打开数据库,若不存在则创建数据库<br> <code>sqlite3 DatabaseName.db .databases</code><br>显示打开的数据库<br><code>.exit</code> 退出<br><code>.help</code> 帮助</p>
+<p>2.创建和删除表<br><code>sqlite3 create table &lt;tablename&gt; (Var1 Type1 , Var2 Type2...);</code><br>eg: <code>create table user (ID INTEGER , name Text , height REAL);</code><br>创建一个名叫user的表,ID是数字列,name是文本列,height是浮点数列<br><code>.schema</code> 显示表的结构<br><code>drop table &lt;tablename&gt;</code><br>eg:<code>drop table user;</code> 删除user表</p>
+<p>3.插入,删除<br><code>insert into &lt;tablename&gt; values(Var1 Type1 , Var2 Type2...);</code><br>插入一条数据<br><code>delete from &lt;tablename&gt; where Var1=Value1 and/or Var2=Value2....;</code><br>删除一条数据Var1=Value1 并且/或者 Var2=Value2</p>
+<p>4.查询,更新<br><code>select Var1,Var2...  from &lt;tablename&gt;; select * from &lt;tablename&gt;;</code><br>从表中查询 Var1和Var2/*全部<br><code>Update &lt;tablename&gt; set Var1=Value1,Var2=Value2...;</code><br>更新,where语句可以用于删改查用于定位其中某一条或者某一些</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/26/sqlite3/" data-id="cjyvetgan0013tktg3ir7cije" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/07/27/get-response/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Get Response
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/07/24/trailingZeros/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">2. 尾部的零</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/LintCode/">LintCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mabinogi/">Mabinogi</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Program/">Program</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Program/Golang/">Golang</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Program/Python3/">Python3</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/06/16/golang-cross-compiling/">Golang - cross-compiling</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/15/solution/">Solution</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/17/golang-format-time-string/">GOLANG - Format Time string</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/25/docker-docs/">Docker Docs</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/27/get-response/">Get Response</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Anest<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
