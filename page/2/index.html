@@ -62,50 +62,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-get-response" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/27/get-response/" class="article-date">
-  <time datetime="2018-07-27T22:29:27.000Z" itemprop="datePublished">2018-07-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Program/">Program</a>►<a class="article-category-link" href="/categories/Program/Python3/">Python3</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/27/get-response/">Get Response</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近下载的文件,需要User-Agent和Cookie,然后发现下载工具全部挂了……<br>然后尝试了py的带header下载,但是必须整段下载完,但是这个文件上g了<br>很显然这并不适合opener直接open<br>要分段下载,首先的联想是socket,但是利用tcp实现http又是一大坑 接下来看了个 <a href="https://blog.csdn.net/zhaoyangjian724/article/details/78030519" target="_blank" rel="noopener">py获取响应头</a>的例子,看起来是没问题的<br>原例子仅适用于py2,到这,首先联想的就是官方的文档了<br>在<a href="https://docs.python.org/3/whatsnew/3.0.html" target="_blank" rel="noopener">What’s New In Python 3.0</a>中有关于httplib的记录, httplib, BaseHTTPServer, CGIHTTPServer, SimpleHTTPServer, Cookie, cookielib都被封装进了http 到这库就基本解决了</p>
-<hr>
-<p>提供一份python3的代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import http.client</span><br><span class="line">h=http.client.HTTPConnection(&quot;baidu.com&quot;,80)</span><br><span class="line">h.request(method=&apos;GET&apos;,url=&quot;/&quot;,headers=&#123;&quot;User-Agent&quot;:&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36&quot;&#125;)</span><br><span class="line">res = h.getresponse()</span><br><span class="line">res.getheaders()</span><br><span class="line">res.read(300)</span><br></pre></td></tr></table></figure></p>
-<p>socket部分在以后有时间后再专门搞吧……</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/27/get-response/" data-id="cjyxz2wwp000odotg8i57x37e" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-sqlite3" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/26/sqlite3/" class="article-date">
@@ -142,7 +98,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/26/sqlite3/" data-id="cjyxz2wwx000wdotgly5muk0z" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/26/sqlite3/" data-id="cjzgirmxi00140gtgi2y453pv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -196,7 +152,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/24/trailingZeros/" data-id="cjyxz2wx20011dotgkvsskor8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/24/trailingZeros/" data-id="cjzgirmxj00160gtgbtc2mj6o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -261,7 +217,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/24/BinarySearch/" data-id="cjyxz2wwm000ldotgy7lq183r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/24/BinarySearch/" data-id="cjzgirmx6000k0gtg8t1yhezo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -309,7 +265,76 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/nthUglyNumber/" data-id="cjyxz2wwu000tdotg5s73qeie" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/nthUglyNumber/" data-id="cjzgirmxe000x0gtgu7tzqcin" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-unity-make-a-simple-game" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/10/unity-make-a-simple-game/" class="article-date">
+  <time datetime="2018-06-10T22:22:59.000Z" itemprop="datePublished">2018-06-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Program/">Program</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/10/unity-make-a-simple-game/">Unity : Make a simple game</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>读完这篇教程而记 <a href="https://www.cnblogs.com/OctoptusLian/p/8418534.html" target="_blank" rel="noopener">https://www.cnblogs.com/OctoptusLian/p/8418534.html</a>  </p>
+<hr>
+<p>  前言 unity版本2018.1.3.f1 安装unity的时候出现了个坑,以前安装过unity,license 认证死活过不去,然后重装解决了这个问题   upgrade license上依然出错,解决方法: 1 log out后再login 2 删掉C:/ProgramData中的Unity文件夹(不确定是否有效  </p>
+<hr>
+<p>关于对象(Element)的创建:</p>
+<blockquote>
+<p>创建完project后创建对象,例如地板(plane),方块(cube),球(sphere),均在导航栏的GameObject -&gt; 3DObject 中 利用xy轴对Cube,Sphere进行精准定位</p>
+</blockquote>
+<p>关于设定玩家(player):</p>
+<blockquote>
+<p>在选中需要设定为player的Element上inspector中的tag设定为player即可</p>
+</blockquote>
+<p>关于物理模拟:</p>
+<blockquote>
+<p>选中需要物理的Element然后依次 Component -&gt; Physics -&gt; Rigidbody 此时,若物理模拟的Element在空中的话,便会掉落到Plane上后停止运动</p>
+</blockquote>
+<p>关于c#的脚本添加:</p>
+<blockquote>
+<p>添加方式可以从项目上边的Create中创建,或者从导航栏中选 Assets -&gt; Create -&gt; c# script 来创建文件. 若有vs的话,可以直接双击利用vs来编辑,觉得vs太笨重的话,可以尝试用vscode,创建的文件位于project/Assets中. 希望script应用到的Element可以直接用鼠标将scirpt file 拖向项目表中的 Element上</p>
+</blockquote>
+<p>关于材质(Material)的添加:</p>
+<blockquote>
+<p>Create -&gt; Material 然后可以点击inspector的 Main Maps -&gt; Albedo 右边的输入框来选择需要的基本色 应用到哪个Element上只需要拖过去即可</p>
+</blockquote>
+<p>关于游戏屏幕大小设定:</p>
+<blockquote>
+<p>在Game -&gt; Free Aspect 中选择或者点”+”自定义.(需要注意的是从最初开始都是在Sence上,Game在Sence的旁边,Sence在Create右边</p>
+</blockquote>
+<p>未完待续…</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/06/10/unity-make-a-simple-game/" data-id="cjzgirmxk00190gtg0awxw416" class="article-share-link">Share</a>
       
       
     </footer>
