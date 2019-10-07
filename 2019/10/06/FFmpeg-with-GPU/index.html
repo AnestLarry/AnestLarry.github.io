@@ -5,15 +5,19 @@
   
 
   
-  <title>Archives: 2018/7 | 66ws</title>
+  <title>FFmpeg with GPU | 66ws</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="66ws">
-<meta property="og:url" content="http://66ws.cc/archives/2018/07/index.html">
+  <meta name="description" content="Environment :  Win10 i5-9X00 RTX20X0  Based on :  FFmpeg / libav NVIDIA NVIDIA Driver CUDA Toolkit ffmpeg -h full&amp;gt;ffmpegHelp.txt(command)  It is mad that you try to use a cpu to transcode a video w">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FFmpeg with GPU">
+<meta property="og:url" content="http://66ws.cc/2019/10/06/FFmpeg-with-GPU/index.html">
 <meta property="og:site_name" content="66ws">
+<meta property="og:description" content="Environment :  Win10 i5-9X00 RTX20X0  Based on :  FFmpeg / libav NVIDIA NVIDIA Driver CUDA Toolkit ffmpeg -h full&amp;gt;ffmpegHelp.txt(command)  It is mad that you try to use a cpu to transcode a video w">
 <meta property="og:locale" content="English,Chinese">
+<meta property="og:updated_time" content="2019-10-07T03:26:37.403Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="66ws">
+<meta name="twitter:title" content="FFmpeg with GPU">
+<meta name="twitter:description" content="Environment :  Win10 i5-9X00 RTX20X0  Based on :  FFmpeg / libav NVIDIA NVIDIA Driver CUDA Toolkit ffmpeg -h full&amp;gt;ffmpegHelp.txt(command)  It is mad that you try to use a cpu to transcode a video w">
   
     <link rel="alternate" href="/atom.xml" title="66ws" type="application/atom+xml">
   
@@ -60,116 +64,72 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/07/27/get-response/" class="archive-article-date">
-  <time datetime="2018-07-27T22:29:27.000Z" itemprop="datePublished">Jul 27</time>
+        <section id="main"><article id="[layout]-FFmpeg-with-GPU" class="article article-type-[layout]" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/06/FFmpeg-with-GPU/" class="article-date">
+  <time datetime="2019-10-06T15:26:15.000Z" itemprop="datePublished">2019-10-06</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Program/">Program</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/27/get-response/">Get Response</a>
+    <h1 class="article-title" itemprop="name">
+      FFmpeg with GPU
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/07/26/sqlite3/" class="archive-article-date">
-  <time datetime="2018-07-26T19:20:43.000Z" itemprop="datePublished">Jul 26</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/26/sqlite3/">SQLite3</a>
-    </h1>
-  
+        <p>Environment :</p>
+<ul>
+<li>Win10</li>
+<li>i5-9X00</li>
+<li>RTX20X0</li>
+</ul>
+<p>Based on :</p>
+<ul>
+<li><a href="https://developer.nvidia.com/ffmpeg" target="_blank" rel="noopener">FFmpeg / libav NVIDIA</a></li>
+<li><a href="https://www.nvidia.com/Download/index.aspx" target="_blank" rel="noopener">NVIDIA Driver</a></li>
+<li><a href="https://developer.nvidia.com/cuda-toolkit" target="_blank" rel="noopener">CUDA Toolkit</a></li>
+<li>ffmpeg -h full&gt;ffmpegHelp.txt(command)</li>
+</ul>
+<p>It is mad that you try to use a cpu to transcode a video with hours. It maybe only has 0.2-0.3x speed to process. But if you want to use a GPU.</p>
+<p>I have run the command which in <code>FFmpeg / libav NVIDIA</code>.<br>But it is not work for me.The command need to change .<br>(If it loss somethins,install it with the link over this page)</p>
+<p><code>ffmpeg -i &lt;input.mp4&gt; [-c:v h264_nvenc] [argv] -f &lt;mp4&gt; &lt;output.mp4&gt;</code><br>e.g.: With GPU<br><code>ffmpeg -i &quot;input.mp4&quot; -c:v h264_nvenc -crf 25 -f mp4 &quot;output.mp4&quot;</code><br><code>ffmpeg -i &quot;input.mp4&quot; -c:v h264_nvenc -maxrate 500kb/s -f mp4 &quot;output.mp4&quot;</code></p>
+<p>Without GPU(CPU only)<br><code>ffmpeg -i &quot;input.mp4&quot; -crf 25 -f mp4 &quot;output.mp4&quot;</code><br><code>ffmpeg -i &quot;input.mp4&quot; -maxrate 500kb/s -f mp4 &quot;output.mp4&quot;</code></p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/07/24/trailingZeros/" class="archive-article-date">
-  <time datetime="2018-07-24T19:34:31.000Z" itemprop="datePublished">Jul 24</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/24/trailingZeros/">2. 尾部的零</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/07/24/BinarySearch/" class="archive-article-date">
-  <time datetime="2018-07-24T17:40:33.000Z" itemprop="datePublished">Jul 24</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://66ws.cc/2019/10/06/FFmpeg-with-GPU/" data-id="ck1fuxjbk000i8wtgi34npams" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/24/BinarySearch/">14. 二分查找</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/07/14/nthUglyNumber/" class="archive-article-date">
-  <time datetime="2018-07-14T17:30:34.000Z" itemprop="datePublished">Jul 14</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/14/nthUglyNumber/">4. 丑数 II</a>
-    </h1>
-  
-
-    </header>
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/06/16/golang-cross-compiling/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Golang - cross-compiling</div>
+    </a>
   
+</nav>
 
+  
+</article>
 
 </section>
         
