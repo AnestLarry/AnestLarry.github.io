@@ -5,15 +5,21 @@
   
 
   
-  <title>66ws</title>
+  <title>HTTP Request Method | Get and Post | 66ws</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="66ws">
-<meta property="og:url" content="http://66ws.cc/page/3/index.html">
+  <meta name="description" content="HTTP(HyperText Transfer Protocol) 是一种能够获取如 HTML 这样的网络资源的 protocol(通讯协议)。它常用的两种方式Get和Post 然后来讲讲Get和Post  推荐浏览器Google Chrome,Chromium 或 Firefox   Method:  Get首先,你打开我这网站的首页,这就是属于Get,而Get方式是从指定的资源请求数据例如 h">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP Request Method | Get and Post">
+<meta property="og:url" content="http://66ws.cc/2018/07/23/http-request-method-get-and-post/index.html">
 <meta property="og:site_name" content="66ws">
+<meta property="og:description" content="HTTP(HyperText Transfer Protocol) 是一种能够获取如 HTML 这样的网络资源的 protocol(通讯协议)。它常用的两种方式Get和Post 然后来讲讲Get和Post  推荐浏览器Google Chrome,Chromium 或 Firefox   Method:  Get首先,你打开我这网站的首页,这就是属于Get,而Get方式是从指定的资源请求数据例如 h">
 <meta property="og:locale" content="English,Chinese">
+<meta property="og:image" content="http://wx4.sinaimg.cn/large/006NJlkXgy1ftj2i28favj31h70fntbe.jpg">
+<meta property="og:updated_time" content="2019-11-15T05:03:48.704Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="66ws">
+<meta name="twitter:title" content="HTTP Request Method | Get and Post">
+<meta name="twitter:description" content="HTTP(HyperText Transfer Protocol) 是一种能够获取如 HTML 这样的网络资源的 protocol(通讯协议)。它常用的两种方式Get和Post 然后来讲讲Get和Post  推荐浏览器Google Chrome,Chromium 或 Firefox   Method:  Get首先,你打开我这网站的首页,这就是属于Get,而Get方式是从指定的资源请求数据例如 h">
+<meta name="twitter:image" content="http://wx4.sinaimg.cn/large/006NJlkXgy1ftj2i28favj31h70fntbe.jpg">
   
     <link rel="alternate" href="/atom.xml" title="66ws" type="application/atom+xml">
   
@@ -60,9 +66,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-http-request-method-get-and-post" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-http-request-method-get-and-post" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/23/http-request-method-get-and-post/" class="article-date">
   <time datetime="2018-07-23T19:20:52.000Z" itemprop="datePublished">2018-07-23</time>
@@ -79,8 +83,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/23/http-request-method-get-and-post/">HTTP Request Method | Get and Post</a>
+    <h1 class="article-title" itemprop="name">
+      HTTP Request Method | Get and Post
     </h1>
   
 
@@ -121,219 +125,28 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-nthUglyNumber" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/14/nthUglyNumber/" class="article-date">
-  <time datetime="2018-07-14T17:30:34.000Z" itemprop="datePublished">2018-07-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/LintCode/">LintCode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <a href="/2018/07/24/BinarySearch/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/14/nthUglyNumber/">4. 丑数 II</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>设计一个算法，找出只含素因子<code>2</code>，<code>3</code>，<code>5</code> 的第 _n_ 小的数。 符合条件的数如：<code>1, 2, 3, 4, 5, 6, 8, 9, 10, 12...</code></p>
-<p>我们可以认为<code>1</code>也是一个丑数</p>
-<h3 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h3><p>如果<code>n = 9</code>， 返回 <code>10</code></p>
-<h3 id="挑战"><a href="#挑战" class="headerlink" title="挑战"></a>挑战</h3><p>要求时间复杂度为O(_n_log_n_)或者O(_n_)</p>
-<hr>
-<p>找了很久都没明白丑数几个意思,直到看到个公式: 2^i,3^j,5^k 10以内丑数为 n[2^i,3^j,5^k] 1 [0, 0, 0] 2 [1, 0, 0] 3 [0, 1, 0] 4 [2, 0, 0] 5 [0, 0, 1] 6 [1, 1, 0] 7 不存在 8 [3, 0, 0] 9 [0, 2, 0] 10 [1, 0, 1] 要返回的数是第n个,即输入9返回的并不是9(9是丑数但不是第九个),第9个是10 思路就是生成丑数数组,然后返回坐标为 n-1 的元素即可 Python3</p>
-<p>class Solution:<br>    “””<br>    @param n: An integer<br>    @return: the nth prime number as description.<br>    “””<br>    def nthUglyNumber(self, n):<br>        L=[1]<br>        i2,i3,i5=0,0,0<br>        for j in range(n):<br>            n2,n3,n5=L[i2]*2,L[i3]*3,L[i5]*5<br>            m=min(n2,n3,n5)<br>            L+=[m]<br>            i2+=(m == n2)<br>            i3+=(m == n3)<br>            i5+=(m == n5)<br>            print(L)<br>        return L[n-1]</p>
-<p>其中 i2+=(x) 当(x)为True时i2+=1 当(x)为False时i2+=0</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://66ws.cc/2018/07/14/nthUglyNumber/" data-id="ck2zol9z4000c4ctgqog7nphv" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-unity-make-a-simple-game" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/06/10/unity-make-a-simple-game/" class="article-date">
-  <time datetime="2018-06-10T22:22:59.000Z" itemprop="datePublished">2018-06-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Program/">Program</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+          14. 二分查找
         
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/10/unity-make-a-simple-game/">Unity : Make a simple game</a>
-    </h1>
   
+    <a href="/2018/07/14/nthUglyNumber/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">4. 丑数 II</div>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>读完这篇教程而记 <a href="https://www.cnblogs.com/OctoptusLian/p/8418534.html" target="_blank" rel="noopener">https://www.cnblogs.com/OctoptusLian/p/8418534.html</a>  </p>
-<hr>
-<p>  前言 unity版本2018.1.3.f1 安装unity的时候出现了个坑,以前安装过unity,license 认证死活过不去,然后重装解决了这个问题   upgrade license上依然出错,解决方法: 1 log out后再login 2 删掉C:/ProgramData中的Unity文件夹(不确定是否有效  </p>
-<hr>
-<p>关于对象(Element)的创建:</p>
-<blockquote>
-<p>创建完project后创建对象,例如地板(plane),方块(cube),球(sphere),均在导航栏的GameObject -&gt; 3DObject 中 利用xy轴对Cube,Sphere进行精准定位</p>
-</blockquote>
-<p>关于设定玩家(player):</p>
-<blockquote>
-<p>在选中需要设定为player的Element上inspector中的tag设定为player即可</p>
-</blockquote>
-<p>关于物理模拟:</p>
-<blockquote>
-<p>选中需要物理的Element然后依次 Component -&gt; Physics -&gt; Rigidbody 此时,若物理模拟的Element在空中的话,便会掉落到Plane上后停止运动</p>
-</blockquote>
-<p>关于c#的脚本添加:</p>
-<blockquote>
-<p>添加方式可以从项目上边的Create中创建,或者从导航栏中选 Assets -&gt; Create -&gt; c# script 来创建文件. 若有vs的话,可以直接双击利用vs来编辑,觉得vs太笨重的话,可以尝试用vscode,创建的文件位于project/Assets中. 希望script应用到的Element可以直接用鼠标将scirpt file 拖向项目表中的 Element上</p>
-</blockquote>
-<p>关于材质(Material)的添加:</p>
-<blockquote>
-<p>Create -&gt; Material 然后可以点击inspector的 Main Maps -&gt; Albedo 右边的输入框来选择需要的基本色 应用到哪个Element上只需要拖过去即可</p>
-</blockquote>
-<p>关于游戏屏幕大小设定:</p>
-<blockquote>
-<p>在Game -&gt; Free Aspect 中选择或者点”+”自定义.(需要注意的是从最初开始都是在Sence上,Game在Sence的旁边,Sence在Create右边</p>
-</blockquote>
-<p>未完待续…</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://66ws.cc/2018/06/10/unity-make-a-simple-game/" data-id="ck2zol9zc000n4ctgsqd17hgy" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-windows-startup-shutdown-log" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/06/08/windows-startup-shutdown-log/" class="article-date">
-  <time datetime="2018-06-08T16:11:01.000Z" itemprop="datePublished">2018-06-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Program/">Program</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/08/windows-startup-shutdown-log/">Windows Startup/Shutdown Log</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在某次电脑未被允许的情况下开了机，然而控制欲强的我对这事并不能忍=A= 然而开机密码又懒得设置（或许有需要的也会设置的…… 那么，我想知道别人动我电脑时候的情况，于是有了这一页 进入正题 实现Log的功能主要在于开机启动调用与关机调用，调用文件针对于文本文件进行写入记录（处理得快，不然自己开机都嫌麻烦_(:з 开机与关机调用文件可以通过 组策略 Windows设置/用户设置 来设置调用文件，windows设置开关机的记录，用户设置里面调用本地登录用户的记录，全部保留在同一个文件就形成完整Log vbs的实现方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CurrentTime=&quot;\[&quot; &amp; year(Now) &amp; &quot;-&quot; &amp; Month(Now) &amp; &quot;-&quot; &amp; day(Now) &amp; &quot;  &quot; &amp; Hour(Now) &amp; &quot;:&quot; &amp; Minute(Now) &amp; &quot;:&quot; &amp; Second(Now) &amp;&quot;\]  Startup Window&quot; &amp; vbCrLf</span><br><span class="line">m = CurrentTime </span><br><span class="line">set LogFile=createobject(&quot;scripting.filesystemobject&quot;).opentextfile(&quot;D:\\temp\\windows_log.txt&quot;,8)</span><br><span class="line">LogFile.write m</span><br></pre></td></tr></table></figure>
-<p>  优点大概是通用？Win7/10似乎没有问题_(:з」∠)_ py实现方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">txt=open(&quot;D:\\temp\\windows_log.txt&quot;,&quot;r&quot;).read()</span><br><span class="line">open(&quot;D:\\temp\\windows_log.txt&quot;,&quot;r&quot;).write(txt + time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;, time.localtime()) + &quot;Startup Windows\\n&quot; )</span><br></pre></td></tr></table></figure>
-<p>py脚本改用pyw后缀可以隐藏掉dos窗口_(:з」∠)_ 至于定时监控进程等，有空再敲成文……</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://66ws.cc/2018/06/08/windows-startup-shutdown-log/" data-id="ck2zol9zf000s4ctgc1a7sbfn" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-mabinogi-pack-file" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/06/08/mabinogi-pack-file/" class="article-date">
-  <time datetime="2018-06-08T15:04:43.000Z" itemprop="datePublished">2018-06-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Mabinogi/">Mabinogi</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/08/mabinogi-pack-file/">mabinogi pack file</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><del>龙陨石预测 ：龙陨石的落点预测~更方便的闪开石头（不要打擦边球，D血无责\</del>~<br><del>透明温泉猴子 ：透明掉温泉的跑来跑去的猴子（便于温泉割毛</del><br><a href="https://pan.baidu.com/s/1pKHW3sJ" target="_blank" rel="noopener">宝箱怪辨别</a> ：一眼认出宝箱怪~</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://66ws.cc/2018/06/08/mabinogi-pack-file/" data-id="ck2zol9yz00084ctg0gwvw8v6" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
-  </nav>
 
 </section>
         
