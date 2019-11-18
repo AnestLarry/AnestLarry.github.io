@@ -5,15 +5,19 @@
   
 
   
-  <title>Category: Program | 66ws</title>
+  <title>Install yeoman - x yo version | 66ws</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="66ws">
-<meta property="og:url" content="http://66ws.cc/categories/Program/index.html">
+  <meta name="description" content="最近心血来潮想搞一下vscode的插件制作 但是制作的过程似乎并不那么顺利…… 首先是关于yeoman(yo)的安装，查了好多的网站都没有提到…… github的讨论结论似乎也并不适用于自己的情况 环境：window 10 { npm: ‘6.7.0’,ares: ‘1.15.0’,cldr: ‘33.1’,http_parser: ‘2.8.0’,icu: ‘62.1’,modules: ‘64">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Install yeoman - x yo version">
+<meta property="og:url" content="http://66ws.cc/2019/11/18/Install-yeoman-x-yo-version/index.html">
 <meta property="og:site_name" content="66ws">
+<meta property="og:description" content="最近心血来潮想搞一下vscode的插件制作 但是制作的过程似乎并不那么顺利…… 首先是关于yeoman(yo)的安装，查了好多的网站都没有提到…… github的讨论结论似乎也并不适用于自己的情况 环境：window 10 { npm: ‘6.7.0’,ares: ‘1.15.0’,cldr: ‘33.1’,http_parser: ‘2.8.0’,icu: ‘62.1’,modules: ‘64">
 <meta property="og:locale" content="English,Chinese">
+<meta property="og:updated_time" content="2019-11-18T10:50:07.112Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="66ws">
+<meta name="twitter:title" content="Install yeoman - x yo version">
+<meta name="twitter:description" content="最近心血来潮想搞一下vscode的插件制作 但是制作的过程似乎并不那么顺利…… 首先是关于yeoman(yo)的安装，查了好多的网站都没有提到…… github的讨论结论似乎也并不适用于自己的情况 环境：window 10 { npm: ‘6.7.0’,ares: ‘1.15.0’,cldr: ‘33.1’,http_parser: ‘2.8.0’,icu: ‘62.1’,modules: ‘64">
   
     <link rel="alternate" href="/atom.xml" title="66ws" type="application/atom+xml">
   
@@ -60,183 +64,67 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/10/06/FFmpeg-with-GPU/" class="archive-article-date">
-  <time datetime="2019-10-06T15:26:15.000Z" itemprop="datePublished">Oct 6</time>
+        <section id="main"><article id="post-Install-yeoman-x-yo-version" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/18/Install-yeoman-x-yo-version/" class="article-date">
+  <time datetime="2019-11-18T22:49:46.000Z" itemprop="datePublished">2019-11-18</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/uncategorized/">uncategorized</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/06/FFmpeg-with-GPU/">FFmpeg with GPU</a>
+    <h1 class="article-title" itemprop="name">
+      Install yeoman - x yo version
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/06/16/golang-cross-compiling/" class="archive-article-date">
-  <time datetime="2019-06-16T15:57:39.000Z" itemprop="datePublished">Jun 16</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/16/golang-cross-compiling/">Golang - cross-compiling</a>
-    </h1>
-  
+        <p>最近心血来潮想搞一下vscode的插件制作</p>
+<p>但是制作的过程似乎并不那么顺利……</p>
+<p>首先是关于yeoman(yo)的安装，查了好多的网站都没有提到……</p>
+<p>github的讨论结论似乎也并不适用于自己的情况</p>
+<p>环境：window 10</p>
+<p>{ npm: ‘6.7.0’,<br>ares: ‘1.15.0’,<br>cldr: ‘33.1’,<br>http_parser: ‘2.8.0’,<br>icu: ‘62.1’,<br>modules: ‘64’,<br>napi: ‘3’,<br>nghttp2: ‘1.34.0’,<br>node: ‘10.15.1’,<br>openssl: ‘1.1.0j’,<br>tz: ‘2018e’,<br>unicode: ‘11.0’,<br>uv: ‘1.23.2’,<br>v8: ‘6.8.275.32-node.12’,<br>zlib: ‘1.2.11’ }</p>
+<p>首先是尝试官网提供的方法安装</p>
+<p>npm install -g yo</p>
+<p>几次尝试后都是以 x yo version 结束，直接使用yo code 也不能创建项目，提示yo不是内外部命令。但是并不想那么早放弃安装，然后查询到npm或者是nodejs的版本过低可能造成这个问题(不确定)</p>
+<p>可以考虑更新一下nodejs和npm，win的nodejs更新方式是下载官网的安装包可以直接进行安装回原来的根目录。至于linux和mac的更新方式能随便搜到就不写了。</p>
+<p>但是我的问题并没有解决，继续查到似乎linux的安装也有这个问题，可以确定这个问题并不是win only，那么去安装目录上查看node_modules中找到了yo文件夹，那么可以确定的是yo已经成功下载了，接下来需要考虑的是为何yo不能在cmd中使用。</p>
+<p>似乎到这里面就比较清晰可以解决了，在node_modules中有.bin文件夹，里面含有一些cmd文件，那么yo 版本的无法获取在于没有path，把安装目录中的.bin加入环境变量后成功执行</p>
 
-    </header>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://66ws.cc/2019/11/18/Install-yeoman-x-yo-version/" data-id="ck34jvdkp000h24tgnyjmxsa5" class="article-share-link">Share</a>
+      
+      
+    </footer>
   </div>
-</article>
   
     
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/12/17/golang-format-time-string/" class="archive-article-date">
-  <time datetime="2018-12-18T00:34:50.000Z" itemprop="datePublished">Dec 17</time>
-</a>
-      
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/17/golang-format-time-string/">GOLANG - Format Time string</a>
-    </h1>
   
+    <a href="/2019/10/06/FFmpeg-with-GPU/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">FFmpeg with GPU</div>
+    </a>
+  
+</nav>
 
-    </header>
-  </div>
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/07/27/get-response/" class="archive-article-date">
-  <time datetime="2018-07-27T22:29:27.000Z" itemprop="datePublished">Jul 27</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/27/get-response/">Get Response</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/07/26/sqlite3/" class="archive-article-date">
-  <time datetime="2018-07-26T19:20:43.000Z" itemprop="datePublished">Jul 26</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/26/sqlite3/">SQLite3</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/07/23/http-request-method-get-and-post/" class="archive-article-date">
-  <time datetime="2018-07-23T19:20:52.000Z" itemprop="datePublished">Jul 23</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/23/http-request-method-get-and-post/">HTTP Request Method | Get and Post</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/10/unity-make-a-simple-game/" class="archive-article-date">
-  <time datetime="2018-06-10T22:22:59.000Z" itemprop="datePublished">Jun 10</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/10/unity-make-a-simple-game/">Unity : Make a simple game</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/08/windows-startup-shutdown-log/" class="archive-article-date">
-  <time datetime="2018-06-08T16:11:01.000Z" itemprop="datePublished">Jun 8</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/08/windows-startup-shutdown-log/">Windows Startup/Shutdown Log</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
 
 </section>
         
