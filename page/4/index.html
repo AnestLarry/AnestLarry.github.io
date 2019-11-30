@@ -62,10 +62,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-windows-startup-shutdown-log" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/08/windows-startup-shutdown-log/" class="article-date">
+  <time datetime="2018-06-08T15:11:01.000Z" itemprop="datePublished">2018-06-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Program/">Program</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/08/windows-startup-shutdown-log/">Windows Startup/Shutdown Log</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在某次电脑未被允许的情况下开了机，然而控制欲强的我对这事并不能忍=A= 然而开机密码又懒得设置（或许有需要的也会设置的…… 那么，我想知道别人动我电脑时候的情况，于是有了这一页 进入正题 实现Log的功能主要在于开机启动调用与关机调用，调用文件针对于文本文件进行写入记录（处理得快，不然自己开机都嫌麻烦_(:з 开机与关机调用文件可以通过 组策略 Windows设置/用户设置 来设置调用文件，windows设置开关机的记录，用户设置里面调用本地登录用户的记录，全部保留在同一个文件就形成完整Log vbs的实现方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CurrentTime=&quot;\[&quot; &amp; year(Now) &amp; &quot;-&quot; &amp; Month(Now) &amp; &quot;-&quot; &amp; day(Now) &amp; &quot;  &quot; &amp; Hour(Now) &amp; &quot;:&quot; &amp; Minute(Now) &amp; &quot;:&quot; &amp; Second(Now) &amp;&quot;\]  Startup Window&quot; &amp; vbCrLf</span><br><span class="line">m = CurrentTime </span><br><span class="line">set LogFile=createobject(&quot;scripting.filesystemobject&quot;).opentextfile(&quot;D:\\temp\\windows_log.txt&quot;,8)</span><br><span class="line">LogFile.write m</span><br></pre></td></tr></table></figure>
+<p>  优点大概是通用？Win7/10似乎没有问题_(:з」∠)_ py实现方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">txt=open(&quot;D:\\temp\\windows_log.txt&quot;,&quot;r&quot;).read()</span><br><span class="line">open(&quot;D:\\temp\\windows_log.txt&quot;,&quot;r&quot;).write(txt + time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;, time.localtime()) + &quot;Startup Windows\\n&quot; )</span><br></pre></td></tr></table></figure>
+<p>py脚本改用pyw后缀可以隐藏掉dos窗口_(:з」∠)_ 至于定时监控进程等，有空再敲成文……</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://66ws.cc/2018/06/08/windows-startup-shutdown-log/" data-id="ck3kxazh60012r8v7vgih52th" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-mabinogi-pack-file" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/06/08/mabinogi-pack-file/" class="article-date">
-  <time datetime="2018-06-08T15:04:43.000Z" itemprop="datePublished">2018-06-08</time>
+  <time datetime="2018-06-08T14:04:43.000Z" itemprop="datePublished">2018-06-08</time>
 </a>
     
   <div class="article-category">
@@ -93,7 +138,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://66ws.cc/2018/06/08/mabinogi-pack-file/" data-id="ck34k29o4000s6stgu1fzu25w" class="article-share-link">Share</a>
+      <a data-url="http://66ws.cc/2018/06/08/mabinogi-pack-file/" data-id="ck3kxazgq000er8v7zxf4r1c2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -106,7 +151,7 @@
     <article id="post-mabiwatch" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/06/07/mabiwatch/" class="article-date">
-  <time datetime="2018-06-08T03:24:01.000Z" itemprop="datePublished">2018-06-07</time>
+  <time datetime="2018-06-08T02:24:01.000Z" itemprop="datePublished">2018-06-07</time>
 </a>
     
   <div class="article-category">
@@ -135,7 +180,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://66ws.cc/2018/06/07/mabiwatch/" data-id="ck34k29o7000x6stg4y1mz1yz" class="article-share-link">Share</a>
+      <a data-url="http://66ws.cc/2018/06/07/mabiwatch/" data-id="ck3kxazgu000ir8v78vd4h98g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -160,7 +205,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/LintCode/">LintCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mabinogi/">Mabinogi</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Program/">Program</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Program/Golang/">Golang</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Program/Python3/">Python3</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/LintCode/">LintCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mabinogi/">Mabinogi</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Problems-Solution/">Problems&Solution</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Program/">Program</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Program/Golang/">Golang</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Program/Python3/">Python3</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li></ul>
     </div>
   </div>
 
@@ -188,6 +233,10 @@
       <ul>
         
           <li>
+            <a href="/2019/11/29/Remove-invalid-icons-pinned-on-Win10-Taskbar/">Remove_invalid_icons_pinned_on_Win10_Taskbar</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/18/Install-yeoman-x-yo-version/">Install yeoman - x yo version</a>
           </li>
         
@@ -201,10 +250,6 @@
         
           <li>
             <a href="/2019/06/15/solution/">Solution</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/17/golang-format-time-string/">GOLANG - Format Time string</a>
           </li>
         
       </ul>

@@ -5,19 +5,15 @@
   
 
   
-  <title>GOLANG - Format Time string | 66ws</title>
+  <title>Category: Problems&amp;Solution | 66ws</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="格式化的数字并不是任意时间字符串01=MM=2位月份02=dd=2位日期15=HH=24小时法表示小时，3=12小时法表示小时04=mm=分钟05=ss=秒2006=yyyy=4位年份， 06=年分后2位 package main  import (     &amp;quot;fmt&amp;quot;     &amp;quot;time&amp;quot; )  func main() {     //t := time.">
-<meta property="og:type" content="article">
-<meta property="og:title" content="GOLANG - Format Time string">
-<meta property="og:url" content="http://66ws.cc/2018/12/17/golang-format-time-string/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="66ws">
+<meta property="og:url" content="http://66ws.cc/categories/Problems-Solution/index.html">
 <meta property="og:site_name" content="66ws">
-<meta property="og:description" content="格式化的数字并不是任意时间字符串01=MM=2位月份02=dd=2位日期15=HH=24小时法表示小时，3=12小时法表示小时04=mm=分钟05=ss=秒2006=yyyy=4位年份， 06=年分后2位 package main  import (     &amp;quot;fmt&amp;quot;     &amp;quot;time&amp;quot; )  func main() {     //t := time.">
 <meta property="og:locale" content="English,Chinese">
-<meta property="og:updated_time" content="2019-08-03T07:22:02.134Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GOLANG - Format Time string">
-<meta name="twitter:description" content="格式化的数字并不是任意时间字符串01=MM=2位月份02=dd=2位日期15=HH=24小时法表示小时，3=12小时法表示小时04=mm=分钟05=ss=秒2006=yyyy=4位年份， 06=年分后2位 package main  import (     &amp;quot;fmt&amp;quot;     &amp;quot;time&amp;quot; )  func main() {     //t := time.">
+<meta name="twitter:title" content="66ws">
   
     <link rel="alternate" href="/atom.xml" title="66ws" type="application/atom+xml">
   
@@ -64,100 +60,40 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-golang-format-time-string" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/17/golang-format-time-string/" class="article-date">
-  <time datetime="2018-12-18T00:34:50.000Z" itemprop="datePublished">2018-12-17</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Program/">Program</a>►<a class="article-category-link" href="/categories/Program/Golang/">Golang</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      GOLANG - Format Time string
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2019/11/29/Remove-invalid-icons-pinned-on-Win10-Taskbar/" class="archive-article-date">
+  <time datetime="2019-11-30T01:53:08.000Z" itemprop="datePublished">Nov 29</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/11/29/Remove-invalid-icons-pinned-on-Win10-Taskbar/">Remove_invalid_icons_pinned_on_Win10_Taskbar</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>格式化的数字并不是任意时间字符串<br>01=MM=2位月份<br>02=dd=2位日期<br>15=HH=24小时法表示小时，3=12小时法表示小时<br>04=mm=分钟<br>05=ss=秒<br>2006=yyyy=4位年份， 06=年分后2位</p>
-<pre><code>package main
-
-import (
-    &quot;fmt&quot;
-    &quot;time&quot;
-)
-
-func main() {
-    //t := time.Now()
-    t, _ := time.Parse(&quot;2006-01-02 15:04:05&quot;, &quot;2015-12-09 14:38:56&quot;)
-    fmt.Println(t.Format(&quot;2006-01-02 15:04:05&quot;))
-    fmt.Println(t.Format(&quot;2006&quot;)+&quot; 年&quot;)
-    fmt.Println(t.Format(&quot;01&quot;)+&quot; 两位月份&quot;)
-    fmt.Println(t.Format(&quot;1&quot;)+&quot;  一位月份&quot;)
-    fmt.Println(t.Format(&quot;02&quot;)+&quot; 2位日&quot;)
-    fmt.Println(t.Format(&quot;2&quot;)+&quot;  1位日&quot;)
-    fmt.Println(t.Format(&quot;15&quot;)+ &quot; 24小时表示法-小时&quot;) 
-    fmt.Println(t.Format(&quot;3&quot;)+&quot;  24小时表示法-小时&quot; ) 
-    fmt.Println(t.Format(&quot;04&quot;)+&quot; 分&quot;)
-    fmt.Println(t.Format(&quot;05&quot;)+&quot; 秒&quot;) 
-    fmt.Println(t.Format(&quot;06&quot;)+&quot; 年份后2位&quot;) 
-}
-</code></pre><p>输出</p>
-<pre><code>2015-12-09 14:38:56
-2015 年
-12 两位月份
-12  一位月份
-09 2位日
-9  1位日
-14 24小时表示法-小时
-2  24小时表示法-小时
-38 分
-56 秒
-15 年份后2位
-</code></pre><p>参考于：<a href="https://www.mes.guru/2018/04/13/go_time_format/" target="_blank" rel="noopener">golang语言 时间日期格式化正确的理解方式</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://66ws.cc/2018/12/17/golang-format-time-string/" data-id="ck3kxazgp000br8v79a3aqr40" class="article-share-link">Share</a>
-      
-      
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2019/06/15/solution/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Solution
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/11/25/docker-docs/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Docker Docs</div>
-    </a>
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
+
 
 </section>
         
