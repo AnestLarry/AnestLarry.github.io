@@ -62,6 +62,54 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-nthUglyNumber" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/14/nthUglyNumber/" class="article-date">
+  <time datetime="2018-07-14T16:30:34.000Z" itemprop="datePublished">2018-07-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/LintCode/">LintCode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/14/nthUglyNumber/">4. 丑数 II</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>设计一个算法，找出只含素因子<code>2</code>，<code>3</code>，<code>5</code> 的第 _n_ 小的数。 符合条件的数如：<code>1, 2, 3, 4, 5, 6, 8, 9, 10, 12...</code></p>
+<p>我们可以认为<code>1</code>也是一个丑数</p>
+<h3 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h3><p>如果<code>n = 9</code>， 返回 <code>10</code></p>
+<h3 id="挑战"><a href="#挑战" class="headerlink" title="挑战"></a>挑战</h3><p>要求时间复杂度为O(_n_log_n_)或者O(_n_)</p>
+<hr>
+<p>找了很久都没明白丑数几个意思,直到看到个公式: 2^i,3^j,5^k 10以内丑数为 n[2^i,3^j,5^k] 1 [0, 0, 0] 2 [1, 0, 0] 3 [0, 1, 0] 4 [2, 0, 0] 5 [0, 0, 1] 6 [1, 1, 0] 7 不存在 8 [3, 0, 0] 9 [0, 2, 0] 10 [1, 0, 1] 要返回的数是第n个,即输入9返回的并不是9(9是丑数但不是第九个),第9个是10 思路就是生成丑数数组,然后返回坐标为 n-1 的元素即可 Python3</p>
+<p>class Solution:<br>    “””<br>    @param n: An integer<br>    @return: the nth prime number as description.<br>    “””<br>    def nthUglyNumber(self, n):<br>        L=[1]<br>        i2,i3,i5=0,0,0<br>        for j in range(n):<br>            n2,n3,n5=L[i2]*2,L[i3]*3,L[i5]*5<br>            m=min(n2,n3,n5)<br>            L+=[m]<br>            i2+=(m == n2)<br>            i3+=(m == n3)<br>            i5+=(m == n5)<br>            print(L)<br>        return L[n-1]</p>
+<p>其中 i2+=(x) 当(x)为True时i2+=1 当(x)为False时i2+=0</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://66ws.cc/2018/07/14/nthUglyNumber/" data-id="ck8it8o670013hwv7ugz9h6va" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-unity-make-a-simple-game" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/06/10/unity-make-a-simple-game/" class="article-date">
@@ -121,7 +169,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://66ws.cc/2018/06/10/unity-make-a-simple-game/" data-id="ck7x2gozl001hw4v7wish9nwh" class="article-share-link">Share</a>
+      <a data-url="http://66ws.cc/2018/06/10/unity-make-a-simple-game/" data-id="ck8it8o6e001fhwv7h3mtqxxd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -166,7 +214,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://66ws.cc/2018/06/08/windows-startup-shutdown-log/" data-id="ck7x2gozn001jw4v7bco7zpok" class="article-share-link">Share</a>
+      <a data-url="http://66ws.cc/2018/06/08/windows-startup-shutdown-log/" data-id="ck8it8o6f001ihwv7qo608c8y" class="article-share-link">Share</a>
       
       
     </footer>
@@ -207,7 +255,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://66ws.cc/2018/06/08/mabinogi-pack-file/" data-id="ck7x2goze0015w4v7o4fq7zjj" class="article-share-link">Share</a>
+      <a data-url="http://66ws.cc/2018/06/08/mabinogi-pack-file/" data-id="ck8it8o65000yhwv7eyq1p2sd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -249,7 +297,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://66ws.cc/2018/06/07/mabiwatch/" data-id="ck7x2gozb0010w4v7zudjeksd" class="article-share-link">Share</a>
+      <a data-url="http://66ws.cc/2018/06/07/mabiwatch/" data-id="ck8it8o660010hwv79lf7lnib" class="article-share-link">Share</a>
       
       
     </footer>
@@ -274,7 +322,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Games/">Games</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LintCode/">LintCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mabinogi/">Mabinogi</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Problems-Solution/">Problems&Solution</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Program/">Program</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Program/Golang/">Golang</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Program/Python3/">Python3</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Design-Pattern/">Design Pattern</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Games/">Games</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LintCode/">LintCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mabinogi/">Mabinogi</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Problems-Solution/">Problems&Solution</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Program/">Program</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Program/Golang/">Golang</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Program/Python3/">Python3</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li></ul>
     </div>
   </div>
 
@@ -289,7 +337,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li></ul>
     </div>
   </div>
 
@@ -300,6 +348,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/04/02/Design_Pattern/Design_Pattern/">Design Pattern (0/23)</a>
+          </li>
         
           <li>
             <a href="/2020/03/11/Ys-VIII-Lacrimosa-of-DANA/">Ys VIII Lacrimosa of DANA Keymap</a>
@@ -315,10 +367,6 @@
         
           <li>
             <a href="/2019/10/06/FFmpeg-with-GPU/">FFmpeg with GPU</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/16/golang-cross-compiling/">Golang - cross-compiling</a>
           </li>
         
       </ul>
