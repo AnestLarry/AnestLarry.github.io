@@ -62,6 +62,58 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Install-yeoman-x-yo-version" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/18/Install-yeoman-x-yo-version/" class="article-date">
+  <time datetime="2019-11-18T22:49:46.000Z" itemprop="datePublished">2019-11-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Program/">Program</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/18/Install-yeoman-x-yo-version/">Install yeoman - x yo version</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近心血来潮想搞一下vscode的插件制作</p>
+<p>但是制作的过程似乎并不那么顺利……</p>
+<p>首先是关于yeoman(yo)的安装，查了好多的网站都没有提到……</p>
+<p>github的讨论结论似乎也并不适用于自己的情况</p>
+<p>环境：window 10</p>
+<p>{ npm: ‘6.7.0’,<br>ares: ‘1.15.0’,<br>cldr: ‘33.1’,<br>http_parser: ‘2.8.0’,<br>icu: ‘62.1’,<br>modules: ‘64’,<br>napi: ‘3’,<br>nghttp2: ‘1.34.0’,<br>node: ‘10.15.1’,<br>openssl: ‘1.1.0j’,<br>tz: ‘2018e’,<br>unicode: ‘11.0’,<br>uv: ‘1.23.2’,<br>v8: ‘6.8.275.32-node.12’,<br>zlib: ‘1.2.11’ }</p>
+<p>首先是尝试官网提供的方法安装</p>
+<p>npm install -g yo</p>
+<p>几次尝试后都是以 x yo version 结束，直接使用yo code 也不能创建项目，提示yo不是内外部命令。但是并不想那么早放弃安装，然后查询到npm或者是nodejs的版本过低可能造成这个问题(不确定)</p>
+<p>可以考虑更新一下nodejs和npm，win的nodejs更新方式是下载官网的安装包可以直接进行安装回原来的根目录。至于linux和mac的更新方式能随便搜到就不写了。</p>
+<p>但是我的问题并没有解决，继续查到似乎linux的安装也有这个问题，可以确定这个问题并不是win only，那么去安装目录上查看node_modules中找到了yo文件夹，那么可以确定的是yo已经成功下载了，接下来需要考虑的是为何yo不能在cmd中使用。</p>
+<p>似乎到这里面就比较清晰可以解决了，在node_modules中有.bin文件夹，里面含有一些cmd文件，那么yo 版本的无法获取在于没有path，把安装目录中的.bin加入环境变量后成功执行</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://66ws.cc/2019/11/18/Install-yeoman-x-yo-version/" data-id="ck8k0l8it0003v4v7wgdcyqxa" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-FFmpeg-with-GPU" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/10/06/FFmpeg-with-GPU/" class="article-date">
@@ -109,7 +161,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://66ws.cc/2019/10/06/FFmpeg-with-GPU/" data-id="ck8k0igo3000fe0v7z29tt52v" class="article-share-link">Share</a>
+      <a data-url="http://66ws.cc/2019/10/06/FFmpeg-with-GPU/" data-id="ck8k0l8iq0001v4v7b6ihtcmp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -170,7 +222,7 @@ go build helloworld.go</code></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://66ws.cc/2019/06/16/golang-cross-compiling/" data-id="ck8k0igo9000ne0v76vi03pvy" class="article-share-link">Share</a>
+      <a data-url="http://66ws.cc/2019/06/16/golang-cross-compiling/" data-id="ck8k0l8iz000bv4v7yi6r9ain" class="article-share-link">Share</a>
       
       
     </footer>
@@ -216,7 +268,7 @@ go build helloworld.go</code></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://66ws.cc/2019/06/15/solution/" data-id="ck8k0igog0012e0v7u1u7emkr" class="article-share-link">Share</a>
+      <a data-url="http://66ws.cc/2019/06/15/solution/" data-id="ck8k0l8j9000qv4v715ja2dxd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -292,48 +344,7 @@ func main() {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://66ws.cc/2018/12/17/golang-format-time-string/" data-id="ck8k0igod000ve0v7kpbjqxds" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-docker-docs" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/25/docker-docs/" class="article-date">
-  <time datetime="2018-11-26T02:40:22.000Z" itemprop="datePublished">2018-11-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/uncategorized/">uncategorized</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/25/docker-docs/">Docker Docs</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>由于点特殊原因，在官网上登陆不了……   死活没找到国内相应的下载点……   记录一个<a href="https://docs.docker.com/docker-for-windows/release-notes/" target="_blank" rel="noopener">Docker Docs</a> 便于下载……</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://66ws.cc/2018/11/25/docker-docs/" data-id="ck8k0igob000se0v717shb442" class="article-share-link">Share</a>
+      <a data-url="http://66ws.cc/2018/12/17/golang-format-time-string/" data-id="ck8k0l8j3000fv4v7mexc8nsu" class="article-share-link">Share</a>
       
       
     </footer>
