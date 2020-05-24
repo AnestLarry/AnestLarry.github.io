@@ -5,19 +5,15 @@
   
 
   
-  <title>Golang - cross-compiling | 66ws</title>
+  <title>Archives: 2020/5 | 66ws</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="About the Golang cross-compiling,say it simply that Windows build codes can run not only in Windows,but in Linux (Mac not test).I work between Win and Linux,may I have build the code in Windows easy,b">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Golang - cross-compiling">
-<meta property="og:url" content="http://66ws.cc/2019/06/16/golang-cross-compiling/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="66ws">
+<meta property="og:url" content="http://66ws.cc/archives/2020/05/index.html">
 <meta property="og:site_name" content="66ws">
-<meta property="og:description" content="About the Golang cross-compiling,say it simply that Windows build codes can run not only in Windows,but in Linux (Mac not test).I work between Win and Linux,may I have build the code in Windows easy,b">
 <meta property="og:locale" content="English,Chinese">
-<meta property="og:updated_time" content="2019-08-03T08:13:00.991Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Golang - cross-compiling">
-<meta name="twitter:description" content="About the Golang cross-compiling,say it simply that Windows build codes can run not only in Windows,but in Linux (Mac not test).I work between Win and Linux,may I have build the code in Windows easy,b">
+<meta name="twitter:title" content="66ws">
   
     <link rel="alternate" href="/atom.xml" title="66ws" type="application/atom+xml">
   
@@ -64,85 +60,40 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-golang-cross-compiling" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/16/golang-cross-compiling/" class="article-date">
-  <time datetime="2019-06-16T14:57:39.000Z" itemprop="datePublished">2019-06-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Program/">Program</a>►<a class="article-category-link" href="/categories/Program/Golang/">Golang</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      Golang - cross-compiling
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2020/05/24/Design_Pattern/BuilderPattern/" class="archive-article-date">
+  <time datetime="2020-05-24T03:32:12.000Z" itemprop="datePublished">May 24</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/05/24/Design_Pattern/BuilderPattern/">Builder Pattern (2/23)</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>About the Golang cross-compiling,say it simply that Windows build codes can run not only in Windows,but in Linux (Mac not test).<br>I work between Win and Linux,may I have build the code in Windows easy,but it in another pc maybe difficult.At least,you have to redownload the libs you use.And I have try the Cross-compiling.<br>In command or Terminal(installed golang &gt;=go1.11.2),you can run “go version” to get your system’s info,save it and use it later.</p>
-<p>Set Environment var<br>Windows:<br>in commmand : <code>set var = value</code><br>Linux :<br>in terminal :<code>export var = value</code></p>
-<p>Keyin the command “go env” and find out the keys “GOOS”(windows,linux) and “GOARCH”(amd64 , arm).<br>If error with gcc,add up the gcc key ;<br>if error with CGO,set CGO_ENABLED=0 ;<br>if error with ‘cannot find package <code>golang.org/x/sys/unix</code>,<code>git clone https://github.com/golang/sys.git</code> to gopath’s <code>golang.org/x/sys</code>.</p>
-<p>At last go build the code.</p>
-<p>Example:<br>Windows(Windows’s info:windows,amd64) build Binary executable file in Linux(Linux’s info:linux ,arm):<br>keyin command<br><code>set GOOS=&quot;linux&quot;  
-set GOARCH=&quot;arm&quot;  
-set CGO_ENABLED=0  
-set GOEXE=  
-go build helloworld.go</code></p>
-<p>Same infos,Linux build Binary executable file in Windows:<br><code>set GOOS=&quot;windows&quot;  
-set GOARCH=&quot;amd64&quot;  
-set GOEXE=.exe  
-go build helloworld.go</code></p>
-<p>Get helloworld.exe and run in windows;get helloword and run in Linux.</p>
-<p>关于Golang交叉编译，简单地说，Windows构建代码不仅可以在Windows中运行，而且可以在Linux中运行（Mac不测试）。<br>我在Win和Linux之间工作，我可以在Windows中轻松构建代码，但在另一台PC中可能很难。至少，你必须重新下载你使用的库。我尝试了交叉编译。<br>在命令或Termial（安装golang&gt; = go1.11.2）中，您可以运行“go version”来获取系统信息，保存并稍后使用。</p>
-<p>设置环境变量<br>Windows:<br>命令行 : <code>set var = value</code><br>Linux :<br>终端 : <code>export var = value</code></p>
-<p>键入命令“go env”并找出键“GOOS”（windows，linux）和“GOARCH”（amd64，arm）。<br>如果gcc出错，请加上gcc键;<br>如果CGO出错，则设置CGO_ENABLED = 0;<br>如果错误’找不到包<code>golang.org/x/sys/unix</code>,就git clone <code>https://github.com/golang/sys.git</code>到gopath的<code>golang.org/x/sys</code>。</p>
-<p>最后去构建代码。</p>
-<p>例：<br>Windows（Windows的信息：windows，amd64）在Linux中构建二进制可执行文件（Linux的信息：linux，arm）：<br>键入命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">set GOOS =“linux”  </span><br><span class="line">set GOARCH =“arm”  </span><br><span class="line">set CGO_ENABLED = 0  </span><br><span class="line">set GOEXE =  </span><br><span class="line">go build helloworld.go</span><br></pre></td></tr></table></figure></p>
-<p>相同的信息，Linux构建Windows中的二进制可执行文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export GOOS =“windows”  </span><br><span class="line">export GOARCH =“amd64”  </span><br><span class="line">export GOEXE = .exe  </span><br><span class="line">go build helloworld.go</span><br></pre></td></tr></table></figure></p>
-<p>获取helloworld.exe并在Windows中运行;获取helloword并在Linux中运行</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://66ws.cc/2019/06/16/golang-cross-compiling/" data-id="ck8k0l8iz000bv4v7yi6r9ain" class="article-share-link">Share</a>
-      
-      
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2019/10/06/FFmpeg-with-GPU/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          FFmpeg with GPU
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019/06/15/solution/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Solution</div>
-    </a>
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
+
 
 </section>
         

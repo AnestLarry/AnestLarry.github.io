@@ -62,6 +62,71 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-BinarySearch" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/24/BinarySearch/" class="article-date">
+  <time datetime="2018-07-24T16:40:33.000Z" itemprop="datePublished">2018-07-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/LintCode/">LintCode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/24/BinarySearch/">14. 二分查找</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>给定一个排序的整数数组（升序）和一个要查找的整数<code>target</code>,用<code>O(logn)</code>的时间查找到target第一次出现的下标（从0开始）,如果target不存在于数组中,返回<code>-1</code>.</p>
+<h3 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h3><p>在数组 <code>[1, 2, 3, 3, 4, 5, 10]</code> 中二分查找<code>3</code>,返回<code>2</code>.</p>
+<h3 id="挑战"><a href="#挑战" class="headerlink" title="挑战"></a>挑战</h3><p>如果数组中的整数个数超过了2^32,你的算法是否会出错?</p>
+<hr>
+<p>如果对二分查找比较陌生话,那么讲个小游戏,猜数字,在0-10000中随机取个数,让你猜,猜错了告诉你大了还是小了.</p>
+<p>  那么第一想法是什么?报中位数?对,不停的报中位数直到剩下最后一个数,这个数就是所需数,这个方法是比一个一个遍历要快非常多所需步骤也仅为log2n 回到正题</p>
+<p>class Solution:<br>    def binarySearch(self, nums, target):</p>
+<pre><code>    # write your code here
+    start=0
+    end=len(nums)
+    mid=int(end/2)
+    while start&lt;=end:
+        n_mid = nums\[mid\]
+        if n_mid &lt;target: #right
+            start=mid+1
+            mid=int((end+start)/2)
+        elif n_mid &gt;target: #left
+            end=mid-1
+            mid=int((end-start)/2)
+        else:
+            while nums\[mid\]==target:
+                mid-=1
+            return mid+1
+    return -1
+</code></pre><p>参考于<a href="https://blog.csdn.net/sinat_23133783/article/details/79148679" target="_blank" rel="noopener">这篇</a>做了一些修正,在没有重复的情况下,else的部分去除.直接return mid+1</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://66ws.cc/2018/07/24/BinarySearch/" data-id="ck8k0l8il0000v4v7emzghz8k" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-http-request-method-get-and-post" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/23/http-request-method-get-and-post/" class="article-date">
@@ -287,47 +352,6 @@
 
 
   
-    <article id="post-mabinogi-pack-file" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/06/08/mabinogi-pack-file/" class="article-date">
-  <time datetime="2018-06-08T14:04:43.000Z" itemprop="datePublished">2018-06-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Mabinogi/">Mabinogi</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/08/mabinogi-pack-file/">mabinogi pack file</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><del>龙陨石预测 ：龙陨石的落点预测~更方便的闪开石头（不要打擦边球，D血无责\</del>~<br><del>透明温泉猴子 ：透明掉温泉的跑来跑去的猴子（便于温泉割毛</del><br><a href="https://pan.baidu.com/s/1pKHW3sJ" target="_blank" rel="noopener">宝箱怪辨别</a> ：一眼认出宝箱怪~</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://66ws.cc/2018/06/08/mabinogi-pack-file/" data-id="ck8k0l8j1000cv4v7f98r3brb" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -343,7 +367,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Design-Pattern/">Design Pattern</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Games/">Games</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LintCode/">LintCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mabinogi/">Mabinogi</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Problems-Solution/">Problems&Solution</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Program/">Program</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Program/Golang/">Golang</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Program/Python3/">Python3</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Games/">Games</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LintCode/">LintCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mabinogi/">Mabinogi</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Problems-Solution/">Problems&Solution</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Program/">Program</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Program/Design-Pattern/">Design Pattern</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Program/Golang/">Golang</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Program/Python3/">Python3</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li></ul>
     </div>
   </div>
 
@@ -358,7 +382,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li></ul>
     </div>
   </div>
 
@@ -369,6 +393,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/05/24/Design_Pattern/BuilderPattern/">Builder Pattern (2/23)</a>
+          </li>
         
           <li>
             <a href="/2020/04/03/Design_Pattern/SingletonPattern/">Singleton Pattern (1/23)</a>
@@ -384,10 +412,6 @@
         
           <li>
             <a href="/2019/11/29/Remove-invalid-icons-pinned-on-Win10-Taskbar/">Remove invalid icons pinned on Win10 Taskbar</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/18/Install-yeoman-x-yo-version/">Install yeoman - x yo version</a>
           </li>
         
       </ul>
