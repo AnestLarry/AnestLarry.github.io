@@ -62,6 +62,60 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-trailingZeros" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/24/trailingZeros/" class="article-date">
+  <time datetime="2018-07-24T18:34:31.000Z" itemprop="datePublished">2018-07-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/LintCode/">LintCode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/24/trailingZeros/">2. 尾部的零</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>设计一个算法,计算出n阶乘中尾部零的个数</p>
+<h3 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h3><p><strong>11! = 39916800</strong>,因此应该返回 2</p>
+<h3 id="挑战"><a href="#挑战" class="headerlink" title="挑战"></a>挑战</h3><p>O(logN)的时间复杂度</p>
+<hr>
+<p>先看个表</p>
+<p>1 阶乘 1<br>2 阶乘 2<br>3 阶乘 6<br>4 阶乘 24<br>5 阶乘 120<br>6 阶乘 720<br>7 阶乘 5040<br>8 阶乘 40320<br>9 阶乘 362880<br>10 阶乘 3628800<br>11 阶乘 39916800<br>12 阶乘 479001600<br>13 阶乘 6227020800<br>14 阶乘 87178291200<br>15 阶乘 1307674368000<br>16 阶乘 20922789888000<br>17 阶乘 355687428096000<br>18 阶乘 6402373705728000<br>19 阶乘 121645100408832000<br>20 阶乘 2432902008176640000<br>21 阶乘 51090942171709440000<br>22 阶乘 1124000727777607680000<br>23 阶乘 25852016738884976640000<br>24 阶乘 620448401733239439360000<br>25 阶乘 15511210043330985984000000<br>26 阶乘 403291461126605635584000000<br>27 阶乘 10888869450418352160768000000<br>28 阶乘 304888344611713860501504000000<br>29 阶乘 8841761993739701954543616000000<br>30 阶乘 265252859812191058636308480000000<br>31 阶乘 8222838654177922817725562880000000<br>32 阶乘 263130836933693530167218012160000000<br>33 阶乘 8683317618811886495518194401280000000<br>34 阶乘 295232799039604140847618609643520000000<br>35 阶乘 10333147966386144929666651337523200000000<br>36 阶乘 371993326789901217467999448150835200000000<br>37 阶乘 13763753091226345046315979581580902400000000<br>38 阶乘 523022617466601111760007224100074291200000000<br>39 阶乘 20397882081197443358640281739902897356800000000<br>40 阶乘 815915283247897734345611269596115894272000000000<br>41 阶乘 33452526613163807108170062053440751665152000000000<br>42 阶乘 1405006117752879898543142606244511569936384000000000<br>43 阶乘 60415263063373835637355132068513997507264512000000000<br>44 阶乘 2658271574788448768043625811014615890319638528000000000<br>45 阶乘 119622220865480194561963161495657715064383733760000000000<br>46 阶乘 5502622159812088949850305428800254892961651752960000000000<br>47 阶乘 258623241511168180642964355153611979969197632389120000000000<br>48 阶乘 12413915592536072670862289047373375038521486354677760000000000<br>49 阶乘 608281864034267560872252163321295376887552831379210240000000000<br>50 阶乘 30414093201713378043612608166064768844377641568960512000000000000</p>
+<p>首先末尾的0和末尾的2和5有关系,以及其倍数. 2的倍数远远多于5的倍数,那么,计算总共几个5即可. 例如16! 16//5=3 一共是3个5,那么结果呢 16 阶乘 20922789888000 果然如此!同理的话,32! 32//5=6 那么就是6个0了吗? 32 阶乘 263130836933693530167218012160000000 咦?有7个0,好像有哪里不对? 32里面有个特殊的值是25,25=5*5,多了一个5! 那么,那么下一个多5的地方也就是25*2=50,所以一直除5到不足1为止 刚刚的例子32! 32//5=6  ;  6//5=1  ;  6+1=7 继续下一个例子50! 50//5=10  ;  10//5=2  ;  10+2 50 阶乘 30414093201713378043612608166064768844377641568960512000000000000 那么正确了 py3代码</p>
+<p>class Solution:<br>    def trailingZeros(self, n):</p>
+<pre><code>    # write your code here, try to do it without arithmetic operators.
+    sum=0
+    while n&gt;int1:
+        n=int(n/5)
+        sum+=n
+    return sum
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://66ws.cc/2018/07/24/trailingZeros/" data-id="ckaqpxi47001f1wv7l2m2ps5o" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-BinarySearch" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/24/BinarySearch/" class="article-date">
@@ -307,51 +361,6 @@
 
 
   
-    <article id="post-windows-startup-shutdown-log" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/06/08/windows-startup-shutdown-log/" class="article-date">
-  <time datetime="2018-06-08T15:11:01.000Z" itemprop="datePublished">2018-06-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Program/">Program</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/08/windows-startup-shutdown-log/">Windows Startup/Shutdown Log</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在某次电脑未被允许的情况下开了机，然而控制欲强的我对这事并不能忍=A= 然而开机密码又懒得设置（或许有需要的也会设置的…… 那么，我想知道别人动我电脑时候的情况，于是有了这一页 进入正题 实现Log的功能主要在于开机启动调用与关机调用，调用文件针对于文本文件进行写入记录（处理得快，不然自己开机都嫌麻烦_(:з 开机与关机调用文件可以通过 组策略 Windows设置/用户设置 来设置调用文件，windows设置开关机的记录，用户设置里面调用本地登录用户的记录，全部保留在同一个文件就形成完整Log vbs的实现方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CurrentTime=&quot;\[&quot; &amp; year(Now) &amp; &quot;-&quot; &amp; Month(Now) &amp; &quot;-&quot; &amp; day(Now) &amp; &quot;  &quot; &amp; Hour(Now) &amp; &quot;:&quot; &amp; Minute(Now) &amp; &quot;:&quot; &amp; Second(Now) &amp;&quot;\]  Startup Window&quot; &amp; vbCrLf</span><br><span class="line">m = CurrentTime </span><br><span class="line">set LogFile=createobject(&quot;scripting.filesystemobject&quot;).opentextfile(&quot;D:\\temp\\windows_log.txt&quot;,8)</span><br><span class="line">LogFile.write m</span><br></pre></td></tr></table></figure>
-<p>  优点大概是通用？Win7/10似乎没有问题_(:з」∠)_ py实现方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">txt=open(&quot;D:\\temp\\windows_log.txt&quot;,&quot;r&quot;).read()</span><br><span class="line">open(&quot;D:\\temp\\windows_log.txt&quot;,&quot;r&quot;).write(txt + time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;, time.localtime()) + &quot;Startup Windows\\n&quot; )</span><br></pre></td></tr></table></figure>
-<p>py脚本改用pyw后缀可以隐藏掉dos窗口_(:з」∠)_ 至于定时监控进程等，有空再敲成文……</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://66ws.cc/2018/06/08/windows-startup-shutdown-log/" data-id="ckaqpxi48001h1wv74frgi5t7" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -453,20 +462,5 @@
 
 
   </div>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
