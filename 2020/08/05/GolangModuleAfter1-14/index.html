@@ -5,19 +5,19 @@
   
 
   
-  <title>GOLANG - Format Time string | 66ws</title>
+  <title>Golang Module After 1.14 | 66ws</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="格式化的数字并不是任意时间字符串01=MM=2位月份02=dd=2位日期15=HH=24小时法表示小时，3=12小时法表示小时04=mm=分钟05=ss=秒2006=yyyy=4位年份， 06=年分后2位 package main  import (     &amp;quot;fmt&amp;quot;     &amp;quot;time&amp;quot; )  func main() {     //t := time.">
+  <meta name="description" content="I have get a lots of build errors from Golang compiler after update my local Golang program for version Golang 1.14. Errors like:  import cycle not allowed  package worker is not in GOROOT can’t find">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GOLANG - Format Time string">
-<meta property="og:url" content="http://66ws.cc/2018/12/17/golang-format-time-string/index.html">
+<meta property="og:title" content="Golang Module After 1.14">
+<meta property="og:url" content="http://66ws.cc/2020/08/05/GolangModuleAfter1-14/index.html">
 <meta property="og:site_name" content="66ws">
-<meta property="og:description" content="格式化的数字并不是任意时间字符串01=MM=2位月份02=dd=2位日期15=HH=24小时法表示小时，3=12小时法表示小时04=mm=分钟05=ss=秒2006=yyyy=4位年份， 06=年分后2位 package main  import (     &amp;quot;fmt&amp;quot;     &amp;quot;time&amp;quot; )  func main() {     //t := time.">
+<meta property="og:description" content="I have get a lots of build errors from Golang compiler after update my local Golang program for version Golang 1.14. Errors like:  import cycle not allowed  package worker is not in GOROOT can’t find">
 <meta property="og:locale" content="English,Chinese">
-<meta property="og:updated_time" content="2019-08-03T07:22:02.134Z">
+<meta property="og:updated_time" content="2020-08-05T12:30:25.003Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GOLANG - Format Time string">
-<meta name="twitter:description" content="格式化的数字并不是任意时间字符串01=MM=2位月份02=dd=2位日期15=HH=24小时法表示小时，3=12小时法表示小时04=mm=分钟05=ss=秒2006=yyyy=4位年份， 06=年分后2位 package main  import (     &amp;quot;fmt&amp;quot;     &amp;quot;time&amp;quot; )  func main() {     //t := time.">
+<meta name="twitter:title" content="Golang Module After 1.14">
+<meta name="twitter:description" content="I have get a lots of build errors from Golang compiler after update my local Golang program for version Golang 1.14. Errors like:  import cycle not allowed  package worker is not in GOROOT can’t find">
   
     <link rel="alternate" href="/atom.xml" title="66ws" type="application/atom+xml">
   
@@ -64,10 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-golang-format-time-string" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-GolangModuleAfter1-14" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/12/17/golang-format-time-string/" class="article-date">
-  <time datetime="2018-12-18T00:34:50.000Z" itemprop="datePublished">2018-12-17</time>
+    <a href="/2020/08/05/GolangModuleAfter1-14/" class="article-date">
+  <time datetime="2020-08-05T12:02:19.000Z" itemprop="datePublished">2020-08-05</time>
 </a>
     
   <div class="article-category">
@@ -82,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      GOLANG - Format Time string
+      Golang Module After 1.14
     </h1>
   
 
@@ -90,47 +90,29 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>格式化的数字并不是任意时间字符串<br>01=MM=2位月份<br>02=dd=2位日期<br>15=HH=24小时法表示小时，3=12小时法表示小时<br>04=mm=分钟<br>05=ss=秒<br>2006=yyyy=4位年份， 06=年分后2位</p>
-<pre><code>package main
-
-import (
-    &quot;fmt&quot;
-    &quot;time&quot;
-)
-
-func main() {
-    //t := time.Now()
-    t, _ := time.Parse(&quot;2006-01-02 15:04:05&quot;, &quot;2015-12-09 14:38:56&quot;)
-    fmt.Println(t.Format(&quot;2006-01-02 15:04:05&quot;))
-    fmt.Println(t.Format(&quot;2006&quot;)+&quot; 年&quot;)
-    fmt.Println(t.Format(&quot;01&quot;)+&quot; 两位月份&quot;)
-    fmt.Println(t.Format(&quot;1&quot;)+&quot;  一位月份&quot;)
-    fmt.Println(t.Format(&quot;02&quot;)+&quot; 2位日&quot;)
-    fmt.Println(t.Format(&quot;2&quot;)+&quot;  1位日&quot;)
-    fmt.Println(t.Format(&quot;15&quot;)+ &quot; 24小时表示法-小时&quot;) 
-    fmt.Println(t.Format(&quot;3&quot;)+&quot;  24小时表示法-小时&quot; ) 
-    fmt.Println(t.Format(&quot;04&quot;)+&quot; 分&quot;)
-    fmt.Println(t.Format(&quot;05&quot;)+&quot; 秒&quot;) 
-    fmt.Println(t.Format(&quot;06&quot;)+&quot; 年份后2位&quot;) 
-}
-</code></pre><p>输出</p>
-<pre><code>2015-12-09 14:38:56
-2015 年
-12 两位月份
-12  一位月份
-09 2位日
-9  1位日
-14 24小时表示法-小时
-2  24小时表示法-小时
-38 分
-56 秒
-15 年份后2位
-</code></pre><p>参考于：<a href="https://www.mes.guru/2018/04/13/go_time_format/" target="_blank" rel="noopener">golang语言 时间日期格式化正确的理解方式</a></p>
+        <p>I have get a lots of build errors from Golang compiler after update my local Golang program for version Golang 1.14.</p>
+<p>Errors like:</p>
+<ul>
+<li>import cycle not allowed </li>
+<li>package worker is not in GOROOT</li>
+<li>can’t find …</li>
+</ul>
+<p>And I have get a help from Discord.<br><code>You should declare the top level project as a module, then import `my/module/name/moduleName`.</code></p>
+<p>You could try to solve it if your problem(s) also from Golang module(Golang version 1.14).</p>
+<p>I provide steps for an example below.</p>
+<ol>
+<li>Create a folder name “app” for your application.</li>
+<li>Create a Golang file name “main.go” in “app”.</li>
+<li>Create a folder name “myModule” in “app”.</li>
+<li>Create a Golang file name “myModule.go” in “myModule”.</li>
+<li>run “go mod app” in “app”.(in terminal)</li>
+</ol>
+<p>After these, you could import <code>myModule</code> in <code>main.go</code> with <code>import &quot;app/myModule&quot;</code></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://66ws.cc/2018/12/17/golang-format-time-string/" data-id="ckdhcommu0014akv7dsgpb1f7" class="article-share-link">Share</a>
+      <a data-url="http://66ws.cc/2020/08/05/GolangModuleAfter1-14/" data-id="ckdhcomme000eakv70qtz7bbq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -139,19 +121,10 @@ func main() {
     
 <nav id="article-nav">
   
-    <a href="/2019/06/15/solution/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Solution
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/11/25/docker-docs/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/05/28/TeachYourselfProgramminginTenYears/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Docker Docs</div>
+      <div class="article-nav-title">REPRINT - Teach Yourself Programming in Ten Years</div>
     </a>
   
 </nav>

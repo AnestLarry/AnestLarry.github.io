@@ -62,14 +62,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-readmefirst" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-GolangModuleAfter1-14" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/04/23/readmefirst/" class="article-date">
-  <time datetime="2016-04-23T19:33:45.000Z" itemprop="datePublished">2016-04-23</time>
+    <a href="/2020/08/05/GolangModuleAfter1-14/" class="article-date">
+  <time datetime="2020-08-05T12:02:19.000Z" itemprop="datePublished">2020-08-05</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/uncategorized/">uncategorized</a>
+    <a class="article-category-link" href="/categories/Program/">Program</a>►<a class="article-category-link" href="/categories/Program/Golang/">Golang</a>
   </div>
 
   </div>
@@ -80,7 +80,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/23/readmefirst/">ReadMeFirst</a>
+      <a class="article-title" href="/2020/08/05/GolangModuleAfter1-14/">Golang Module After 1.14</a>
     </h1>
   
 
@@ -88,16 +88,29 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to Here!</p>
-<p>About the <a href="https://raw.githubusercontent.com/AnestLarry/AnestLarry.github.io/master/LICENSE" target="_blank" rel="noopener">LICENSE(CC-BY-SA-4.0)</a>.</p>
-<p>About this post time:I have changed it to the time my first post of the first website.There is a lot of things were lost in long time,like Update History,forum,files and so on.</p>
-<p>About the Language.Maybe no one will translate it for me ,so you can read it with a translator if you are interesting in a post and it you can not understand.</p>
-<p><a href="https://github.com/AnestLarry/AnestLarry.github.io/issues" target="_blank" rel="noopener">Talk somethings</a></p>
+        <p>I have get a lots of build errors from Golang compiler after update my local Golang program for version Golang 1.14.</p>
+<p>Errors like:</p>
+<ul>
+<li>import cycle not allowed </li>
+<li>package worker is not in GOROOT</li>
+<li>can’t find …</li>
+</ul>
+<p>And I have get a help from Discord.<br><code>You should declare the top level project as a module, then import `my/module/name/moduleName`.</code></p>
+<p>You could try to solve it if your problem(s) also from Golang module(Golang version 1.14).</p>
+<p>I provide steps for an example below.</p>
+<ol>
+<li>Create a folder name “app” for your application.</li>
+<li>Create a Golang file name “main.go” in “app”.</li>
+<li>Create a folder name “myModule” in “app”.</li>
+<li>Create a Golang file name “myModule.go” in “myModule”.</li>
+<li>run “go mod app” in “app”.(in terminal)</li>
+</ol>
+<p>After these, you could import <code>myModule</code> in <code>main.go</code> with <code>import &quot;app/myModule&quot;</code></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://66ws.cc/2016/04/23/readmefirst/" data-id="ckaqpxi3z00131wv74rtbwb3g" class="article-share-link">Share</a>
+      <a data-url="http://66ws.cc/2020/08/05/GolangModuleAfter1-14/" data-id="ckdhcomme000eakv70qtz7bbq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -269,7 +282,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://66ws.cc/2020/05/28/TeachYourselfProgramminginTenYears/" data-id="ckaqpz8z8000050v7l9ficbrb" class="article-share-link">Share</a>
+      <a data-url="http://66ws.cc/2020/05/28/TeachYourselfProgramminginTenYears/" data-id="ckdhcomnk002oakv7afrfnd0k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -328,7 +341,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://66ws.cc/2020/05/24/Design_Pattern/BuilderPattern/" data-id="ckaqpxi50002j1wv7eyef0k4p" class="article-share-link">Share</a>
+      <a data-url="http://66ws.cc/2020/05/24/Design_Pattern/BuilderPattern/" data-id="ckdhcomnl002pakv7s9rofneb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -385,7 +398,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://66ws.cc/2020/04/03/Design_Pattern/SingletonPattern/" data-id="ckaqpxi51002k1wv71wc8ela8" class="article-share-link">Share</a>
+      <a data-url="http://66ws.cc/2020/04/03/Design_Pattern/SingletonPattern/" data-id="ckdhcomnm002rakv7l1k1eok6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -428,7 +441,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://66ws.cc/2020/04/02/Design_Pattern/Design_Pattern/" data-id="ckaqpxi4z002i1wv75tw0qt14" class="article-share-link">Share</a>
+      <a data-url="http://66ws.cc/2020/04/02/Design_Pattern/Design_Pattern/" data-id="ckdhcomnm002qakv74nmno3lh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -468,7 +481,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li></ul>
     </div>
   </div>
 
@@ -479,6 +492,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/08/05/GolangModuleAfter1-14/">Golang Module After 1.14</a>
+          </li>
         
           <li>
             <a href="/2020/05/28/TeachYourselfProgramminginTenYears/">REPRINT - Teach Yourself Programming in Ten Years</a>
@@ -494,10 +511,6 @@
         
           <li>
             <a href="/2020/04/02/Design_Pattern/Design_Pattern/">Design Pattern (0/23)</a>
-          </li>
-        
-          <li>
-            <a href="/2020/03/11/Ys-VIII-Lacrimosa-of-DANA/">Ys VIII Lacrimosa of DANA Keymap</a>
           </li>
         
       </ul>
@@ -539,5 +552,20 @@
 
 
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
