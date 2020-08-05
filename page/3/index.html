@@ -62,6 +62,67 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-golang-cross-compiling" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/16/golang-cross-compiling/" class="article-date">
+  <time datetime="2019-06-16T14:57:39.000Z" itemprop="datePublished">2019-06-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Program/">Program</a>►<a class="article-category-link" href="/categories/Program/Golang/">Golang</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/16/golang-cross-compiling/">Golang - cross-compiling</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>About the Golang cross-compiling,say it simply that Windows build codes can run not only in Windows,but in Linux (Mac not test).<br>I work between Win and Linux,may I have build the code in Windows easy,but it in another pc maybe difficult.At least,you have to redownload the libs you use.And I have try the Cross-compiling.<br>In command or Terminal(installed golang &gt;=go1.11.2),you can run “go version” to get your system’s info,save it and use it later.</p>
+<p>Set Environment var<br>Windows:<br>in commmand : <code>set var = value</code><br>Linux :<br>in terminal :<code>export var = value</code></p>
+<p>Keyin the command “go env” and find out the keys “GOOS”(windows,linux) and “GOARCH”(amd64 , arm).<br>If error with gcc,add up the gcc key ;<br>if error with CGO,set CGO_ENABLED=0 ;<br>if error with ‘cannot find package <code>golang.org/x/sys/unix</code>,<code>git clone https://github.com/golang/sys.git</code> to gopath’s <code>golang.org/x/sys</code>.</p>
+<p>At last go build the code.</p>
+<p>Example:<br>Windows(Windows’s info:windows,amd64) build Binary executable file in Linux(Linux’s info:linux ,arm):<br>keyin command<br><code>set GOOS=&quot;linux&quot;  
+set GOARCH=&quot;arm&quot;  
+set CGO_ENABLED=0  
+set GOEXE=  
+go build helloworld.go</code></p>
+<p>Same infos,Linux build Binary executable file in Windows:<br><code>set GOOS=&quot;windows&quot;  
+set GOARCH=&quot;amd64&quot;  
+set GOEXE=.exe  
+go build helloworld.go</code></p>
+<p>Get helloworld.exe and run in windows;get helloword and run in Linux.</p>
+<p>关于Golang交叉编译，简单地说，Windows构建代码不仅可以在Windows中运行，而且可以在Linux中运行（Mac不测试）。<br>我在Win和Linux之间工作，我可以在Windows中轻松构建代码，但在另一台PC中可能很难。至少，你必须重新下载你使用的库。我尝试了交叉编译。<br>在命令或Termial（安装golang&gt; = go1.11.2）中，您可以运行“go version”来获取系统信息，保存并稍后使用。</p>
+<p>设置环境变量<br>Windows:<br>命令行 : <code>set var = value</code><br>Linux :<br>终端 : <code>export var = value</code></p>
+<p>键入命令“go env”并找出键“GOOS”（windows，linux）和“GOARCH”（amd64，arm）。<br>如果gcc出错，请加上gcc键;<br>如果CGO出错，则设置CGO_ENABLED = 0;<br>如果错误’找不到包<code>golang.org/x/sys/unix</code>,就git clone <code>https://github.com/golang/sys.git</code>到gopath的<code>golang.org/x/sys</code>。</p>
+<p>最后去构建代码。</p>
+<p>例：<br>Windows（Windows的信息：windows，amd64）在Linux中构建二进制可执行文件（Linux的信息：linux，arm）：<br>键入命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">set GOOS =“linux”  </span><br><span class="line">set GOARCH =“arm”  </span><br><span class="line">set CGO_ENABLED = 0  </span><br><span class="line">set GOEXE =  </span><br><span class="line">go build helloworld.go</span><br></pre></td></tr></table></figure></p>
+<p>相同的信息，Linux构建Windows中的二进制可执行文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export GOOS =“windows”  </span><br><span class="line">export GOARCH =“amd64”  </span><br><span class="line">export GOEXE = .exe  </span><br><span class="line">go build helloworld.go</span><br></pre></td></tr></table></figure></p>
+<p>获取helloworld.exe并在Windows中运行;获取helloword并在Linux中运行</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://66ws.cc/2019/06/16/golang-cross-compiling/" data-id="ckdhcqts80008b0v7pqw66a93" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-solution" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/06/15/solution/" class="article-date">
@@ -98,7 +159,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://66ws.cc/2019/06/15/solution/" data-id="ckdhcomn0001eakv7gonoo4or" class="article-share-link">Share</a>
+      <a data-url="http://66ws.cc/2019/06/15/solution/" data-id="ckdhcqtsl000qb0v72aikvksk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -174,7 +235,7 @@ func main() {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://66ws.cc/2018/12/17/golang-format-time-string/" data-id="ckdhcommu0014akv7dsgpb1f7" class="article-share-link">Share</a>
+      <a data-url="http://66ws.cc/2018/12/17/golang-format-time-string/" data-id="ckdhcqtsg000jb0v76rv36mls" class="article-share-link">Share</a>
       
       
     </footer>
@@ -215,7 +276,7 @@ func main() {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://66ws.cc/2018/11/25/docker-docs/" data-id="ckdhcommk000lakv7tdjzjwbl" class="article-share-link">Share</a>
+      <a data-url="http://66ws.cc/2018/11/25/docker-docs/" data-id="ckdhcqts60007b0v7shhhgp0t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -259,53 +320,7 @@ func main() {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://66ws.cc/2018/07/27/get-response/" data-id="ckdhcommi000iakv73jv9tuki" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-sqlite3" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/26/sqlite3/" class="article-date">
-  <time datetime="2018-07-26T18:20:43.000Z" itemprop="datePublished">2018-07-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Program/">Program</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/26/sqlite3/">SQLite3</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>sqlite3是一个很方便的数据库管理工具,但是常规使用依然建议使用MYSQL</p>
-<hr>
-<p><a href="https://www.sqlite.org/download.html" target="_blank" rel="noopener">sqlite3 下载界面</a><br>1.用sqlite3打开数据库,若不存在则创建数据库<br> <code>sqlite3 DatabaseName.db .databases</code><br>显示打开的数据库<br><code>.exit</code> 退出<br><code>.help</code> 帮助</p>
-<p>2.创建和删除表<br><code>sqlite3 create table &lt;tablename&gt; (Var1 Type1 , Var2 Type2...);</code><br>eg: <code>create table user (ID INTEGER , name Text , height REAL);</code><br>创建一个名叫user的表,ID是数字列,name是文本列,height是浮点数列<br><code>.schema</code> 显示表的结构<br><code>drop table &lt;tablename&gt;</code><br>eg:<code>drop table user;</code> 删除user表</p>
-<p>3.插入,删除<br><code>insert into &lt;tablename&gt; values(Var1 Type1 , Var2 Type2...);</code><br>插入一条数据<br><code>delete from &lt;tablename&gt; where Var1=Value1 and/or Var2=Value2....;</code><br>删除一条数据Var1=Value1 并且/或者 Var2=Value2</p>
-<p>4.查询,更新<br><code>select Var1,Var2...  from &lt;tablename&gt;; select * from &lt;tablename&gt;;</code><br>从表中查询 Var1和Var2/*全部<br><code>Update &lt;tablename&gt; set Var1=Value1,Var2=Value2...;</code><br>更新,where语句可以用于删改查用于定位其中某一条或者某一些</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://66ws.cc/2018/07/26/sqlite3/" data-id="ckdhcommv0016akv77dl0esvg" class="article-share-link">Share</a>
+      <a data-url="http://66ws.cc/2018/07/27/get-response/" data-id="ckdhcqtsb000cb0v7yfpd8pkz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -416,20 +431,5 @@ func main() {
 
 
   </div>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
