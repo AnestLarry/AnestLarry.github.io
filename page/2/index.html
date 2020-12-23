@@ -62,6 +62,65 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Design_Pattern/BuilderPattern" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/24/Design_Pattern/BuilderPattern/" class="article-date">
+  <time datetime="2020-05-24T03:32:12.000Z" itemprop="datePublished">2020-05-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Program/">Program</a>►<a class="article-category-link" href="/categories/Program/Design-Pattern/">Design Pattern</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/24/Design_Pattern/BuilderPattern/">Builder Pattern (2/23)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>In some cases we will have lots of args to initialize a class, this suppose to be:</p>
+<ul>
+<li>initialization with parts of args</li>
+<li>easily extend</li>
+<li>method chaining</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span>:</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">( self, Id: int, Name: str, aChar: str = <span class="string">'a'</span>)</span>:</span></span><br><span class="line">    self.Id: int = Id</span><br><span class="line">    self.Name: str = Name</span><br><span class="line">    self.aChar: str = aChar</span><br><span class="line">        ......</span><br></pre></td></tr></table></figure>
+<p>I suppose that it is a easiest example. But it has a little trouble. When we use a lots of args, it will be a terrible args’ list. In next stage, try to solve “easily extend” and “long args’ list”.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span>:</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">( self,Id: int, Name: str, **kw)</span>:</span></span><br><span class="line">    self.Id: int = Id</span><br><span class="line">    self.Name: str = Name</span><br><span class="line">    self.aChar: str = kw.get(<span class="string">"aChar"</span>,<span class="string">"a"</span>)</span><br><span class="line">    self.aIntArray: List[int] = kw.get(<span class="string">"aIntArray"</span>,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</span><br><span class="line">        ......</span><br></pre></td></tr></table></figure>
+<p>But it cannot verify that the type is correct (or value). Of course, you can do that like <code>self.aChar: str = kw.get(&quot;aChar&quot;,&quot;a&quot;) if type(kw.get(&quot;aChar&quot;,&quot;a&quot;)) == &quot;int&quot; else ...</code>. But it not as expected.<br>Go on.<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span>:</span></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Builder</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">( self, Id:int, Name: str)</span>:</span></span><br><span class="line">      self.Id: int = Id</span><br><span class="line">      self.Name: str = Name</span><br><span class="line">      self.aChar: str = <span class="string">"a"</span></span><br><span class="line">      self.aIntArray: List[int] = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setAChar</span><span class="params">(self,x)</span>:</span></span><br><span class="line">      <span class="keyword">if</span> len(x) == <span class="number">1</span>: <span class="comment"># verify the value</span></span><br><span class="line">        self.aChar = x</span><br><span class="line">      <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">pass</span> <span class="comment"># something here</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setAIntArray</span><span class="params">(self,x)</span>:</span></span><br><span class="line">      Ints = [i==int(i) <span class="keyword">for</span> i <span class="keyword">in</span> x]</span><br><span class="line">      <span class="keyword">if</span> sum(Ints) != len(x):</span><br><span class="line">        <span class="keyword">pass</span> <span class="comment"># something here </span></span><br><span class="line">      self.aIntArray = x</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">build</span><span class="params">(self)</span>:</span></span><br><span class="line">      <span class="keyword">return</span> People(self)</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">( self,b: Builder)</span>:</span></span><br><span class="line">    self.Id: int = b.Id</span><br><span class="line">    self.Name: str = b.Name</span><br><span class="line">    self.aChar: str = b.aChar</span><br><span class="line">    self.aIntArray: List[int] = b.aIntArray</span><br></pre></td></tr></table></figure></p>
+<p>It is a good idea to use a builder class to build a class. But it use like-</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p = People.build(<span class="number">1</span>,<span class="string">"A"</span>)</span><br><span class="line">p.setAChar(<span class="string">"A"</span>)</span><br><span class="line">p.setAIntArray([<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>])</span><br><span class="line"> ...</span><br></pre></td></tr></table></figure>
+<p>I suppose that it could be simply.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Builder</span>:</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">( self, Id:int, Name: str)</span>:</span></span><br><span class="line">    self.Id: int = Id</span><br><span class="line">    self.Name: str = Name</span><br><span class="line">    self.aChar: str = <span class="string">"a"</span></span><br><span class="line">    self.aIntArray: List[int] = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">setAChar</span><span class="params">(self,x)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(x) == <span class="number">1</span>: <span class="comment"># verify the value</span></span><br><span class="line">      self.aChar = x</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">      <span class="keyword">pass</span> <span class="comment"># something here</span></span><br><span class="line">    <span class="keyword">return</span> self</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">setAIntArray</span><span class="params">(self,x)</span>:</span></span><br><span class="line">    Ints = [i==int(i) <span class="keyword">for</span> i <span class="keyword">in</span> x]</span><br><span class="line">    <span class="keyword">if</span> sum(Ints) != len(x):</span><br><span class="line">      <span class="keyword">pass</span> <span class="comment"># something here </span></span><br><span class="line">    self.aIntArray = x</span><br><span class="line">    <span class="keyword">return</span> self</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">build</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> People(self)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>Now, it could use like-</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p1 = People.build(<span class="number">1</span>,<span class="string">"A"</span>).setAChar(<span class="string">"A"</span>).setAIntArray([<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]).build()</span><br><span class="line">p2 = People.build(<span class="number">1</span>,<span class="string">"B"</span>).setAChar(<span class="string">"C"</span>).build()</span><br><span class="line"> ...</span><br></pre></td></tr></table></figure>
+<p>We could merge it.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span>:</span></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Builder</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">( self, Id:int, Name: str)</span>:</span></span><br><span class="line">      self.Id: int = Id</span><br><span class="line">      self.Name: str = Name</span><br><span class="line">      self.aChar: str = <span class="string">"a"</span></span><br><span class="line">      self.aIntArray: List[int] = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setAChar</span><span class="params">(self,x)</span>:</span></span><br><span class="line">      <span class="keyword">if</span> len(x) == <span class="number">1</span>: <span class="comment"># verify the value</span></span><br><span class="line">        self.aChar = x</span><br><span class="line">      <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">pass</span> <span class="comment"># something here</span></span><br><span class="line">      <span class="keyword">return</span> self</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setAIntArray</span><span class="params">(self,x)</span>:</span></span><br><span class="line">      Ints = [i==int(i) <span class="keyword">for</span> i <span class="keyword">in</span> x]</span><br><span class="line">      <span class="keyword">if</span> sum(Ints) != len(x):</span><br><span class="line">        <span class="keyword">pass</span> <span class="comment"># something here </span></span><br><span class="line">      self.aIntArray = x</span><br><span class="line">      <span class="keyword">return</span> self</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">build</span><span class="params">(self)</span>:</span></span><br><span class="line">      <span class="keyword">return</span> People(self)</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">( self,b: Builder)</span>:</span></span><br><span class="line">    self.Id: int = b.Id</span><br><span class="line">    self.Name: str = b.Name</span><br><span class="line">    self.aChar: str = b.aChar</span><br><span class="line">    self.aIntArray: List[int] = b.aIntArray</span><br></pre></td></tr></table></figure>
+<p>END.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://66ws.cc/2020/05/24/Design_Pattern/BuilderPattern/" data-id="ckj0rw3w7002rygv7skzfdw8v" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Design_Pattern/SingletonPattern" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/04/03/Design_Pattern/SingletonPattern/" class="article-date">
@@ -248,58 +307,6 @@
 
 
   
-    <article id="post-Install-yeoman-x-yo-version" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/18/Install-yeoman-x-yo-version/" class="article-date">
-  <time datetime="2019-11-18T22:49:46.000Z" itemprop="datePublished">2019-11-18</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Program/">Program</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/18/Install-yeoman-x-yo-version/">Install yeoman - x yo version</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近心血来潮想搞一下vscode的插件制作</p>
-<p>但是制作的过程似乎并不那么顺利……</p>
-<p>首先是关于yeoman(yo)的安装，查了好多的网站都没有提到……</p>
-<p>github的讨论结论似乎也并不适用于自己的情况</p>
-<p>环境：window 10</p>
-<p>{ npm: ‘6.7.0’,<br>ares: ‘1.15.0’,<br>cldr: ‘33.1’,<br>http_parser: ‘2.8.0’,<br>icu: ‘62.1’,<br>modules: ‘64’,<br>napi: ‘3’,<br>nghttp2: ‘1.34.0’,<br>node: ‘10.15.1’,<br>openssl: ‘1.1.0j’,<br>tz: ‘2018e’,<br>unicode: ‘11.0’,<br>uv: ‘1.23.2’,<br>v8: ‘6.8.275.32-node.12’,<br>zlib: ‘1.2.11’ }</p>
-<p>首先是尝试官网提供的方法安装</p>
-<p>npm install -g yo</p>
-<p>几次尝试后都是以 x yo version 结束，直接使用yo code 也不能创建项目，提示yo不是内外部命令。但是并不想那么早放弃安装，然后查询到npm或者是nodejs的版本过低可能造成这个问题(不确定)</p>
-<p>可以考虑更新一下nodejs和npm，win的nodejs更新方式是下载官网的安装包可以直接进行安装回原来的根目录。至于linux和mac的更新方式能随便搜到就不写了。</p>
-<p>但是我的问题并没有解决，继续查到似乎linux的安装也有这个问题，可以确定这个问题并不是win only，那么去安装目录上查看node_modules中找到了yo文件夹，那么可以确定的是yo已经成功下载了，接下来需要考虑的是为何yo不能在cmd中使用。</p>
-<p>似乎到这里面就比较清晰可以解决了，在node_modules中有.bin文件夹，里面含有一些cmd文件，那么yo 版本的无法获取在于没有path，把安装目录中的.bin加入环境变量后成功执行</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://66ws.cc/2019/11/18/Install-yeoman-x-yo-version/" data-id="ckj0rw3ua0000ygv7yen6v0kf" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -401,5 +408,20 @@
 
 
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
