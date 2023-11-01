@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuickBlog | 66ws</title>
+  <style>
+    /* 通用样式 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* 头部样式 */
+    .header {
+      width: 100%;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header h1 {
+      color: #333;
+      font-size: 32px;
+    }
+
+    /* 导航栏样式 */
+    .nav {
+      width: 100%;
+      height: 40px;
+      background-color: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nav a {
+      color: #333;
+      text-decoration: none;
+      padding: 0 10px;
+    }
+
+    /* 主体内容样式 */
+    .container {
+      width: 80%;
+      margin: 20px auto;
+      display: flex;
+    }
+
+    .post {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 5px #ccc;
+      padding: 2em 1em 1em 1em;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .post>.post-title {
+      margin-left: 1em;
+      float: left;
+    }
+
+
+    .post>.datetime {
+      color: #333;
+      float: right;
+    }
+
+    .post>hr {
+      clear: both;
+      margin: 2.2em 0;
+    }
+
+    .post p {
+      color: #666;
+      line-height: 1.5;
+      text-indent: 2em;
+      margin-bottom: 1.2em;
+      padding-bottom: 0.6em;
+    }
+
+    code {
+      text-indent: 0;
+      background-color: yellow;
+      padding: 2px;
+      line-height: 1.5;
+      font-size: large;
+      color: #000;
+      word-wrap: break-word;
+    }
+
+    details {
+      border: black 1px solid;
+      padding: 0.5em;
+    }
+  </style>
+  <style name="post-content">
+    .post-content {
+      margin: 0 3em 1em 3em;
+      word-wrap: break-word;
+      word-break: break-all;
+    }
+
+    .post-content li {
+      display: list-item;
+      margin-left: 2em;
+    }
+
+    .post-content h1,
+    .post-content h2,
+    .post-content h3,
+    .post-content h4,
+    .post-content h5,
+    .post-content h6 {
+      margin: 1em 0;
+    }
+
+    .post-content code {
+      display: inline-block;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    .post-tags {
+      margin: 1em 1em 5em 1em;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 头部 -->
+  <div class="header">
+    <h1>66ws</h1>
+  </div>
+  <!-- 导航栏 -->
+  <div class="nav">
+    <a href="/">Index</a>
+    <a href="#">About</a>
+  </div>
+  <!-- 主体内容 -->
+  <div class="container">
+    <!-- 博客项 -->
+    <div class="post">
+      <h3 class="post-title">QuickBlog</h3>
+      <h4 class="datetime">Published Date: 2023-11-02 14:20:30Z</h4>
+      <hr>
+      <div class="post-content">
+        <h1>0x0 Background</h1>
+<p>I've been using Hexo for static blogging for almost four years. Time flies. After I passively upgraded my nodejs, my Hexo could no longer work properly.</p>
+<p>I thought about installing a new Hexo, but I couldn't remember what plugins were installed at the time. That means I can't recover my blog again (Because I know nothing about Hexo or nodejs project. Use Hexo just because it's popular). Now, the problem is here that I almost could do nothing unless I learning nodejs and Hexo again.</p>
+<p>I am considering a blogging program skills stack that must be in mine. Or it is easy to transfer and recover.</p>
+<p>Another consideration is static blog program performance. From what I remember, Hexo compile all static post almost from a few seconds to a dozen seconds.</p>
+<p>So, I am trying to write a static blog program to make generated page as simple as write markdown. Then, high performance by C#. In my first QuickBlog version (just markdown to html and index by time order), it cost 200ms avg. Surprise me. Now I really want to write this program.</p>
+<h1>0x1 Features</h1>
+<p>In my first version, I found some features leaking make the blog doesn't like a blog. Such as:</p>
+<ul>
+<li>[ ] Index Page</li>
+<li>[ ] Year/Month archive</li>
+<li>[ ] categories</li>
+<li>[ ] tags</li>
+<li>[ ] loading configure</li>
+<li>[ ] plugins</li>
+<li>[ ] embedded program language</li>
+</ul>
+<hr />
+<p>I will Edit this page several times...</p>
+
+      </div>
+      <div class="post-tags">Tags: </div>
+    </div>
+  </div>
+</body>
+
+</html>
