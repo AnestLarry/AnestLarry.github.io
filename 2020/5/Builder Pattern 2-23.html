@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Builder Pattern 2-23 | 66ws</title>
+  <style>
+    /* 通用样式 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* 头部样式 */
+    .header {
+      width: 100%;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header h1 {
+      color: #333;
+      font-size: 32px;
+    }
+
+    /* 导航栏样式 */
+    .nav {
+      width: 100%;
+      height: 40px;
+      background-color: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nav a {
+      color: #333;
+      text-decoration: none;
+      padding: 0 10px;
+    }
+
+    /* 主体内容样式 */
+    .container {
+      width: 80%;
+      margin: 20px auto;
+      display: flex;
+    }
+
+    .post {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 5px #ccc;
+      padding: 2em 1em 1em 1em;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .post>.post-title {
+      margin-left: 1em;
+      float: left;
+    }
+
+
+    .post>.datetime {
+      color: #333;
+      float: right;
+    }
+
+    .post>hr {
+      clear: both;
+      margin: 2.2em 0;
+    }
+
+    .post p {
+      color: #666;
+      line-height: 1.5;
+      text-indent: 2em;
+      margin-bottom: 1.2em;
+      padding-bottom: 0.6em;
+    }
+
+    code {
+      text-indent: 0;
+      background-color: yellow;
+      padding: 2px;
+      line-height: 1.5;
+      font-size: large;
+      color: #000;
+      word-wrap: break-word;
+    }
+
+    details {
+      border: black 1px solid;
+      padding: 0.5em;
+    }
+  </style>
+  <style name="post-content">
+    .post-content {
+      margin: 0 3em 1em 3em;
+      word-wrap: break-word;
+      word-break: break-all;
+    }
+
+    .post-content li {
+      display: list-item;
+      margin-left: 2em;
+    }
+
+    .post-content h1,
+    .post-content h2,
+    .post-content h3,
+    .post-content h4,
+    .post-content h5,
+    .post-content h6 {
+      margin: 1em 0;
+    }
+
+    .post-content code {
+      display: inline-block;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    .post-tags {
+      margin: 1em 1em 5em 1em;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 头部 -->
+  <div class="header">
+    <h1>66ws</h1>
+  </div>
+  <!-- 导航栏 -->
+  <div class="nav">
+    <a href="/">Index</a>
+    <a href="#">About</a>
+  </div>
+  <!-- 主体内容 -->
+  <div class="container">
+    <!-- 博客项 -->
+    <div class="post">
+      <h3 class="post-title">Builder Pattern 2-23</h3>
+      <h4 class="datetime">Published Date: 2020-05-24 04:32:12Z</h4>
+      <hr>
+      <div class="post-content">
+        <p>In some cases we will have lots of args to initialize a class, this suppose to be:</p>
+<ul>
+<li>initialization with parts of args</li>
+<li>easily extend</li>
+<li>method chaining</li>
+</ul>
+<pre><code class="language-py">class People:
+  def __init__( self, Id: int, Name: str, aChar: str = 'a'):
+    self.Id: int = Id
+    self.Name: str = Name
+    self.aChar: str = aChar
+        ......
+</code></pre>
+<p>I suppose that it is a easiest example. But it has a little trouble. When we use a lots of args, it will be a terrible args' list. In next stage, try to solve &quot;easily extend&quot; and &quot;long args' list&quot;.</p>
+<pre><code class="language-py">class People:
+  def __init__( self,Id: int, Name: str, **kw):
+    self.Id: int = Id
+    self.Name: str = Name
+    self.aChar: str = kw.get(&quot;aChar&quot;,&quot;a&quot;)
+    self.aIntArray: List[int] = kw.get(&quot;aIntArray&quot;,[1,2,3,4,5])
+        ......
+</code></pre>
+<p>But it cannot verify that the type is correct (or value). Of course, you can do that like <code>self.aChar: str = kw.get(&quot;aChar&quot;,&quot;a&quot;) if type(kw.get(&quot;aChar&quot;,&quot;a&quot;)) == &quot;int&quot; else ...</code>. But it not as expected.
+Go on.</p>
+<pre><code class="language-py">class People:
+  class Builder:
+    def __init__( self, Id:int, Name: str):
+      self.Id: int = Id
+      self.Name: str = Name
+      self.aChar: str = &quot;a&quot;
+      self.aIntArray: List[int] = [1,2,3,4,5]
+    def setAChar(self,x):
+      if len(x) == 1: # verify the value
+        self.aChar = x
+      else:
+        pass # something here
+    def setAIntArray(self,x):
+      Ints = [i==int(i) for i in x]
+      if sum(Ints) != len(x):
+        pass # something here 
+      self.aIntArray = x
+    def build(self):
+      return People(self)
+  def __init__( self,b: Builder):
+    self.Id: int = b.Id
+    self.Name: str = b.Name
+    self.aChar: str = b.aChar
+    self.aIntArray: List[int] = b.aIntArray
+</code></pre>
+<p>It is a good idea to use a builder class to build a class. But it use like-</p>
+<pre><code class="language-py">p = People.build(1,&quot;A&quot;)
+p.setAChar(&quot;A&quot;)
+p.setAIntArray([3,2,1])
+ ...
+</code></pre>
+<p>I suppose that it could be simply.</p>
+<pre><code class="language-py">  ...
+  class Builder:
+    def __init__( self, Id:int, Name: str):
+      self.Id: int = Id
+      self.Name: str = Name
+      self.aChar: str = &quot;a&quot;
+      self.aIntArray: List[int] = [1,2,3,4,5]
+    def setAChar(self,x):
+      if len(x) == 1: # verify the value
+        self.aChar = x
+      else:
+        pass # something here
+      return self
+    def setAIntArray(self,x):
+      Ints = [i==int(i) for i in x]
+      if sum(Ints) != len(x):
+        pass # something here 
+      self.aIntArray = x
+      return self
+    def build(self):
+      return People(self)
+  ...
+</code></pre>
+<p>Now, it could use like-</p>
+<pre><code class="language-py">p1 = People.build(1,&quot;A&quot;).setAChar(&quot;A&quot;).setAIntArray([3,2,1]).build()
+p2 = People.build(1,&quot;B&quot;).setAChar(&quot;C&quot;).build()
+ ...
+</code></pre>
+<p>We could merge it.</p>
+<pre><code class="language-py">class People:
+  class Builder:
+    def __init__( self, Id:int, Name: str):
+      self.Id: int = Id
+      self.Name: str = Name
+      self.aChar: str = &quot;a&quot;
+      self.aIntArray: List[int] = [1,2,3,4,5]
+    def setAChar(self,x):
+      if len(x) == 1: # verify the value
+        self.aChar = x
+      else:
+        pass # something here
+      return self
+    def setAIntArray(self,x):
+      Ints = [i==int(i) for i in x]
+      if sum(Ints) != len(x):
+        pass # something here 
+      self.aIntArray = x
+      return self
+    def build(self):
+      return People(self)
+  def __init__( self,b: Builder):
+    self.Id: int = b.Id
+    self.Name: str = b.Name
+    self.aChar: str = b.aChar
+    self.aIntArray: List[int] = b.aIntArray
+</code></pre>
+<p>END.</p>
+
+      </div>
+      <div class="post-tags">Tags: </div>
+    </div>
+  </div>
+</body>
+
+</html>

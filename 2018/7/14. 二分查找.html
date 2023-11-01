@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>14. 二分查找 | 66ws</title>
+  <style>
+    /* 通用样式 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* 头部样式 */
+    .header {
+      width: 100%;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header h1 {
+      color: #333;
+      font-size: 32px;
+    }
+
+    /* 导航栏样式 */
+    .nav {
+      width: 100%;
+      height: 40px;
+      background-color: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nav a {
+      color: #333;
+      text-decoration: none;
+      padding: 0 10px;
+    }
+
+    /* 主体内容样式 */
+    .container {
+      width: 80%;
+      margin: 20px auto;
+      display: flex;
+    }
+
+    .post {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 5px #ccc;
+      padding: 2em 1em 1em 1em;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .post>.post-title {
+      margin-left: 1em;
+      float: left;
+    }
+
+
+    .post>.datetime {
+      color: #333;
+      float: right;
+    }
+
+    .post>hr {
+      clear: both;
+      margin: 2.2em 0;
+    }
+
+    .post p {
+      color: #666;
+      line-height: 1.5;
+      text-indent: 2em;
+      margin-bottom: 1.2em;
+      padding-bottom: 0.6em;
+    }
+
+    code {
+      text-indent: 0;
+      background-color: yellow;
+      padding: 2px;
+      line-height: 1.5;
+      font-size: large;
+      color: #000;
+      word-wrap: break-word;
+    }
+
+    details {
+      border: black 1px solid;
+      padding: 0.5em;
+    }
+  </style>
+  <style name="post-content">
+    .post-content {
+      margin: 0 3em 1em 3em;
+      word-wrap: break-word;
+      word-break: break-all;
+    }
+
+    .post-content li {
+      display: list-item;
+      margin-left: 2em;
+    }
+
+    .post-content h1,
+    .post-content h2,
+    .post-content h3,
+    .post-content h4,
+    .post-content h5,
+    .post-content h6 {
+      margin: 1em 0;
+    }
+
+    .post-content code {
+      display: inline-block;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    .post-tags {
+      margin: 1em 1em 5em 1em;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 头部 -->
+  <div class="header">
+    <h1>66ws</h1>
+  </div>
+  <!-- 导航栏 -->
+  <div class="nav">
+    <a href="/">Index</a>
+    <a href="#">About</a>
+  </div>
+  <!-- 主体内容 -->
+  <div class="container">
+    <!-- 博客项 -->
+    <div class="post">
+      <h3 class="post-title">14. 二分查找</h3>
+      <h4 class="datetime">Published Date: 2018-07-24 17:40:33Z</h4>
+      <hr>
+      <div class="post-content">
+        <h3>描述</h3>
+<p>给定一个排序的整数数组（升序）和一个要查找的整数<code>target</code>,用<code>O(logn)</code>的时间查找到target第一次出现的下标（从0开始）,如果target不存在于数组中,返回<code>-1</code>.</p>
+<h3>样例</h3>
+<p>在数组 <code>[1, 2, 3, 3, 4, 5, 10]</code> 中二分查找<code>3</code>,返回<code>2</code>.</p>
+<h3>挑战</h3>
+<p>如果数组中的整数个数超过了2^32,你的算法是否会出错?</p>
+<hr />
+<p>如果对二分查找比较陌生话,那么讲个小游戏,猜数字,在0-10000中随机取个数,让你猜,猜错了告诉你大了还是小了.</p>
+<p>那么第一想法是什么?报中位数?对,不停的报中位数直到剩下最后一个数,这个数就是所需数,这个方法是比一个一个遍历要快非常多所需步骤也仅为log2n 回到正题</p>
+<p>class Solution:
+def binarySearch(self, nums, target):
+# write your code here
+start=0
+end=len(nums)
+mid=int(end/2)
+while start&lt;=end:
+n_mid = nums[mid]
+if n_mid &lt;target: #right
+start=mid+1
+mid=int((end+start)/2)
+elif n_mid &gt;target: #left
+end=mid-1
+mid=int((end-start)/2)
+else:
+while nums[mid]==target:
+mid-=1
+return mid+1
+return -1</p>
+<p>参考于<a href="https://blog.csdn.net/sinat_23133783/article/details/79148679">这篇</a>做了一些修正,在没有重复的情况下,else的部分去除.直接return mid+1</p>
+
+      </div>
+      <div class="post-tags">Tags: </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTTP Request Method | Get and Post | 66ws</title>
+  <style>
+    /* 通用样式 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* 头部样式 */
+    .header {
+      width: 100%;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header h1 {
+      color: #333;
+      font-size: 32px;
+    }
+
+    /* 导航栏样式 */
+    .nav {
+      width: 100%;
+      height: 40px;
+      background-color: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nav a {
+      color: #333;
+      text-decoration: none;
+      padding: 0 10px;
+    }
+
+    /* 主体内容样式 */
+    .container {
+      width: 80%;
+      margin: 20px auto;
+      display: flex;
+    }
+
+    .post {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 5px #ccc;
+      padding: 2em 1em 1em 1em;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .post>.post-title {
+      margin-left: 1em;
+      float: left;
+    }
+
+
+    .post>.datetime {
+      color: #333;
+      float: right;
+    }
+
+    .post>hr {
+      clear: both;
+      margin: 2.2em 0;
+    }
+
+    .post p {
+      color: #666;
+      line-height: 1.5;
+      text-indent: 2em;
+      margin-bottom: 1.2em;
+      padding-bottom: 0.6em;
+    }
+
+    code {
+      text-indent: 0;
+      background-color: yellow;
+      padding: 2px;
+      line-height: 1.5;
+      font-size: large;
+      color: #000;
+      word-wrap: break-word;
+    }
+
+    details {
+      border: black 1px solid;
+      padding: 0.5em;
+    }
+  </style>
+  <style name="post-content">
+    .post-content {
+      margin: 0 3em 1em 3em;
+      word-wrap: break-word;
+      word-break: break-all;
+    }
+
+    .post-content li {
+      display: list-item;
+      margin-left: 2em;
+    }
+
+    .post-content h1,
+    .post-content h2,
+    .post-content h3,
+    .post-content h4,
+    .post-content h5,
+    .post-content h6 {
+      margin: 1em 0;
+    }
+
+    .post-content code {
+      display: inline-block;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    .post-tags {
+      margin: 1em 1em 5em 1em;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 头部 -->
+  <div class="header">
+    <h1>66ws</h1>
+  </div>
+  <!-- 导航栏 -->
+  <div class="nav">
+    <a href="/">Index</a>
+    <a href="#">About</a>
+  </div>
+  <!-- 主体内容 -->
+  <div class="container">
+    <!-- 博客项 -->
+    <div class="post">
+      <h3 class="post-title">HTTP Request Method | Get and Post</h3>
+      <h4 class="datetime">Published Date: 2018-07-23 19:20:52Z</h4>
+      <hr>
+      <div class="post-content">
+        <p>HTTP(HyperText Transfer Protocol) 是一种能够获取如 HTML 这样的网络资源的 protocol(通讯协议)。
+它常用的两种方式Get和Post 然后来讲讲Get和Post</p>
+<ul>
+<li>推荐浏览器Google Chrome,Chromium 或 Firefox</li>
+</ul>
+<p>Method:</p>
+<ul>
+<li>Get
+首先,你打开我这网站的首页,这就是属于Get,而Get方式是从指定的资源请求数据例如 http://www.66ws.cc/
+那么,要传递参数呢？在后面加上&quot;?&quot;后输入变量名称(keyname)=变量值(keyvalue),多个变量之间用&quot;&amp;&quot;隔开,例如 http://www.66ws.cc/mabi/look.php?MabiWatch=True&amp;Watch=ShowBoard
+~~打开这个链接就能看到mabi看版的返回值,~~ MabiWatch是一个变量名,而True是个值,这个值是个字符串(String),并不是个布尔值(Bool)……
+而&quot;&amp;&quot;分割开了MabiWatch和Watch这两个变量,Watch的值是ShowBoard,所以Get方式赋值的时候要注意不能出现&amp;(如非要使用'&amp;'符号,请转码它!!)
+要知道访问的类型可以通过F12来查看
+<img src="http://wx4.sinaimg.cn/large/006NJlkXgy1ftj2i28favj31h70fntbe.jpg" alt="" />
+~~要是把MabiWatch去掉的话,就不能得到任何返回值了……~~ ( 更换站点后无论如何都不能获得返回值了)</li>
+<li>Post
+这是我们传数据时最常用的方式,例如你登录网站,上传文件,这些都是Post方式
+Post属于向指定的资源提交要被处理的数据,没有链接上的格式
+但是可以用F12来查看post了啥数据出去到哪个位置
+Fiddler是一款截包器，可以用来拦截软件的数据包，传递的方式等</li>
+</ul>
+<p>接下来讲讲如何利用这两种method来进行网页的获取
+python3.6 首先推荐个库 ~~MyTool~~ <a href="https://github.com/AnestLarry/PP/tree/python3/src/Python3/mt">PP(Personal Package)</a>
+这个库是我自己写的,下载(Clone or download) ~~后解压出来找到Python/LibsMyTool这个文件夹,~~
+把它剪切到你的py3库中,例如 python3/Lib/site-packages/MyTool
+如果没有site-packages就创建</p>
+<ul>
+<li>Get</li>
+</ul>
+<p>利用MyTool实现</p>
+<pre><code>from MyTool import url_lib
+ub = url\_lib.url\_lib(&quot;http://www.66ws.cc/api/getip.php&quot;)
+html=ub.Get()
+txt=html.read()
+print(txt.decode())
+</code></pre>
+<p>利用urllib实现</p>
+<pre><code>import urllib.request
+html= urllib.request.urlopen('http://www.66ws.cc/api/getip.php')
+txt=html.read()
+print(txt.decode())
+</code></pre>
+<p>一句一句的敲还是容易理解的,结果都是打印你的ip</p>
+<ul>
+<li>Post</li>
+</ul>
+<p>利用MyTool实现</p>
+<pre><code>from MyTool import url_lib
+ub=url\_lib.url\_lib('http://www.66ws.cc/api/returnname.php')
+html=ub.Post({&quot;name&quot;:&quot;Anest&quot;})
+txt=html.read()
+print(txt.decode())
+</code></pre>
+<p>利用urllib实现</p>
+<pre><code>from urllib import request.parse
+data=parse.urlencode({&quot;name&quot;,&quot;Anest&quot;})
+data=data.encode()
+req=request.Request('http://www.66ws.cc/api/returnname.php',data)
+res=request.urlopen(req)
+txt=res.read().decode()
+print(txt)
+</code></pre>
+<p>Last Edited On Nov 15,2019.</p>
+
+      </div>
+      <div class="post-tags">Tags: </div>
+    </div>
+  </div>
+</body>
+
+</html>

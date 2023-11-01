@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Install yeoman - x yo version | 66ws</title>
+  <style>
+    /* 通用样式 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* 头部样式 */
+    .header {
+      width: 100%;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header h1 {
+      color: #333;
+      font-size: 32px;
+    }
+
+    /* 导航栏样式 */
+    .nav {
+      width: 100%;
+      height: 40px;
+      background-color: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nav a {
+      color: #333;
+      text-decoration: none;
+      padding: 0 10px;
+    }
+
+    /* 主体内容样式 */
+    .container {
+      width: 80%;
+      margin: 20px auto;
+      display: flex;
+    }
+
+    .post {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 5px #ccc;
+      padding: 2em 1em 1em 1em;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .post>.post-title {
+      margin-left: 1em;
+      float: left;
+    }
+
+
+    .post>.datetime {
+      color: #333;
+      float: right;
+    }
+
+    .post>hr {
+      clear: both;
+      margin: 2.2em 0;
+    }
+
+    .post p {
+      color: #666;
+      line-height: 1.5;
+      text-indent: 2em;
+      margin-bottom: 1.2em;
+      padding-bottom: 0.6em;
+    }
+
+    code {
+      text-indent: 0;
+      background-color: yellow;
+      padding: 2px;
+      line-height: 1.5;
+      font-size: large;
+      color: #000;
+      word-wrap: break-word;
+    }
+
+    details {
+      border: black 1px solid;
+      padding: 0.5em;
+    }
+  </style>
+  <style name="post-content">
+    .post-content {
+      margin: 0 3em 1em 3em;
+      word-wrap: break-word;
+      word-break: break-all;
+    }
+
+    .post-content li {
+      display: list-item;
+      margin-left: 2em;
+    }
+
+    .post-content h1,
+    .post-content h2,
+    .post-content h3,
+    .post-content h4,
+    .post-content h5,
+    .post-content h6 {
+      margin: 1em 0;
+    }
+
+    .post-content code {
+      display: inline-block;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    .post-tags {
+      margin: 1em 1em 5em 1em;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 头部 -->
+  <div class="header">
+    <h1>66ws</h1>
+  </div>
+  <!-- 导航栏 -->
+  <div class="nav">
+    <a href="/">Index</a>
+    <a href="#">About</a>
+  </div>
+  <!-- 主体内容 -->
+  <div class="container">
+    <!-- 博客项 -->
+    <div class="post">
+      <h3 class="post-title">Install yeoman - x yo version</h3>
+      <h4 class="datetime">Published Date: 2019-11-18 22:49:46Z</h4>
+      <hr>
+      <div class="post-content">
+        <p>最近心血来潮想搞一下vscode的插件制作</p>
+<p>但是制作的过程似乎并不那么顺利……</p>
+<p>首先是关于yeoman(yo)的安装，查了好多的网站都没有提到……</p>
+<p>github的讨论结论似乎也并不适用于自己的情况</p>
+<p>环境：window 10</p>
+<p>{ npm: '6.7.0',<br />
+ares: '1.15.0',<br />
+cldr: '33.1',<br />
+http_parser: '2.8.0',<br />
+icu: '62.1',<br />
+modules: '64',<br />
+napi: '3',<br />
+nghttp2: '1.34.0',<br />
+node: '10.15.1',<br />
+openssl: '1.1.0j',<br />
+tz: '2018e',<br />
+unicode: '11.0',<br />
+uv: '1.23.2',<br />
+v8: '6.8.275.32-node.12',<br />
+zlib: '1.2.11' }</p>
+<p>首先是尝试官网提供的方法安装</p>
+<p>npm install -g yo</p>
+<p>几次尝试后都是以 x yo version 结束，直接使用yo code 也不能创建项目，提示yo不是内外部命令。但是并不想那么早放弃安装，然后查询到npm或者是nodejs的版本过低可能造成这个问题(不确定)</p>
+<p>可以考虑更新一下nodejs和npm，win的nodejs更新方式是下载官网的安装包可以直接进行安装回原来的根目录。至于linux和mac的更新方式能随便搜到就不写了。</p>
+<p>但是我的问题并没有解决，继续查到似乎linux的安装也有这个问题，可以确定这个问题并不是win only，那么去安装目录上查看node_modules中找到了yo文件夹，那么可以确定的是yo已经成功下载了，接下来需要考虑的是为何yo不能在cmd中使用。</p>
+<p>似乎到这里面就比较清晰可以解决了，在node_modules中有.bin文件夹，里面含有一些cmd文件，那么yo 版本的无法获取在于没有path，把安装目录中的.bin加入环境变量后成功执行</p>
+
+      </div>
+      <div class="post-tags">Tags: </div>
+    </div>
+  </div>
+</body>
+
+</html>

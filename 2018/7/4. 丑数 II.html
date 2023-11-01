@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4. 丑数 II | 66ws</title>
+  <style>
+    /* 通用样式 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* 头部样式 */
+    .header {
+      width: 100%;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header h1 {
+      color: #333;
+      font-size: 32px;
+    }
+
+    /* 导航栏样式 */
+    .nav {
+      width: 100%;
+      height: 40px;
+      background-color: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nav a {
+      color: #333;
+      text-decoration: none;
+      padding: 0 10px;
+    }
+
+    /* 主体内容样式 */
+    .container {
+      width: 80%;
+      margin: 20px auto;
+      display: flex;
+    }
+
+    .post {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 5px #ccc;
+      padding: 2em 1em 1em 1em;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .post>.post-title {
+      margin-left: 1em;
+      float: left;
+    }
+
+
+    .post>.datetime {
+      color: #333;
+      float: right;
+    }
+
+    .post>hr {
+      clear: both;
+      margin: 2.2em 0;
+    }
+
+    .post p {
+      color: #666;
+      line-height: 1.5;
+      text-indent: 2em;
+      margin-bottom: 1.2em;
+      padding-bottom: 0.6em;
+    }
+
+    code {
+      text-indent: 0;
+      background-color: yellow;
+      padding: 2px;
+      line-height: 1.5;
+      font-size: large;
+      color: #000;
+      word-wrap: break-word;
+    }
+
+    details {
+      border: black 1px solid;
+      padding: 0.5em;
+    }
+  </style>
+  <style name="post-content">
+    .post-content {
+      margin: 0 3em 1em 3em;
+      word-wrap: break-word;
+      word-break: break-all;
+    }
+
+    .post-content li {
+      display: list-item;
+      margin-left: 2em;
+    }
+
+    .post-content h1,
+    .post-content h2,
+    .post-content h3,
+    .post-content h4,
+    .post-content h5,
+    .post-content h6 {
+      margin: 1em 0;
+    }
+
+    .post-content code {
+      display: inline-block;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    .post-tags {
+      margin: 1em 1em 5em 1em;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 头部 -->
+  <div class="header">
+    <h1>66ws</h1>
+  </div>
+  <!-- 导航栏 -->
+  <div class="nav">
+    <a href="/">Index</a>
+    <a href="#">About</a>
+  </div>
+  <!-- 主体内容 -->
+  <div class="container">
+    <!-- 博客项 -->
+    <div class="post">
+      <h3 class="post-title">4. 丑数 II</h3>
+      <h4 class="datetime">Published Date: 2018-07-14 17:30:34Z</h4>
+      <hr>
+      <div class="post-content">
+        <h3>描述</h3>
+<p>设计一个算法，找出只含素因子<code>2</code>，<code>3</code>，<code>5</code> 的第 <em>n</em> 小的数。 符合条件的数如：<code>1, 2, 3, 4, 5, 6, 8, 9, 10, 12...</code></p>
+<p>我们可以认为<code>1</code>也是一个丑数</p>
+<h3>样例</h3>
+<p>如果<code>n = 9</code>， 返回 <code>10</code></p>
+<h3>挑战</h3>
+<p>要求时间复杂度为O(<em>n_log_n</em>)或者O(<em>n</em>)</p>
+<p></p>
+<hr />
+<p>找了很久都没明白丑数几个意思,直到看到个公式: 2^i,3^j,5^k 10以内丑数为 n[2^i,3^j,5^k] 1 [0, 0, 0] 2 [1, 0, 0] 3 [0, 1, 0] 4 [2, 0, 0] 5 [0, 0, 1] 6 [1, 1, 0] 7 不存在 8 [3, 0, 0] 9 [0, 2, 0] 10 [1, 0, 1] 要返回的数是第n个,即输入9返回的并不是9(9是丑数但不是第九个),第9个是10 思路就是生成丑数数组,然后返回坐标为 n-1 的元素即可 Python3</p>
+<p>class Solution:
+&quot;&quot;&quot;
+@param n: An integer
+@return: the nth prime number as description.
+&quot;&quot;&quot;
+def nthUglyNumber(self, n):
+L=[1]
+i2,i3,i5=0,0,0
+for j in range(n):
+n2,n3,n5=L[i2]*2,L[i3]*3,L[i5]*5
+m=min(n2,n3,n5)
+L+=[m]
+i2+=(m == n2)
+i3+=(m == n3)
+i5+=(m == n5)
+print(L)
+return L[n-1]</p>
+<p>其中 i2+=(x) 当(x)为True时i2+=1 当(x)为False时i2+=0</p>
+
+      </div>
+      <div class="post-tags">Tags: </div>
+    </div>
+  </div>
+</body>
+
+</html>

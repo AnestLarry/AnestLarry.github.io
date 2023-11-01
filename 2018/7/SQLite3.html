@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SQLite3 | 66ws</title>
+  <style>
+    /* 通用样式 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* 头部样式 */
+    .header {
+      width: 100%;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header h1 {
+      color: #333;
+      font-size: 32px;
+    }
+
+    /* 导航栏样式 */
+    .nav {
+      width: 100%;
+      height: 40px;
+      background-color: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nav a {
+      color: #333;
+      text-decoration: none;
+      padding: 0 10px;
+    }
+
+    /* 主体内容样式 */
+    .container {
+      width: 80%;
+      margin: 20px auto;
+      display: flex;
+    }
+
+    .post {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 5px #ccc;
+      padding: 2em 1em 1em 1em;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .post>.post-title {
+      margin-left: 1em;
+      float: left;
+    }
+
+
+    .post>.datetime {
+      color: #333;
+      float: right;
+    }
+
+    .post>hr {
+      clear: both;
+      margin: 2.2em 0;
+    }
+
+    .post p {
+      color: #666;
+      line-height: 1.5;
+      text-indent: 2em;
+      margin-bottom: 1.2em;
+      padding-bottom: 0.6em;
+    }
+
+    code {
+      text-indent: 0;
+      background-color: yellow;
+      padding: 2px;
+      line-height: 1.5;
+      font-size: large;
+      color: #000;
+      word-wrap: break-word;
+    }
+
+    details {
+      border: black 1px solid;
+      padding: 0.5em;
+    }
+  </style>
+  <style name="post-content">
+    .post-content {
+      margin: 0 3em 1em 3em;
+      word-wrap: break-word;
+      word-break: break-all;
+    }
+
+    .post-content li {
+      display: list-item;
+      margin-left: 2em;
+    }
+
+    .post-content h1,
+    .post-content h2,
+    .post-content h3,
+    .post-content h4,
+    .post-content h5,
+    .post-content h6 {
+      margin: 1em 0;
+    }
+
+    .post-content code {
+      display: inline-block;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    .post-tags {
+      margin: 1em 1em 5em 1em;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 头部 -->
+  <div class="header">
+    <h1>66ws</h1>
+  </div>
+  <!-- 导航栏 -->
+  <div class="nav">
+    <a href="/">Index</a>
+    <a href="#">About</a>
+  </div>
+  <!-- 主体内容 -->
+  <div class="container">
+    <!-- 博客项 -->
+    <div class="post">
+      <h3 class="post-title">SQLite3</h3>
+      <h4 class="datetime">Published Date: 2018-07-26 19:20:43Z</h4>
+      <hr>
+      <div class="post-content">
+        <p>sqlite3是一个很方便的数据库管理工具,但是常规使用依然建议使用MYSQL</p>
+<hr />
+<p><a href="https://www.sqlite.org/download.html">sqlite3 下载界面</a>
+1.用sqlite3打开数据库,若不存在则创建数据库
+<code>sqlite3 DatabaseName.db .databases</code>
+显示打开的数据库
+<code>.exit</code> 退出
+<code>.help</code> 帮助</p>
+<p>2.创建和删除表
+<code>sqlite3 create table &lt;tablename&gt; (Var1 Type1 , Var2 Type2...);</code>
+eg: <code>create table user (ID INTEGER , name Text , height REAL);</code>
+创建一个名叫user的表,ID是数字列,name是文本列,height是浮点数列
+<code>.schema</code> 显示表的结构
+<code>drop table &lt;tablename&gt;</code>
+eg:<code>drop table user;</code> 删除user表</p>
+<p>3.插入,删除
+<code>insert into &lt;tablename&gt; values(Var1 Type1 , Var2 Type2...);</code>
+插入一条数据
+<code>delete from &lt;tablename&gt; where Var1=Value1 and/or Var2=Value2....;</code>
+删除一条数据Var1=Value1 并且/或者 Var2=Value2</p>
+<p>4.查询,更新
+<code>select Var1,Var2...  from &lt;tablename&gt;; select * from &lt;tablename&gt;;</code>
+从表中查询 Var1和Var2/*全部
+<code>Update &lt;tablename&gt; set Var1=Value1,Var2=Value2...;</code>
+更新,where语句可以用于删改查用于定位其中某一条或者某一些</p>
+
+      </div>
+      <div class="post-tags">Tags: </div>
+    </div>
+  </div>
+</body>
+
+</html>

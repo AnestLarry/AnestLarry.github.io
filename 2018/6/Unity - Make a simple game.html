@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unity - Make a simple game | 66ws</title>
+  <style>
+    /* 通用样式 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* 头部样式 */
+    .header {
+      width: 100%;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header h1 {
+      color: #333;
+      font-size: 32px;
+    }
+
+    /* 导航栏样式 */
+    .nav {
+      width: 100%;
+      height: 40px;
+      background-color: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nav a {
+      color: #333;
+      text-decoration: none;
+      padding: 0 10px;
+    }
+
+    /* 主体内容样式 */
+    .container {
+      width: 80%;
+      margin: 20px auto;
+      display: flex;
+    }
+
+    .post {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 5px #ccc;
+      padding: 2em 1em 1em 1em;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .post>.post-title {
+      margin-left: 1em;
+      float: left;
+    }
+
+
+    .post>.datetime {
+      color: #333;
+      float: right;
+    }
+
+    .post>hr {
+      clear: both;
+      margin: 2.2em 0;
+    }
+
+    .post p {
+      color: #666;
+      line-height: 1.5;
+      text-indent: 2em;
+      margin-bottom: 1.2em;
+      padding-bottom: 0.6em;
+    }
+
+    code {
+      text-indent: 0;
+      background-color: yellow;
+      padding: 2px;
+      line-height: 1.5;
+      font-size: large;
+      color: #000;
+      word-wrap: break-word;
+    }
+
+    details {
+      border: black 1px solid;
+      padding: 0.5em;
+    }
+  </style>
+  <style name="post-content">
+    .post-content {
+      margin: 0 3em 1em 3em;
+      word-wrap: break-word;
+      word-break: break-all;
+    }
+
+    .post-content li {
+      display: list-item;
+      margin-left: 2em;
+    }
+
+    .post-content h1,
+    .post-content h2,
+    .post-content h3,
+    .post-content h4,
+    .post-content h5,
+    .post-content h6 {
+      margin: 1em 0;
+    }
+
+    .post-content code {
+      display: inline-block;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    .post-tags {
+      margin: 1em 1em 5em 1em;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 头部 -->
+  <div class="header">
+    <h1>66ws</h1>
+  </div>
+  <!-- 导航栏 -->
+  <div class="nav">
+    <a href="/">Index</a>
+    <a href="#">About</a>
+  </div>
+  <!-- 主体内容 -->
+  <div class="container">
+    <!-- 博客项 -->
+    <div class="post">
+      <h3 class="post-title">Unity - Make a simple game</h3>
+      <h4 class="datetime">Published Date: 2018-06-10 22:22:59Z</h4>
+      <hr>
+      <div class="post-content">
+        <p>读完这篇教程而记 https://www.cnblogs.com/OctoptusLian/p/8418534.html</p>
+<hr />
+<p>前言 unity版本2018.1.3.f1 安装unity的时候出现了个坑,以前安装过unity,license 认证死活过不去,然后重装解决了这个问题   upgrade license上依然出错,解决方法: 1 log out后再login 2 删掉C:/ProgramData中的Unity文件夹(不确定是否有效</p>
+<hr />
+<p>关于对象(Element)的创建:</p>
+<blockquote>
+<p>创建完project后创建对象,例如地板(plane),方块(cube),球(sphere),均在导航栏的GameObject -&gt; 3DObject 中 利用xy轴对Cube,Sphere进行精准定位</p>
+</blockquote>
+<p>关于设定玩家(player):</p>
+<blockquote>
+<p>在选中需要设定为player的Element上inspector中的tag设定为player即可</p>
+</blockquote>
+<p>关于物理模拟:</p>
+<blockquote>
+<p>选中需要物理的Element然后依次 Component -&gt; Physics -&gt; Rigidbody 此时,若物理模拟的Element在空中的话,便会掉落到Plane上后停止运动</p>
+</blockquote>
+<p>关于c#的脚本添加:</p>
+<blockquote>
+<p>添加方式可以从项目上边的Create中创建,或者从导航栏中选 Assets -&gt; Create -&gt; c# script 来创建文件. 若有vs的话,可以直接双击利用vs来编辑,觉得vs太笨重的话,可以尝试用vscode,创建的文件位于project/Assets中. 希望script应用到的Element可以直接用鼠标将scirpt file 拖向项目表中的 Element上</p>
+</blockquote>
+<p>关于材质(Material)的添加:</p>
+<blockquote>
+<p>Create -&gt; Material 然后可以点击inspector的 Main Maps -&gt; Albedo 右边的输入框来选择需要的基本色 应用到哪个Element上只需要拖过去即可</p>
+</blockquote>
+<p>关于游戏屏幕大小设定:</p>
+<blockquote>
+<p>在Game -&gt; Free Aspect 中选择或者点&quot;+&quot;自定义.(需要注意的是从最初开始都是在Sence上,Game在Sence的旁边,Sence在Create右边</p>
+</blockquote>
+<p>未完待续...</p>
+
+      </div>
+      <div class="post-tags">Tags: </div>
+    </div>
+  </div>
+</body>
+
+</html>

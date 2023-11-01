@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>66ws</title>
+  <style>
+    /* 通用样式 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* 头部样式 */
+    .header {
+      width: 100%;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header h1 {
+      color: #333;
+      font-size: 32px;
+    }
+
+    /* 导航栏样式 */
+    .nav {
+      width: 100%;
+      height: 40px;
+      background-color: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nav a {
+      color: #333;
+      text-decoration: none;
+      padding: 0 10px;
+    }
+
+    /* 主体内容样式 */
+    .container {
+      width: 80%;
+      margin: 20px auto;
+      display: flex;
+    }
+
+    .footer{
+      width: 60%;
+      margin: 2em auto 5em auto;
+    }
+  </style>
+  <style name="blog">
+    /* 左侧博客列表样式 */
+    .blog-list {
+      width: 70%;
+      margin-right: 20px;
+    }
+
+    .blog-item {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 5px #ccc;
+      padding: 1em 1.5em 2em 1.5em;
+      margin: 0 0 2em 0;
+    }
+
+    .blog-item h1,
+    .blog-item h2,
+    .blog-item h3,
+    .blog-item h4,
+    .blog-item h5,
+    .blog-item h6 {
+      color: #333;
+      margin: 1em 0;
+    }
+
+    .blog-item p {
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .blog-item a {
+      color: #00f;
+      text-decoration: none;
+    }
+
+    .blog-item li {
+      display: list-item;
+      margin-left: 2em;
+    }
+
+    .blog-item-title {
+      float: left;
+    }
+
+    .blog-item-datetime {
+      color: #333;
+      float: right;
+    }
+
+    .blog-item>hr {
+      clear: both;
+      margin: 2.2em 0;
+    }
+  </style>
+  <style name="category">
+    /* 右侧分类列表样式 */
+    .category-list {
+      width: 30%;
+
+    }
+
+    .category-item {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 5px #ccc;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+
+    .category-item h4 {
+      color: #333;
+
+    }
+
+    .category-item li {
+      list-style-type: none;
+      /* 去掉列表项前的圆点 */
+      margin-top: 10px;
+      /* 设置列表项之间的间距 */
+    }
+
+    .category-item li a {
+      color: #666;
+      /* 设置列表项链接的颜色 */
+      text-decoration: none;
+      /* 去掉列表项链接的下划线 */
+    }
+  </style>
+  <style name="pagination">
+    .pagination {
+      display: inline-block;
+      margin: 0 auto;
+    }
+
+    .pagination a {
+      color: black;
+      float: left;
+      padding: 8px 16px;
+      text-decoration: none;
+    }
+
+    .pagination a.pagination-active {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .pagination a:hover:not(.active) {
+      background-color: #ddd;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 头部 -->
+  <div class="header">
+    <h1>66ws</h1>
+  </div>
+
+  <!-- 导航栏 -->
+  <div class="nav">
+    <a href="/">Index</a>
+    <a href="#">About</a>
+  </div>
+
+  <!-- 主体内容 -->
+  <div class="container">
+
+    <!-- 左侧博客列表 -->
+    <div class="blog-list">
+      
+      <div class="blog-item">
+        <a href="/2018/7/2. 尾部的零.html">
+          <h3 class="blog-item-title">2. 尾部的零</h3>
+          <h4 class="blog-item-datetime">2018-07-24 19:34:31Z</h4>
+        </a>
+        <hr>
+        <p>
+### 描述
+
+设计一个算法,计算出n阶乘中尾部零的个数
+
+### 样例
+
+**11! = 39916800**,因此应该返回 2
+
+### 挑战
+
+O(logN)的时间复杂度
+
+* * *
+
+先看个表
+
+1 阶乘 1
+2 阶乘 2
+3 阶乘 6
+4 阶乘 24
+5 阶乘 120
+6 阶乘 720
+7 阶乘 5040
+8 阶乘 40320
+9 阶乘 362880
+10 阶乘 3628800
+11</p>
+      </div>
+      
+      <div class="blog-item">
+        <a href="/2018/7/14. 二分查找.html">
+          <h3 class="blog-item-title">14. 二分查找</h3>
+          <h4 class="blog-item-datetime">2018-07-24 17:40:33Z</h4>
+        </a>
+        <hr>
+        <p>
+### 描述
+
+给定一个排序的整数数组（升序）和一个要查找的整数`target`,用`O(logn)`的时间查找到target第一次出现的下标（从0开始）,如果target不存在于数组中,返回`-1`.
+
+### 样例
+
+在数组 `[1, 2, 3, 3, 4, 5, 10]` 中二分查找`3`,返回`2`.
+
+### 挑战
+
+如果数组中的整数个数超过了2^32,你的算法是否会出错?
+
+* * </p>
+      </div>
+      
+      <div class="blog-item">
+        <a href="/2018/7/HTTP Request Method  Get and Post.html">
+          <h3 class="blog-item-title">HTTP Request Method | Get and Post</h3>
+          <h4 class="blog-item-datetime">2018-07-23 19:20:52Z</h4>
+        </a>
+        <hr>
+        <p>
+HTTP(HyperText Transfer Protocol) 是一种能够获取如 HTML 这样的网络资源的 protocol(通讯协议)。
+它常用的两种方式Get和Post 然后来讲讲Get和Post
+* 推荐浏览器Google Chrome,Chromium 或 Firefox 
+
+Method:
+*  Get 
+首先,你打开我这网站的首页,这就是属于Get,而Get方式是从指定的资源请</p>
+      </div>
+      
+      <div class="blog-item">
+        <a href="/2018/7/4. 丑数 II.html">
+          <h3 class="blog-item-title">4. 丑数 II</h3>
+          <h4 class="blog-item-datetime">2018-07-14 17:30:34Z</h4>
+        </a>
+        <hr>
+        <p>
+### 描述
+
+设计一个算法，找出只含素因子`2`，`3`，`5` 的第 _n_ 小的数。 符合条件的数如：`1, 2, 3, 4, 5, 6, 8, 9, 10, 12...`
+
+我们可以认为`1`也是一个丑数
+
+### 样例
+
+如果`n = 9`， 返回 `10`
+
+### 挑战
+
+要求时间复杂度为O(_n_log_n_)或者O(_n_)
+
+ 
+
+* * *
+
+找了很久都没明白丑数几个意思,</p>
+      </div>
+      
+      <div class="blog-item">
+        <a href="/2018/6/Unity - Make a simple game.html">
+          <h3 class="blog-item-title">Unity - Make a simple game</h3>
+          <h4 class="blog-item-datetime">2018-06-10 22:22:59Z</h4>
+        </a>
+        <hr>
+        <p>
+读完这篇教程而记 https://www.cnblogs.com/OctoptusLian/p/8418534.html  
+
+* * *
+
+  前言 unity版本2018.1.3.f1 安装unity的时候出现了个坑,以前安装过unity,license 认证死活过不去,然后重装解决了这个问题   upgrade license上依然出错,解决方法: 1 log out后再login 2 删</p>
+      </div>
+      
+      <!-- 博客项 -->
+    </div>
+
+    <!-- 右侧分类列表 -->
+    <div class="category-list">
+
+      <!-- 分类项 -->
+      <div class="category-item">
+        <h4>Category</h4>
+        <ul>
+          <li><a href="#">Category One</a></li>
+          <li><a href="#">Category Two</a></li>
+          <li><a href="#">Category Three</a></li>
+          <li><a href="#">Category Four</a></li>
+          <li><a href="#">Category Five</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  <div class="footer">
+    <div class="pagination">
+      <a href="/">&laquo;</a>
+      
+      <a href="/2.html" >2</a>
+      
+      <a href="/3.html" >3</a>
+      
+      <a href="/4.html" >4</a>
+      
+      <a href="/5.html" class="pagination-active">5</a>
+      
+      <a href="/6.html" >6</a>
+      
+      <a href="/">&raquo;</a>
+    </div>
+  </div>
+</body>
+
+</html>

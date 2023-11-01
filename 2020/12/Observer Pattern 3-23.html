@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Observer Pattern 3-23 | 66ws</title>
+  <style>
+    /* 通用样式 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* 头部样式 */
+    .header {
+      width: 100%;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header h1 {
+      color: #333;
+      font-size: 32px;
+    }
+
+    /* 导航栏样式 */
+    .nav {
+      width: 100%;
+      height: 40px;
+      background-color: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nav a {
+      color: #333;
+      text-decoration: none;
+      padding: 0 10px;
+    }
+
+    /* 主体内容样式 */
+    .container {
+      width: 80%;
+      margin: 20px auto;
+      display: flex;
+    }
+
+    .post {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 5px #ccc;
+      padding: 2em 1em 1em 1em;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .post>.post-title {
+      margin-left: 1em;
+      float: left;
+    }
+
+
+    .post>.datetime {
+      color: #333;
+      float: right;
+    }
+
+    .post>hr {
+      clear: both;
+      margin: 2.2em 0;
+    }
+
+    .post p {
+      color: #666;
+      line-height: 1.5;
+      text-indent: 2em;
+      margin-bottom: 1.2em;
+      padding-bottom: 0.6em;
+    }
+
+    code {
+      text-indent: 0;
+      background-color: yellow;
+      padding: 2px;
+      line-height: 1.5;
+      font-size: large;
+      color: #000;
+      word-wrap: break-word;
+    }
+
+    details {
+      border: black 1px solid;
+      padding: 0.5em;
+    }
+  </style>
+  <style name="post-content">
+    .post-content {
+      margin: 0 3em 1em 3em;
+      word-wrap: break-word;
+      word-break: break-all;
+    }
+
+    .post-content li {
+      display: list-item;
+      margin-left: 2em;
+    }
+
+    .post-content h1,
+    .post-content h2,
+    .post-content h3,
+    .post-content h4,
+    .post-content h5,
+    .post-content h6 {
+      margin: 1em 0;
+    }
+
+    .post-content code {
+      display: inline-block;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    .post-tags {
+      margin: 1em 1em 5em 1em;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 头部 -->
+  <div class="header">
+    <h1>66ws</h1>
+  </div>
+  <!-- 导航栏 -->
+  <div class="nav">
+    <a href="/">Index</a>
+    <a href="#">About</a>
+  </div>
+  <!-- 主体内容 -->
+  <div class="container">
+    <!-- 博客项 -->
+    <div class="post">
+      <h3 class="post-title">Observer Pattern 3-23</h3>
+      <h4 class="datetime">Published Date: 2020-12-01 21:32:12Z</h4>
+      <hr>
+      <div class="post-content">
+        <p>In programming, there is a lot of case that need to update information if data had changed. Well, it is Observer Pattern that I will descript in this post.</p>
+<p>Feature:</p>
+<ul>
+<li>update information if data has changed</li>
+</ul>
+<p>In a scene, students need to received teachers' information in time (student &gt; teacher).
+I will direct to show about student's and teacher's base class.</p>
+<details>
+<summary>Base class</summary>
+<pre><code class="language-py">class Student(object):
+  def __init__(self, name: str):
+    self.name = name
+  def update(self):
+    print(&quot;Student have received the info.&quot;)
+
+class Teacher(object):
+  def __init__(self):
+    self.info = &quot;&quot;
+
+  def send(self, s: str):
+    self.info = s
+    print(&quot;Teacher has send the info. The info is %s.&quot; % (s, ))
+</code></pre>
+</details>
+<br>
+Well, base class had built. Next step, I suppose that Teacher must have a list of student.
+<details>
+<summary>Teacher class</summary>
+<pre><code class="language-py">class Teacher(object):
+  self.info: str = &quot;&quot;
+  self.students: List[Student] = []
+  
+  def addStudent(self, s: Student):
+    self.students.append(s)
+  
+  def removeStudent(self, s: Student):
+    self.students.remove(s)
+
+  def send(self, s: str):
+    .....
+</code></pre>
+</details>
+<br>
+It is important that Teacher's send function have to send the message to students.
+```py
+class Teacher(object):
+    ......
+  def send(self, s: str):
+    self.info = s
+    print("Teacher has send the info. The info is %s." % (s, ))
+    for s in self.students:
+      s.update()
+```
+All students have know teacher's info in time. But "info" does not transmit to student. Students only have a message and do not know details about the info.
+<pre><code class="language-py">class Student(object):
+    ......
+  def update(self,t: Teacher):
+    print(&quot;Student have received the info.The info is %s.&quot; % (t.info, ))
+
+
+class Teacher(object):
+    ......
+  def send(self, s: str):
+    self.info = s
+    print(&quot;Teacher has send the info. The info is %s.&quot; % (s, ))
+    for s in self.students:
+      s.update(self)
+</code></pre>
+<p>It look like have solve the problems.
+Merge the code.</p>
+<details><summary>Merge Code</summary>
+<pre><code class="language-py">class Student(object):
+  pass
+
+class Teacher(object):
+  pass
+
+class Student(object):
+  def __init__(self, name: str):
+    self.name = name
+  def update(self,t: Teacher):
+    print(&quot;%s have received the info.The info is %s.&quot; % (self.name, t.info, ))
+
+class Teacher(object):
+  def __init__(self, name: str):
+    self.info: str = &quot;&quot;
+    self.students: List[Student] = []
+  
+  def addStudent(self, s: Student):
+    self.students.append(s)
+  
+  def removeStudent(self, s: Student):
+    self.students.remove(s)
+
+  def send(self, s: str):
+    self.info = s
+    print(&quot;Teacher has send the info. The info is %s.\n&quot; % (s, ))
+    for s in self.students:
+      s.update(self)
+
+if __name__ == &quot;__main__&quot;:
+  s1 = Student(&quot;John&quot;)
+  s2 = Student(&quot;Amy&quot;)
+  s3 = Student(&quot;Mike&quot;)
+  t1 = Teacher(&quot;White&quot;)
+  t1.addStudent(s1)
+  t1.addStudent(s2)
+  t1.addStudent(s3)
+  t1.send(&quot;Today is Sunday&quot;)
+  print()
+  t1.removeStudent(s1)
+  t1.send(&quot;John is out of class&quot;)
+  print()
+</code></pre>
+</details>
+<br>
+The code output:
+<details><summary>Output</summary>
+<pre><code>Teacher has send the info. The info is Today is Sunday.
+
+John have received the info.The info is Today is Sunday.
+Amy have received the info.The info is Today is Sunday.
+Mike have received the info.The info is Today is Sunday.
+
+Teacher has send the info. The info is John is out of class.
+
+Amy have received the info.The info is John is out of class.
+Mike have received the info.The info is John is out of class.
+
+</code></pre>
+</details>
+<br>
+It is end of Observer Pattern.
+<details><summary>Extra</summary>
+<pre><code class="language-py">class Student(object):
+  pass
+
+class Teacher(object):
+  pass
+
+class Student(object):
+  def __init__(self, name: str):
+    self.name = name
+  def update(self,t: Teacher):
+    print(&quot;%s have received the info.The info is %s.&quot; % (self.name, t.info, ))
+
+class Teacher(object):
+  def __init__(self, name: str):
+    self.info: str = &quot;&quot;
+    self.students: List[Student] = []
+  
+  def addStudent(self, s: Student):
+    self.students.append(s)
+  
+  def removeStudent(self, s: Student):
+    self.students.remove(s)
+  
+  def notifyAll(self):
+    for s in self.students:
+      s.update(self)
+
+  def send(self, s: str):
+    self.info = s
+    print(&quot;Teacher has send the info. The info is %s.\n&quot; % (s, ))
+    self.notifyAll()
+
+if __name__ == &quot;__main__&quot;:
+  s1 = Student(&quot;John&quot;)
+  s2 = Student(&quot;Amy&quot;)
+  s3 = Student(&quot;Mike&quot;)
+  t1 = Teacher(&quot;White&quot;)
+  t1.addStudent(s1)
+  t1.addStudent(s2)
+  t1.addStudent(s3)
+  t1.send(&quot;Today is Sunday&quot;)
+  print()
+  t1.removeStudent(s1)
+  t1.send(&quot;John is out of class&quot;)
+  print()
+</code></pre>
+</details>
+
+      </div>
+      <div class="post-tags">Tags: </div>
+    </div>
+  </div>
+</body>
+
+</html>

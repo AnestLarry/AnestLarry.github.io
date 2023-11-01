@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Golang - cross-compiling | 66ws</title>
+  <style>
+    /* 通用样式 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* 头部样式 */
+    .header {
+      width: 100%;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header h1 {
+      color: #333;
+      font-size: 32px;
+    }
+
+    /* 导航栏样式 */
+    .nav {
+      width: 100%;
+      height: 40px;
+      background-color: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nav a {
+      color: #333;
+      text-decoration: none;
+      padding: 0 10px;
+    }
+
+    /* 主体内容样式 */
+    .container {
+      width: 80%;
+      margin: 20px auto;
+      display: flex;
+    }
+
+    .post {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 5px #ccc;
+      padding: 2em 1em 1em 1em;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .post>.post-title {
+      margin-left: 1em;
+      float: left;
+    }
+
+
+    .post>.datetime {
+      color: #333;
+      float: right;
+    }
+
+    .post>hr {
+      clear: both;
+      margin: 2.2em 0;
+    }
+
+    .post p {
+      color: #666;
+      line-height: 1.5;
+      text-indent: 2em;
+      margin-bottom: 1.2em;
+      padding-bottom: 0.6em;
+    }
+
+    code {
+      text-indent: 0;
+      background-color: yellow;
+      padding: 2px;
+      line-height: 1.5;
+      font-size: large;
+      color: #000;
+      word-wrap: break-word;
+    }
+
+    details {
+      border: black 1px solid;
+      padding: 0.5em;
+    }
+  </style>
+  <style name="post-content">
+    .post-content {
+      margin: 0 3em 1em 3em;
+      word-wrap: break-word;
+      word-break: break-all;
+    }
+
+    .post-content li {
+      display: list-item;
+      margin-left: 2em;
+    }
+
+    .post-content h1,
+    .post-content h2,
+    .post-content h3,
+    .post-content h4,
+    .post-content h5,
+    .post-content h6 {
+      margin: 1em 0;
+    }
+
+    .post-content code {
+      display: inline-block;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    .post-tags {
+      margin: 1em 1em 5em 1em;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 头部 -->
+  <div class="header">
+    <h1>66ws</h1>
+  </div>
+  <!-- 导航栏 -->
+  <div class="nav">
+    <a href="/">Index</a>
+    <a href="#">About</a>
+  </div>
+  <!-- 主体内容 -->
+  <div class="container">
+    <!-- 博客项 -->
+    <div class="post">
+      <h3 class="post-title">Golang - cross-compiling</h3>
+      <h4 class="datetime">Published Date: 2019-06-16 15:57:39Z</h4>
+      <hr>
+      <div class="post-content">
+        <p>About the Golang cross-compiling,say it simply that Windows build codes can run not only in Windows,but in Linux (Mac not test).<br />
+I work between Win and Linux,may I have build the code in Windows easy,but it in another pc maybe difficult.At least,you have to redownload the libs you use.And I have try the Cross-compiling.<br />
+In command or Terminal(installed golang &gt;=go1.11.2),you can run “go version” to get your system’s info,save it and use it later.</p>
+<p>Set Environment var<br />
+Windows:<br />
+in commmand : <code>set var = value</code><br />
+Linux :<br />
+in terminal :<code>export var = value</code></p>
+<p>Keyin the command “go env” and find out the keys “GOOS”(windows,linux) and “GOARCH”(amd64 , arm).<br />
+If error with gcc,add up the gcc key ;<br />
+if error with CGO,set CGO_ENABLED=0 ;<br />
+if error with ‘cannot find package <code>golang.org/x/sys/unix</code>,<code>git clone https://github.com/golang/sys.git</code> to gopath’s <code>golang.org/x/sys</code>.</p>
+<p>At last go build the code.</p>
+<p>Example:<br />
+Windows(Windows's info:windows,amd64) build Binary executable file in Linux(Linux's info:linux ,arm):<br />
+keyin command<br />
+<code>set GOOS=&quot;linux&quot;   set GOARCH=&quot;arm&quot;   set CGO_ENABLED=0   set GOEXE=   go build helloworld.go</code></p>
+<p>Same infos,Linux build Binary executable file in Windows:<br />
+<code>set GOOS=&quot;windows&quot;   set GOARCH=&quot;amd64&quot;   set GOEXE=.exe   go build helloworld.go</code></p>
+<p>Get helloworld.exe and run in windows;get helloword and run in Linux.</p>
+<p>关于Golang交叉编译，简单地说，Windows构建代码不仅可以在Windows中运行，而且可以在Linux中运行（Mac不测试）。<br />
+我在Win和Linux之间工作，我可以在Windows中轻松构建代码，但在另一台PC中可能很难。至少，你必须重新下载你使用的库。我尝试了交叉编译。<br />
+在命令或Termial（安装golang&gt; = go1.11.2）中，您可以运行“go version”来获取系统信息，保存并稍后使用。</p>
+<p>设置环境变量<br />
+Windows:<br />
+命令行 : <code>set var = value</code>
+Linux :<br />
+终端 : <code>export var = value</code></p>
+<p>键入命令“go env”并找出键“GOOS”（windows，linux）和“GOARCH”（amd64，arm）。<br />
+如果gcc出错，请加上gcc键;<br />
+如果CGO出错，则设置CGO_ENABLED = 0;<br />
+如果错误'找不到包<code>golang.org/x/sys/unix</code>,就git clone <code>https://github.com/golang/sys.git</code>到gopath的<code>golang.org/x/sys</code>。</p>
+<p>最后去构建代码。</p>
+<p>例：<br />
+Windows（Windows的信息：windows，amd64）在Linux中构建二进制可执行文件（Linux的信息：linux，arm）：<br />
+键入命令</p>
+<pre><code>set GOOS =“linux”  
+set GOARCH =“arm”  
+set CGO_ENABLED = 0  
+set GOEXE =  
+go build helloworld.go
+</code></pre>
+<p>相同的信息，Linux构建Windows中的二进制可执行文件：</p>
+<pre><code>export GOOS =“windows”  
+export GOARCH =“amd64”  
+export GOEXE = .exe  
+go build helloworld.go
+</code></pre>
+<p>获取helloworld.exe并在Windows中运行;获取helloword并在Linux中运行</p>
+
+      </div>
+      <div class="post-tags">Tags: </div>
+    </div>
+  </div>
+</body>
+
+</html>

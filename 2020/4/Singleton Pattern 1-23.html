@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Singleton Pattern 1-23 | 66ws</title>
+  <style>
+    /* 通用样式 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* 头部样式 */
+    .header {
+      width: 100%;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header h1 {
+      color: #333;
+      font-size: 32px;
+    }
+
+    /* 导航栏样式 */
+    .nav {
+      width: 100%;
+      height: 40px;
+      background-color: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nav a {
+      color: #333;
+      text-decoration: none;
+      padding: 0 10px;
+    }
+
+    /* 主体内容样式 */
+    .container {
+      width: 80%;
+      margin: 20px auto;
+      display: flex;
+    }
+
+    .post {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 5px #ccc;
+      padding: 2em 1em 1em 1em;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .post>.post-title {
+      margin-left: 1em;
+      float: left;
+    }
+
+
+    .post>.datetime {
+      color: #333;
+      float: right;
+    }
+
+    .post>hr {
+      clear: both;
+      margin: 2.2em 0;
+    }
+
+    .post p {
+      color: #666;
+      line-height: 1.5;
+      text-indent: 2em;
+      margin-bottom: 1.2em;
+      padding-bottom: 0.6em;
+    }
+
+    code {
+      text-indent: 0;
+      background-color: yellow;
+      padding: 2px;
+      line-height: 1.5;
+      font-size: large;
+      color: #000;
+      word-wrap: break-word;
+    }
+
+    details {
+      border: black 1px solid;
+      padding: 0.5em;
+    }
+  </style>
+  <style name="post-content">
+    .post-content {
+      margin: 0 3em 1em 3em;
+      word-wrap: break-word;
+      word-break: break-all;
+    }
+
+    .post-content li {
+      display: list-item;
+      margin-left: 2em;
+    }
+
+    .post-content h1,
+    .post-content h2,
+    .post-content h3,
+    .post-content h4,
+    .post-content h5,
+    .post-content h6 {
+      margin: 1em 0;
+    }
+
+    .post-content code {
+      display: inline-block;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    .post-tags {
+      margin: 1em 1em 5em 1em;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 头部 -->
+  <div class="header">
+    <h1>66ws</h1>
+  </div>
+  <!-- 导航栏 -->
+  <div class="nav">
+    <a href="/">Index</a>
+    <a href="#">About</a>
+  </div>
+  <!-- 主体内容 -->
+  <div class="container">
+    <!-- 博客项 -->
+    <div class="post">
+      <h3 class="post-title">Singleton Pattern 1-23</h3>
+      <h4 class="datetime">Published Date: 2020-04-03 21:32:12Z</h4>
+      <hr>
+      <div class="post-content">
+        <p>In some cases we will need a &quot;settings&quot; to transmit args, this &quot;settings&quot; suppose to be:</p>
+<ul>
+<li>Containing many types, a class would be fine.</li>
+<li>Can get it anywhere, better not using arguments.</li>
+<li>Thread-Safe.</li>
+</ul>
+<p>By the first and the second conditions, we can easily figure out a prototype like-</p>
+<pre><code class="language-py">class Settings:
+  def __init__(self):
+    self.aBool = True
+    self.aInt = 32
+    self.aChar = 'a'
+    self.aString = &quot;HelloWorld&quot;
+    self.aIntArray = [0,3,4,1,4]
+    self.aStringIntDict = {&quot;Hello&quot;: 5, &quot;World!&quot;: 6}
+        ......
+settings = Settings()
+</code></pre>
+<p>We can use it anywhere, eg.:</p>
+<pre><code class="language-py">def aFun(x: str) -&gt; str:
+  return x + settings.aString
+
+def anotherFun(y: int) -&gt; int:
+  return y + settings.aInt
+</code></pre>
+<p>But this is a global var and may cause problem by mistakes, eg.:</p>
+<pre><code class="language-py">  ......
+settings = aSettingFromAnotherFile()
+settings.set(x=x,y=y)
+  ......
+</code></pre>
+<p>In this stage, the &quot;settings&quot; is no longer the &quot;settings&quot; we said before, if we need the &quot;settings&quot; instance unique and always be there, I believe singleton would be the best choice.</p>
+<pre><code class="language-py">def singleton(fun):
+  ins = {}
+  def getSingleton(*args,**kw):
+    if fun not in ins:
+      ins[fun] = fun(*args,**kw)
+    return ins[fun]
+  return getSingleton
+
+@singleton
+class Settings:
+  def __init__(self):
+    self.aBool = True
+    self.aInt = 32
+    self.aChar = 'a'
+    self.aString = &quot;HelloWorld&quot;
+        ......
+
+settings = Settings()
+settings.aBool = False
+settings.aInt = 64
+print(settings.aBool, settings.aInt)
+# Output:
+# False 64
+
+otherSettings = Settings()
+print(settings is otherSettings)
+# Output:
+# True
+</code></pre>
+<p>If your code runs fine in single thread, then I guess it's safe in multithreads too (unless you create the instance in threads).</p>
+<hr />
+<h3>Extra:</h3>
+<p>If you create the &quot;settings&quot; in threads then multiple instances might be created, we can use thread lock to solve the problem.</p>
+<pre><code class="language-py">import threading
+
+def singleton(Fun):
+  ins = {}
+  def getSingleton( *args, **kw):
+    if Fun not in ins:
+        getSingleton.__lock__ = threading.Lock()
+        with getSingleton.__lock__:
+          if Fun not in ins:
+            ins[Fun] = Fun( *args, **kw)
+    return ins[Fun]
+  return getSingleton
+
+@singleton
+class Settings:
+  def __init__(self):
+    self.aBool = True
+    self.aInt = 32
+    self.aChar = 'a'
+    self.aString = &quot;HelloWorld&quot;
+        ......
+
+settings = Settings()
+</code></pre>
+
+      </div>
+      <div class="post-tags">Tags: </div>
+    </div>
+  </div>
+</body>
+
+</html>
