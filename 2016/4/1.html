@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>66ws</title>
+  <style>
+  /* 通用样式 */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* 头部样式 */
+  .header {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header h1 {
+    color: #333;
+    font-size: 32px;
+  }
+
+  /* 导航栏样式 */
+  .nav {
+    width: 100%;
+    height: 40px;
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav a {
+    color: #333;
+    text-decoration: none;
+    padding: 0 10px;
+  }
+
+  /* 主体内容样式 */
+  .container {
+    width: 80%;
+    margin: 20px auto;
+    display: flex;
+  }
+
+  .footer {
+    width: 60%;
+    margin: 2em auto 5em auto;
+  }
+</style>
+<style name="blog">
+  /* 左侧博客列表样式 */
+  .blog-list {
+    width: 70%;
+    margin-right: 20px;
+  }
+
+  .blog-item {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 5px #ccc;
+    padding: 1em 1.5em 2em 1.5em;
+    margin: 0 0 2em 0;
+  }
+
+  .blog-item h1,
+  .blog-item h2,
+  .blog-item h3,
+  .blog-item h4,
+  .blog-item h5,
+  .blog-item h6 {
+    color: #333;
+    margin: 1em 0;
+  }
+
+  .blog-item p {
+    color: #666;
+    line-height: 1.5;
+  }
+
+  .blog-item a {
+    color: #00f;
+    text-decoration: none;
+  }
+
+  .blog-item li {
+    display: list-item;
+    margin-left: 2em;
+  }
+
+  .blog-item-title {
+    float: left;
+  }
+
+  .blog-item-datetime {
+    color: #333;
+    float: right;
+  }
+
+  .blog-item>hr {
+    clear: both;
+    margin: 2.2em 0;
+  }
+</style>
+<style name="category">
+  /* 右侧分类列表样式 */
+  .category-list {
+    width: 30%;
+
+  }
+
+  .category-item {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 5px #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  .category-item h4 {
+    color: #333;
+    margin-top: 1em;
+  }
+
+  .category-item li {
+    list-style-type: none;
+    /* 去掉列表项前的圆点 */
+    margin-top: 10px;
+    /* 设置列表项之间的间距 */
+    display: inline-block;
+    width: 50%;
+  }
+
+  .category-item li a {
+    color: #666;
+    /* 设置列表项链接的颜色 */
+    text-decoration: none;
+    /* 去掉列表项链接的下划线 */
+  }
+</style>
+<style name="pagination">
+  .pagination {
+    display: inline-block;
+    margin: 0 auto;
+  }
+
+  .pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+
+  .pagination a.pagination-active {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  .pagination a:hover:not(.active) {
+    background-color: #ddd;
+  }
+</style>
+</head>
+
+<body>
+  <div class="header">
+  <h1>66ws</h1>
+</div>
+<div class="nav">
+  <a href="/">Index</a>
+  <a href="#">About</a>
+</div>
+  <!-- 主体内容 -->
+  <div class="container">
+
+    <!-- 左侧博客列表 -->
+    <div class="blog-list">
+      
+      <div class="blog-item">
+        <a href="/2016/4/ReadMeFirst.html">
+          <h3 class="blog-item-title">ReadMeFirst</h3>
+          <h4 class="blog-item-datetime">2016-04-23 21:03:45Z</h4>
+        </a>
+        <hr>
+      </div>
+      
+      <!-- 博客项 -->
+    </div>
+
+    <!-- 右侧分类列表 -->
+    <div class="category-list">
+      <div class="category-item">
+  <h4>Category</h4>
+  <ul>
+    <li><a href="#">Category One</a></li>
+    <li><a href="#">Category Two</a></li>
+    <li><a href="#">Category Three</a></li>
+    <li><a href="#">Category Four</a></li>
+    <li><a href="#">Category Five</a></li>
+  </ul>
+  <h4>Archives</h4>
+  <ul>
+    <li><a href="/2018">2018</a></li><li><a href="/2019">2019</a></li><li><a href="/2020">2020</a></li><li><a href="/2022">2022</a></li><li><a href="/2023">2023</a></li><li><a href="/2016">2016</a></li><li><a href="/2021">2021</a></li><li><a href="/2018/7">2018/7</a></li><li><a href="/2018/11">2018/11</a></li><li><a href="/2019/10">2019/10</a></li><li><a href="/2019/6">2019/6</a></li><li><a href="/2018/12">2018/12</a></li><li><a href="/2020/8">2020/8</a></li><li><a href="/2019/11">2019/11</a></li><li><a href="/2018/6">2018/6</a></li><li><a href="/2022/8">2022/8</a></li><li><a href="/2023/11">2023/11</a></li><li><a href="/2016/4">2016/4</a></li><li><a href="/2020/5">2020/5</a></li><li><a href="/2021/8">2021/8</a></li><li><a href="/2020/3">2020/3</a></li><li><a href="/2020/4">2020/4</a></li><li><a href="/2020/12">2020/12</a></li><li><a href="/2022/2">2022/2</a></li><li><a href="/2023/10">2023/10</a></li>
+  </ul>
+</div>
+    </div>
+
+  </div>
+  <div class="footer">
+    <div class="pagination">
+  <a href="/">&laquo;</a>
+  
+  <a href="./1.html" class="pagination-active" >1</a>
+  
+  <a href="/">&raquo;</a>
+</div>
+  </div>
+</body>
+
+</html>
