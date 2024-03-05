@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>docker-volume-denied | 66ws</title>
+  <style>
+    /* 通用样式 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* 头部样式 */
+    .header {
+      width: 100%;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header h1 {
+      color: #333;
+      font-size: 32px;
+    }
+
+    /* 导航栏样式 */
+    .nav {
+      width: 100%;
+      height: 40px;
+      background-color: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nav a {
+      color: #333;
+      text-decoration: none;
+      padding: 0 10px;
+    }
+
+    /* 主体内容样式 */
+    .container {
+      width: 80%;
+      margin: 20px auto;
+      display: flex;
+    }
+
+    .post {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 5px #ccc;
+      padding: 2em 1em 1em 1em;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .post>.post-title {
+      margin-left: 1em;
+      float: left;
+    }
+
+
+    .post>.datetime {
+      color: #333;
+      float: right;
+    }
+
+    .post>hr {
+      clear: both;
+      margin: 2.2em 0;
+    }
+
+    .post p {
+      color: #666;
+      line-height: 1.5;
+      text-indent: 2em;
+      margin-bottom: 1.2em;
+      padding-bottom: 0.6em;
+    }
+
+    code {
+      text-indent: 0;
+      background-color: yellow;
+      padding: 2px;
+      line-height: 1.5;
+      font-size: large;
+      color: #000;
+      word-wrap: break-word;
+    }
+
+    details {
+      border: black 1px solid;
+      padding: 0.5em;
+    }
+  </style>
+  <style name="post-content">
+    .post-content {
+      margin: 0 3em 1em 3em;
+      word-wrap: break-word;
+      word-break: break-all;
+    }
+
+    .post-content li {
+      display: list-item;
+      margin-left: 2em;
+    }
+
+    .post-content h1,
+    .post-content h2,
+    .post-content h3,
+    .post-content h4,
+    .post-content h5,
+    .post-content h6 {
+      margin: 1em 0;
+    }
+
+    .post-content code {
+      display: inline-block;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    .post-tags {
+      margin: 1em 1em 5em 1em;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+  <h1>66ws</h1>
+</div>
+<div class="nav">
+  <a href="/">Index</a>
+  <a href="#">About</a>
+</div>
+  <!-- 主体内容 -->
+  <div class="container">
+    <!-- 博客项 -->
+    <div class="post">
+      <h3 class="post-title">docker-volume-denied</h3>
+      <h4 class="datetime">Published Date: 2024-03-06 02:04:35Z</h4>
+      <hr>
+      <div class="post-content">
+        <h1>0x0 Background</h1>
+<p>Recently, I have working on creating a project on Docker Compose. During this process, I encountered an issue where my program running inside the Docker container was denied permission to write files to the Docker Volume.</p>
+<h1>0x1 Get the Permission</h1>
+<p>If you are mounting a host directory into a Docker container, you could try granting permissions with your host by running <code>chmod -R 777 your_folder</code>.</p>
+<p>In another case, there is a volume managed by Docker, and you cannot directly <code>chmod</code> with your host. Instead, you can mount your volume into a container with <code>root</code> permission (such as alpine) and grant the permission using <code>chmod</code>.</p>
+<h1>0x2 Other Solution Suggested by AI</h1>
+<p>I also tried asking this question to an AI, and it provided a solution using a YAML configuration, which might work as well (although I haven't tested it). Adding a separate container in a regular <code>docker-compose.yaml</code> task might be too resource-intensive, but it could be acceptable as a one-time solution.</p>
+<pre><code class="language-yaml">services:
+  init:
+    image: &quot;alpine&quot;
+    volumes:
+      - your_volume:/data/your_folder
+    command: [&quot;chmod&quot;, &quot;-R&quot;, &quot;777&quot;, &quot;/data/your_folder&quot;]
+</code></pre>
+
+      </div>
+      <div class="post-tags">Tags: </div>
+    </div>
+  </div>
+</body>
+
+</html>

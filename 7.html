@@ -184,108 +184,15 @@
     <div class="blog-list">
       
       <div class="blog-item">
-        <a href="/2018/12/GOLANG - Format Time string.html">
-          <h3 class="blog-item-title">GOLANG - Format Time string</h3>
-          <h4 class="blog-item-datetime">2018-12-18 00:34:50Z</h4>
+        <a href="/2018/6/MabiWatch.html">
+          <h3 class="blog-item-title">MabiWatch</h3>
+          <h4 class="blog-item-datetime">2018-06-08 03:24:01Z</h4>
         </a>
         <hr>
         <p>
-格式化的数字并不是任意时间字符串  
-01=MM=2位月份  
-02=dd=2位日期  
-15=HH=24小时法表示小时，3=12小时法表示小时  
-04=mm=分钟  
-05=ss=秒  
-2006=yyyy=4位年份， 06=年分后2位
-
-    package main
-    
-    import (
-    	"fmt"
-    	"time"
-    )
-    
-    func</p>
-      </div>
-      
-      <div class="blog-item">
-        <a href="/2018/11/Docker Docs.html">
-          <h3 class="blog-item-title">Docker Docs</h3>
-          <h4 class="blog-item-datetime">2018-11-26 02:40:22Z</h4>
-        </a>
-        <hr>
-        <p>
-由于点特殊原因，在官网上登陆不了……   死活没找到国内相应的下载点……   记录一个[Docker Docs](https://docs.docker.com/docker-for-windows/release-notes/) 便于下载……</p>
-      </div>
-      
-      <div class="blog-item">
-        <a href="/2018/7/Get Response.html">
-          <h3 class="blog-item-title">Get Response</h3>
-          <h4 class="blog-item-datetime">2018-07-27 22:29:27Z</h4>
-        </a>
-        <hr>
-        <p>
-最近下载的文件,需要User-Agent和Cookie,然后发现下载工具全部挂了……
-然后尝试了py的带header下载,但是必须整段下载完,但是这个文件上g了
-很显然这并不适合opener直接open
-要分段下载,首先的联想是socket,但是利用tcp实现http又是一大坑 接下来看了个 [py获取响应头](https://blog.csdn.net/zhaoyangjian724/arti</p>
-      </div>
-      
-      <div class="blog-item">
-        <a href="/2018/7/SQLite3.html">
-          <h3 class="blog-item-title">SQLite3</h3>
-          <h4 class="blog-item-datetime">2018-07-26 19:20:43Z</h4>
-        </a>
-        <hr>
-        <p>
-sqlite3是一个很方便的数据库管理工具,但是常规使用依然建议使用MYSQL
-
-* * *
-
-[sqlite3 下载界面](https://www.sqlite.org/download.html)
-1.用sqlite3打开数据库,若不存在则创建数据库
- `sqlite3 DatabaseName.db .databases`
-显示打开的数据库
-`.exit` 退出
-`.help` 帮助
-
-2</p>
-      </div>
-      
-      <div class="blog-item">
-        <a href="/2018/7/2. 尾部的零.html">
-          <h3 class="blog-item-title">2. 尾部的零</h3>
-          <h4 class="blog-item-datetime">2018-07-24 19:34:31Z</h4>
-        </a>
-        <hr>
-        <p>
-### 描述
-
-设计一个算法,计算出n阶乘中尾部零的个数
-
-### 样例
-
-**11! = 39916800**,因此应该返回 2
-
-### 挑战
-
-O(logN)的时间复杂度
-
-* * *
-
-先看个表
-
-1 阶乘 1
-2 阶乘 2
-3 阶乘 6
-4 阶乘 24
-5 阶乘 120
-6 阶乘 720
-7 阶乘 5040
-8 阶乘 40320
-9 阶乘 362880
-10 阶乘 3628800
-11</p>
+Get Watch Fail please refresh again in the page
+```
+$("#watch").ready(function(){ $("#watch").load("/mabi/look.php?MabiWatch=True",function(response){ document.getElementById('watch').innerHTML=respo</p>
       </div>
       
       <!-- 博客项 -->
@@ -318,11 +225,11 @@ O(logN)的时间复杂度
   
   <a href="./4.html" >4</a>
   
-  <a href="./5.html" class="pagination-active" >5</a>
+  <a href="./5.html" >5</a>
   
   <a href="./6.html" >6</a>
   
-  <a href="./7.html" >7</a>
+  <a href="./7.html" class="pagination-active" >7</a>
   
   <a href="/">&raquo;</a>
 </div>
