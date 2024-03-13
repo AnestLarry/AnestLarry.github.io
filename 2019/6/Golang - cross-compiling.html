@@ -5,130 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Golang - cross-compiling | 66ws</title>
-  <style>
-    /* 通用样式 */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    /* 头部样式 */
-    .header {
-      width: 100%;
-      height: 80px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .header h1 {
-      color: #333;
-      font-size: 32px;
-    }
-
-    /* 导航栏样式 */
-    .nav {
-      width: 100%;
-      height: 40px;
-      background-color: #eee;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .nav a {
-      color: #333;
-      text-decoration: none;
-      padding: 0 10px;
-    }
-
-    /* 主体内容样式 */
-    .container {
-      width: 80%;
-      margin: 20px auto;
-      display: flex;
-    }
-
-    .post {
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 0 5px #ccc;
-      padding: 2em 1em 1em 1em;
-      margin-bottom: 20px;
-      width: 100%;
-    }
-
-    .post>.post-title {
-      margin-left: 1em;
-      float: left;
-    }
-
-
-    .post>.datetime {
-      color: #333;
-      float: right;
-    }
-
-    .post>hr {
-      clear: both;
-      margin: 2.2em 0;
-    }
-
-    .post p {
-      color: #666;
-      line-height: 1.5;
-      text-indent: 2em;
-      margin-bottom: 1.2em;
-      padding-bottom: 0.6em;
-    }
-
-    code {
-      text-indent: 0;
-      background-color: yellow;
-      padding: 2px;
-      line-height: 1.5;
-      font-size: large;
-      color: #000;
-      word-wrap: break-word;
-    }
-
-    details {
-      border: black 1px solid;
-      padding: 0.5em;
-    }
-  </style>
-  <style name="post-content">
-    .post-content {
-      margin: 0 3em 1em 3em;
-      word-wrap: break-word;
-      word-break: break-all;
-    }
-
-    .post-content li {
-      display: list-item;
-      margin-left: 2em;
-    }
-
-    .post-content h1,
-    .post-content h2,
-    .post-content h3,
-    .post-content h4,
-    .post-content h5,
-    .post-content h6 {
-      margin: 1em 0;
-    }
-
-    .post-content code {
-      display: inline-block;
-      white-space: pre-wrap;
-      word-break: break-all;
-    }
-
-    .post-tags {
-      margin: 1em 1em 5em 1em;
-    }
-  </style>
+  <link rel="stylesheet" href="/static/css/highlight-11.9.0.css" />
+  <link rel="stylesheet" href="/static/css/global.css" />
+  <link rel="stylesheet" href="/static/css/post.css" />
 </head>
 
 <body>
@@ -162,10 +41,19 @@ if error with ‘cannot find package <code>golang.org/x/sys/unix</code>,<code>gi
 <p>At last go build the code.</p>
 <p>Example:<br />
 Windows(Windows's info:windows,amd64) build Binary executable file in Linux(Linux's info:linux ,arm):<br />
-keyin command<br />
-<code>set GOOS=&quot;linux&quot;   set GOARCH=&quot;arm&quot;   set CGO_ENABLED=0   set GOEXE=   go build helloworld.go</code></p>
-<p>Same infos,Linux build Binary executable file in Windows:<br />
-<code>set GOOS=&quot;windows&quot;   set GOARCH=&quot;amd64&quot;   set GOEXE=.exe   go build helloworld.go</code></p>
+keyin command</p>
+<pre><code class="language-shell">set GOOS=&quot;linux&quot;  
+set GOARCH=&quot;arm&quot;  
+set CGO_ENABLED=0  
+set GOEXE=  
+go build helloworld.go
+</code></pre>
+<p>Same infos,Linux build Binary executable file in Windows:</p>
+<pre><code class="language-shell">set GOOS=&quot;windows&quot;  
+set GOARCH=&quot;amd64&quot;  
+set GOEXE=.exe  
+go build helloworld.go
+</code></pre>
 <p>Get helloworld.exe and run in windows;get helloword and run in Linux.</p>
 <p>关于Golang交叉编译，简单地说，Windows构建代码不仅可以在Windows中运行，而且可以在Linux中运行（Mac不测试）。<br />
 我在Win和Linux之间工作，我可以在Windows中轻松构建代码，但在另一台PC中可能很难。至少，你必须重新下载你使用的库。我尝试了交叉编译。<br />
@@ -183,15 +71,15 @@ Linux :<br />
 <p>例：<br />
 Windows（Windows的信息：windows，amd64）在Linux中构建二进制可执行文件（Linux的信息：linux，arm）：<br />
 键入命令</p>
-<pre><code>set GOOS =“linux”  
-set GOARCH =“arm”  
+<pre><code class="language-shell">set GOOS =&quot;linux&quot;
+set GOARCH =&quot;arm&quot;  
 set CGO_ENABLED = 0  
 set GOEXE =  
 go build helloworld.go
 </code></pre>
 <p>相同的信息，Linux构建Windows中的二进制可执行文件：</p>
-<pre><code>export GOOS =“windows”  
-export GOARCH =“amd64”  
+<pre><code class="language-shell">export GOOS =&quot;windows&quot;  
+export GOARCH =&quot;amd64&quot;  
 export GOEXE = .exe  
 go build helloworld.go
 </code></pre>
@@ -201,6 +89,8 @@ go build helloworld.go
       <div class="post-tags">Tags: </div>
     </div>
   </div>
+  <script src="/static/js/highlightjs-11.9.0.min.js" ></script>
+  <script>hljs.highlightAll();</script>
 </body>
 
 </html>
