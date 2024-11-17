@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>how to solve upload multipe files cached in temporary folder | 66ws</title>
+  <link rel="stylesheet" href="/static/css/highlight-11.9.0.css" />
+  <link rel="stylesheet" href="/static/css/global.css" />
+  <link rel="stylesheet" href="/static/css/post.css" />
+</head>
+
+<body>
+  <div class="header">
+  <h1>66ws</h1>
+</div>
+<div class="nav">
+  <a href="/">Index</a>
+  <a href="#">About</a>
+</div>
+  <!-- 主体内容 -->
+  <div class="container">
+    <!-- 博客项 -->
+    <div class="post">
+      <h3 class="post-title">how to solve upload multipe files cached in temporary folder</h3>
+      <h4 class="datetime">Published Date: 2024-11-07 11:20:30Z</h4>
+      <hr>
+      <div class="post-content">
+        <h1>0x00 Description</h1>
+<p>I am reported that when him upload multipe files with my <code>Simserver</code>, it will be cached in temporary folder. Such as <code>C</code> Drives in Windows.</p>
+<h1>0x01 Getting Started</h1>
+<p>I found these issues:</p>
+<ul>
+<li><a href="https://github.com/gin-gonic/gin/issues/1962">why not move the temp file rather than copy the same file when upload a large file?</a></li>
+<li><a href="https://github.com/gin-gonic/gin/issues/785">Streaming POST request instead of using temp file</a></li>
+</ul>
+<p>And I think it's a problem with golang <code>net/http</code> package. So I try to use .NET 8 to avoid this problem. Unfortunately, I found that .NET 8 has the same problem.</p>
+<p>I found it is not a simple problem. I have to find a solution to solve this problem.</p>
+<h1>0x02 First: Look At The Http Protocol</h1>
+<p>This is some base knowledge about http protocol.</p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/16958448/what-is-http-multipart-request">What is http multipart request?</a></li>
+<li><a href="https://www.w3.org/TR/html401/interact/forms.html#h-17.13.4.2">multipart/form-data</a></li>
+</ul>
+<p>After I read these, I found that the problem is backend default parse the <code>multipart/form-data</code> request body with read fully.
+So, there is a problem that the backend can't read the request body fully in memory and the backend will cache the request body in temporary folder.</p>
+<h1>0x03 Solution</h1>
+<p>Base on the above knowledge, we could solve this problem by upload the file with streaming to avoid using <code>multipart/form-data</code>.</p>
+<p>There are 2 ways to upload the file with streaming:</p>
+<ol>
+<li>Backend directly read and write(handle) the request body with streaming.
+<ul>
+<li>Pros:
+<ul>
+<li>Easy to implement.</li>
+</ul>
+</li>
+<li>Cons:
+<ul>
+<li>It can't upload multipe files.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Define a new binary protocol for upload the file and parse the binary protocol with backend.
+<ul>
+<li>Pros:
+<ul>
+<li>It can do more features in need.</li>
+</ul>
+</li>
+<li>Cons:
+<ul>
+<li>It is a little complex.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h1>0x04 Extra</h1>
+<p>Before I writing this article, I have solve this problem in <code>Simserver</code> <a href="https://github.com/AnestLarry/Simserver/commit/b508235de83147d40d408dcbf008c439eeca1b42">commit</a> with the 1st way. But I think it's not a good solution to my origin need.</p>
+<p>At last, I think I need the easiest way to solve this problem.</p>
+
+      </div>
+      <div class="post-tags">Tags: </div>
+    </div>
+  </div>
+  <script src="/static/js/highlightjs-11.9.0.min.js" ></script>
+  <script>hljs.highlightAll();</script>
+</body>
+
+</html>
