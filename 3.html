@@ -38,6 +38,10 @@ Errors like:
  - import cycle not allowed 
  - package worker is not in GOROOT
  - ca</p>
+        <hr>
+        <div class="blog-item-tags">
+          
+        </div>
       </div>
       
       <div class="blog-item">
@@ -54,6 +58,10 @@ Errors like:
 -----------------------------------
 
 Walk into any bookstore, and you'll see how to *Teach Yourself </p>
+        <hr>
+        <div class="blog-item-tags">
+          
+        </div>
       </div>
       
       <div class="blog-item">
@@ -72,6 +80,10 @@ In some cases we will have lots of args to initialize a class, this suppose to b
 ```py
 class People:
   def __init__( self,</p>
+        <hr>
+        <div class="blog-item-tags">
+          
+        </div>
       </div>
       
       <div class="blog-item">
@@ -86,6 +98,10 @@ In some cases we will need a "settings" to transmit args, this "settings" suppos
  - Containing many types, a class would be fine.
  - Can get it anywhere, better not using arguments.
  - Threa</p>
+        <hr>
+        <div class="blog-item-tags">
+          
+        </div>
       </div>
       
       <div class="blog-item">
@@ -100,6 +116,10 @@ This series will be a lengthy one because no one knows if it can be completed.
 These are all my opinions, not official or most other people thought.
 
 If you are interested in it but feeling incompre</p>
+        <hr>
+        <div class="blog-item-tags">
+          
+        </div>
       </div>
       
       <!-- 博客项 -->
@@ -112,6 +132,8 @@ If you are interested in it but feeling incompre</p>
     <span class="tab-title active" data-tab="category">Category</span>
     <span class="separator">/</span>
     <span class="tab-title" data-tab="archives">Archives</span>
+    <span class="separator">/</span>
+    <span class="tab-title" data-tab="tags">Tags</span>
   </div>
   
   <style>
@@ -151,6 +173,20 @@ If you are interested in it but feeling incompre</p>
     }
     .sidebar-block.active {
       display: block;
+    }
+    .sidebar-block.tag-list.active {
+      display: flex;
+    }
+    .tag-list {
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .tag-item {
+      background-color: #f0f0f0;
+      padding: 3px 8px;
+      border-radius: 3px;
+      text-decoration: none;
+      color: #333;
     }
   </style>
 
@@ -243,8 +279,14 @@ If you are interested in it but feeling incompre</p>
   </ul>
 
   <ul class="archive-list sidebar-block" id="archives-list">
-    <li class="archive-item"><a href="/2024/3">2024/3</a></li><li class="archive-item"><a href="/2024/11">2024/11</a></li><li class="archive-item"><a href="/2024">2024</a></li><li class="archive-item"><a href="/2023/11">2023/11</a></li><li class="archive-item"><a href="/2023/10">2023/10</a></li><li class="archive-item"><a href="/2023">2023</a></li><li class="archive-item"><a href="/2022/8">2022/8</a></li><li class="archive-item"><a href="/2022/2">2022/2</a></li><li class="archive-item"><a href="/2022">2022</a></li><li class="archive-item"><a href="/2021/8">2021/8</a></li><li class="archive-item"><a href="/2021">2021</a></li><li class="archive-item"><a href="/2020/8">2020/8</a></li><li class="archive-item"><a href="/2020/5">2020/5</a></li><li class="archive-item"><a href="/2020/4">2020/4</a></li><li class="archive-item"><a href="/2020/3">2020/3</a></li><li class="archive-item"><a href="/2020/12">2020/12</a></li><li class="archive-item"><a href="/2020">2020</a></li><li class="archive-item"><a href="/2019/6">2019/6</a></li><li class="archive-item"><a href="/2019/11">2019/11</a></li><li class="archive-item"><a href="/2019/10">2019/10</a></li><li class="archive-item"><a href="/2019">2019</a></li><li class="archive-item"><a href="/2018/7">2018/7</a></li><li class="archive-item"><a href="/2018/6">2018/6</a></li><li class="archive-item"><a href="/2018/12">2018/12</a></li><li class="archive-item"><a href="/2018/11">2018/11</a></li><li class="archive-item"><a href="/2018">2018</a></li><li class="archive-item"><a href="/2016/4">2016/4</a></li><li class="archive-item"><a href="/2016">2016</a></li>
+    <li class="archive-item"><a href="/2024/3">2024/3</a></li><li class="archive-item"><a href="/2024/3">2024/3</a></li><li class="archive-item"><a href="/2024/11">2024/11</a></li><li class="archive-item"><a href="/2024/11">2024/11</a></li><li class="archive-item"><a href="/2024">2024</a></li><li class="archive-item"><a href="/2024">2024</a></li><li class="archive-item"><a href="/2023/11">2023/11</a></li><li class="archive-item"><a href="/2023/11">2023/11</a></li><li class="archive-item"><a href="/2023/10">2023/10</a></li><li class="archive-item"><a href="/2023/10">2023/10</a></li><li class="archive-item"><a href="/2023">2023</a></li><li class="archive-item"><a href="/2023">2023</a></li><li class="archive-item"><a href="/2022/8">2022/8</a></li><li class="archive-item"><a href="/2022/8">2022/8</a></li><li class="archive-item"><a href="/2022/2">2022/2</a></li><li class="archive-item"><a href="/2022/2">2022/2</a></li><li class="archive-item"><a href="/2022">2022</a></li><li class="archive-item"><a href="/2022">2022</a></li><li class="archive-item"><a href="/2021/8">2021/8</a></li><li class="archive-item"><a href="/2021/8">2021/8</a></li><li class="archive-item"><a href="/2021">2021</a></li><li class="archive-item"><a href="/2021">2021</a></li><li class="archive-item"><a href="/2020/8">2020/8</a></li><li class="archive-item"><a href="/2020/8">2020/8</a></li><li class="archive-item"><a href="/2020/5">2020/5</a></li><li class="archive-item"><a href="/2020/5">2020/5</a></li><li class="archive-item"><a href="/2020/4">2020/4</a></li><li class="archive-item"><a href="/2020/4">2020/4</a></li><li class="archive-item"><a href="/2020/3">2020/3</a></li><li class="archive-item"><a href="/2020/3">2020/3</a></li><li class="archive-item"><a href="/2020/12">2020/12</a></li><li class="archive-item"><a href="/2020/12">2020/12</a></li><li class="archive-item"><a href="/2020">2020</a></li><li class="archive-item"><a href="/2020">2020</a></li><li class="archive-item"><a href="/2019/6">2019/6</a></li><li class="archive-item"><a href="/2019/6">2019/6</a></li><li class="archive-item"><a href="/2019/11">2019/11</a></li><li class="archive-item"><a href="/2019/11">2019/11</a></li><li class="archive-item"><a href="/2019/10">2019/10</a></li><li class="archive-item"><a href="/2019/10">2019/10</a></li><li class="archive-item"><a href="/2019">2019</a></li><li class="archive-item"><a href="/2019">2019</a></li><li class="archive-item"><a href="/2018/7">2018/7</a></li><li class="archive-item"><a href="/2018/7">2018/7</a></li><li class="archive-item"><a href="/2018/6">2018/6</a></li><li class="archive-item"><a href="/2018/6">2018/6</a></li><li class="archive-item"><a href="/2018/12">2018/12</a></li><li class="archive-item"><a href="/2018/12">2018/12</a></li><li class="archive-item"><a href="/2018/11">2018/11</a></li><li class="archive-item"><a href="/2018/11">2018/11</a></li><li class="archive-item"><a href="/2018">2018</a></li><li class="archive-item"><a href="/2018">2018</a></li><li class="archive-item"><a href="/2016/4">2016/4</a></li><li class="archive-item"><a href="/2016/4">2016/4</a></li><li class="archive-item"><a href="/2016">2016</a></li><li class="archive-item"><a href="/2016">2016</a></li>
   </ul>
+
+  <div class="tag-list sidebar-block" id="tags-list">
+    
+      <a href="/tag/PowerShell/index.html" class="tag-item">PowerShell (1)</a>
+    
+  </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {

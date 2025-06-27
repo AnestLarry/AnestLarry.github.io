@@ -40,6 +40,10 @@
 
 ## 0x1 Get your CA certificate and private key/CSR (optional)
 You need a CA certificate to sign this code signing certificate. </p>
+        <hr>
+        <div class="blog-item-tags">
+          
+        </div>
       </div>
       
       <div class="blog-item">
@@ -59,6 +63,10 @@ You need a CA certificate to sign this code signing certificate. </p>
     - `scp {new public key} remote:~/.ssh`
 1. Add to auth
     - login r</p>
+        <hr>
+        <div class="blog-item-tags">
+          
+        </div>
       </div>
       
       <div class="blog-item">
@@ -75,6 +83,10 @@ There are lots of troubles getting a cer or pvk with your own CA in OpenSSL. Her
 
 
 ## 0x1 Get you</p>
+        <hr>
+        <div class="blog-item-tags">
+          
+        </div>
       </div>
       
       <div class="blog-item">
@@ -89,6 +101,10 @@ There are lots of troubles getting a cer or pvk with your own CA in OpenSSL. Her
 
 # Action
 - run `sudo mount -t drvfs <win_path> <wsl2_path>` in your ws</p>
+        <hr>
+        <div class="blog-item-tags">
+          
+        </div>
       </div>
       
       <div class="blog-item">
@@ -102,6 +118,10 @@ In programming, there is a lot of case that need to update information if data h
 
 Feature:
  - update information if data has</p>
+        <hr>
+        <div class="blog-item-tags">
+          
+        </div>
       </div>
       
       <!-- 博客项 -->
@@ -114,6 +134,8 @@ Feature:
     <span class="tab-title active" data-tab="category">Category</span>
     <span class="separator">/</span>
     <span class="tab-title" data-tab="archives">Archives</span>
+    <span class="separator">/</span>
+    <span class="tab-title" data-tab="tags">Tags</span>
   </div>
   
   <style>
@@ -153,6 +175,20 @@ Feature:
     }
     .sidebar-block.active {
       display: block;
+    }
+    .sidebar-block.tag-list.active {
+      display: flex;
+    }
+    .tag-list {
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .tag-item {
+      background-color: #f0f0f0;
+      padding: 3px 8px;
+      border-radius: 3px;
+      text-decoration: none;
+      color: #333;
     }
   </style>
 
@@ -245,8 +281,14 @@ Feature:
   </ul>
 
   <ul class="archive-list sidebar-block" id="archives-list">
-    <li class="archive-item"><a href="/2024/3">2024/3</a></li><li class="archive-item"><a href="/2024/11">2024/11</a></li><li class="archive-item"><a href="/2024">2024</a></li><li class="archive-item"><a href="/2023/11">2023/11</a></li><li class="archive-item"><a href="/2023/10">2023/10</a></li><li class="archive-item"><a href="/2023">2023</a></li><li class="archive-item"><a href="/2022/8">2022/8</a></li><li class="archive-item"><a href="/2022/2">2022/2</a></li><li class="archive-item"><a href="/2022">2022</a></li><li class="archive-item"><a href="/2021/8">2021/8</a></li><li class="archive-item"><a href="/2021">2021</a></li><li class="archive-item"><a href="/2020/8">2020/8</a></li><li class="archive-item"><a href="/2020/5">2020/5</a></li><li class="archive-item"><a href="/2020/4">2020/4</a></li><li class="archive-item"><a href="/2020/3">2020/3</a></li><li class="archive-item"><a href="/2020/12">2020/12</a></li><li class="archive-item"><a href="/2020">2020</a></li><li class="archive-item"><a href="/2019/6">2019/6</a></li><li class="archive-item"><a href="/2019/11">2019/11</a></li><li class="archive-item"><a href="/2019/10">2019/10</a></li><li class="archive-item"><a href="/2019">2019</a></li><li class="archive-item"><a href="/2018/7">2018/7</a></li><li class="archive-item"><a href="/2018/6">2018/6</a></li><li class="archive-item"><a href="/2018/12">2018/12</a></li><li class="archive-item"><a href="/2018/11">2018/11</a></li><li class="archive-item"><a href="/2018">2018</a></li><li class="archive-item"><a href="/2016/4">2016/4</a></li><li class="archive-item"><a href="/2016">2016</a></li>
+    <li class="archive-item"><a href="/2024/3">2024/3</a></li><li class="archive-item"><a href="/2024/3">2024/3</a></li><li class="archive-item"><a href="/2024/11">2024/11</a></li><li class="archive-item"><a href="/2024/11">2024/11</a></li><li class="archive-item"><a href="/2024">2024</a></li><li class="archive-item"><a href="/2024">2024</a></li><li class="archive-item"><a href="/2023/11">2023/11</a></li><li class="archive-item"><a href="/2023/11">2023/11</a></li><li class="archive-item"><a href="/2023/10">2023/10</a></li><li class="archive-item"><a href="/2023/10">2023/10</a></li><li class="archive-item"><a href="/2023">2023</a></li><li class="archive-item"><a href="/2023">2023</a></li><li class="archive-item"><a href="/2022/8">2022/8</a></li><li class="archive-item"><a href="/2022/8">2022/8</a></li><li class="archive-item"><a href="/2022/2">2022/2</a></li><li class="archive-item"><a href="/2022/2">2022/2</a></li><li class="archive-item"><a href="/2022">2022</a></li><li class="archive-item"><a href="/2022">2022</a></li><li class="archive-item"><a href="/2021/8">2021/8</a></li><li class="archive-item"><a href="/2021/8">2021/8</a></li><li class="archive-item"><a href="/2021">2021</a></li><li class="archive-item"><a href="/2021">2021</a></li><li class="archive-item"><a href="/2020/8">2020/8</a></li><li class="archive-item"><a href="/2020/8">2020/8</a></li><li class="archive-item"><a href="/2020/5">2020/5</a></li><li class="archive-item"><a href="/2020/5">2020/5</a></li><li class="archive-item"><a href="/2020/4">2020/4</a></li><li class="archive-item"><a href="/2020/4">2020/4</a></li><li class="archive-item"><a href="/2020/3">2020/3</a></li><li class="archive-item"><a href="/2020/3">2020/3</a></li><li class="archive-item"><a href="/2020/12">2020/12</a></li><li class="archive-item"><a href="/2020/12">2020/12</a></li><li class="archive-item"><a href="/2020">2020</a></li><li class="archive-item"><a href="/2020">2020</a></li><li class="archive-item"><a href="/2019/6">2019/6</a></li><li class="archive-item"><a href="/2019/6">2019/6</a></li><li class="archive-item"><a href="/2019/11">2019/11</a></li><li class="archive-item"><a href="/2019/11">2019/11</a></li><li class="archive-item"><a href="/2019/10">2019/10</a></li><li class="archive-item"><a href="/2019/10">2019/10</a></li><li class="archive-item"><a href="/2019">2019</a></li><li class="archive-item"><a href="/2019">2019</a></li><li class="archive-item"><a href="/2018/7">2018/7</a></li><li class="archive-item"><a href="/2018/7">2018/7</a></li><li class="archive-item"><a href="/2018/6">2018/6</a></li><li class="archive-item"><a href="/2018/6">2018/6</a></li><li class="archive-item"><a href="/2018/12">2018/12</a></li><li class="archive-item"><a href="/2018/12">2018/12</a></li><li class="archive-item"><a href="/2018/11">2018/11</a></li><li class="archive-item"><a href="/2018/11">2018/11</a></li><li class="archive-item"><a href="/2018">2018</a></li><li class="archive-item"><a href="/2018">2018</a></li><li class="archive-item"><a href="/2016/4">2016/4</a></li><li class="archive-item"><a href="/2016/4">2016/4</a></li><li class="archive-item"><a href="/2016">2016</a></li><li class="archive-item"><a href="/2016">2016</a></li>
   </ul>
+
+  <div class="tag-list sidebar-block" id="tags-list">
+    
+      <a href="/tag/PowerShell/index.html" class="tag-item">PowerShell (1)</a>
+    
+  </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
