@@ -1,213 +1,263 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="dark" lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tags - 66ws</title>
-    <link rel="stylesheet" href="/static/css/global.css">
-    <link rel="stylesheet" href="/static/css/blog.css">
-    <link rel="stylesheet" href="/static/css/category.css" />
-    <link rel="stylesheet" href="/static/css/pagination.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tags - 66ws</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "primary-fixed": "#79ff5b",
+          "on-primary": "#053900",
+          "primary-container": "#39ff14",
+          "surface": "#131314",
+          "surface-dim": "#131314",
+          "surface-bright": "#3a393a",
+          "surface-container-lowest": "#0e0e0f",
+          "surface-container-low": "#1c1b1c",
+          "surface-container": "#201f20",
+          "surface-container-high": "#2a2a2b",
+          "surface-container-highest": "#353436",
+          "on-surface": "#e5e2e3",
+          "on-surface-variant": "#baccb0",
+          "background": "#131314",
+          "on-background": "#e5e2e3",
+          "outline": "#85967c",
+          "outline-variant": "#3c4b35",
+          "surface-variant": "#353436",
+          "on-primary-container": "#107100",
+          "on-primary-fixed": "#022100",
+          "on-primary-fixed-variant": "#095300",
+          "primary-fixed-dim": "#2ae500",
+          "error": "#ffb4ab",
+          "on-error": "#690005",
+          "error-container": "#93000a",
+          "on-error-container": "#ffdad6",
+          "secondary": "#c8c6c7",
+          "on-secondary": "#303031",
+          "secondary-container": "#49494a",
+          "on-secondary-container": "#bab8b9",
+          "on-secondary-fixed": "#1b1b1c",
+          "on-secondary-fixed-variant": "#474647",
+          "tertiary": "#fbf9fb",
+          "on-tertiary": "#303032",
+          "tertiary-container": "#dfdcdf",
+          "on-tertiary-container": "#616163",
+          "tertiary-fixed": "#e4e2e4",
+          "tertiary-fixed-dim": "#c8c6c8",
+          "on-tertiary-fixed": "#1b1b1d",
+          "on-tertiary-fixed-variant": "#474649",
+          "secondary-fixed": "#e5e2e3",
+          "secondary-fixed-dim": "#c8c6c7",
+          "inverse-primary": "#106e00",
+          "inverse-surface": "#e5e2e3",
+          "inverse-on-surface": "#313031",
+          "surface-tint": "#2ae500",
+          "primary": "#efffe3"
+        },
+        spacing: {
+          "unit": "4px",
+          "gutter": "24px",
+          "margin-desktop": "64px",
+          "margin-mobile": "16px",
+          "max-width": "1100px"
+        },
+        fontFamily: {
+          "label-md": ["JetBrains Mono"],
+          "headline-md": ["JetBrains Mono"],
+          "code-sm": ["JetBrains Mono"],
+          "headline-lg": ["JetBrains Mono"],
+          "headline-lg-mobile": ["JetBrains Mono"],
+          "body-lg": ["Inter"],
+          "body-md": ["Inter"]
+        },
+        fontSize: {
+          "label-md": ["14px", { lineHeight: "1.0", fontWeight: "500" }],
+          "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+          "code-sm": ["13px", { lineHeight: "1.5", fontWeight: "400" }],
+          "headline-lg": ["40px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "700" }],
+          "headline-lg-mobile": ["28px", { lineHeight: "1.2", fontWeight: "700" }],
+          "body-lg": ["18px", { lineHeight: "1.7", fontWeight: "400" }],
+          "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }]
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  body {
+    background-color: #131314;
+    background-image: radial-gradient(circle, rgba(121, 255, 91, 0.05) 1px, transparent 1px);
+    background-size: 32px 32px;
+    scroll-behavior: smooth;
+  }
+  .scanline {
+    width: 100%;
+    height: 2px;
+    background: rgba(121, 255, 91, 0.08);
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+    pointer-events: none;
+    animation: scanline 8s linear infinite;
+  }
+  @keyframes scanline {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(100vh); }
+  }
+  .cursor-blink {
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: #131314; }
+  ::-webkit-scrollbar-thumb { background: #3c4b35; }
+  ::-webkit-scrollbar-thumb:hover { background: #79ff5b; }
+  .terminal-cursor::after {
+    content: "_";
+    animation: blink 1s step-end infinite;
+    color: #39ff14;
+  }
+  .code-block-header::before {
+    content: "● ● ●";
+    letter-spacing: 4px;
+    color: #49494a;
+    font-size: 10px;
+    margin-right: 12px;
+  }
+  .material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    vertical-align: middle;
+  }
+  article a, .post-content a, .blog-item a {
+    color: #79ff5b;
+    text-decoration: underline;
+    text-decoration-color: rgba(121, 255, 91, 0.3);
+    text-underline-offset: 3px;
+    transition: all 0.15s ease;
+  }
+  article a:hover, .post-content a:hover, .blog-item a:hover {
+    color: #39ff14;
+    text-decoration-color: #39ff14;
+  }
+</style>
+
+<script>
+  function initTerminalStats() {
+    var yr = new Date().getFullYear() % 100;
+    var cpu = document.getElementById('cpu-load');
+    if (cpu) {
+      cpu.textContent = yr + '%';
+      var bar = document.getElementById('cpu-load-bar');
+      if (bar) bar.style.width = yr + '%';
+    }
+    var origin = new Date('2016-04-23T16:33:45');
+    var now = new Date();
+    var days = Math.floor((now - origin) / 86400000);
+    var ud = document.getElementById('uptime-days');
+    if (ud) ud.textContent = days;
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTerminalStats);
+  } else {
+    initTerminalStats();
+  }
+</script>
+
 </head>
-<body>
-    <div class="header">
-  <h1>66ws</h1>
-</div>
-<div class="nav">
-  <a href="/">Index</a>
-  <a href="#">About</a>
-</div>
-    <div class="container">
-        <h1>Tags</h1>
-        <div class="tag-list">
-            
-                
-            
-        </div>
+<body class="bg-background text-on-background font-body-md antialiased selection:bg-primary-fixed selection:text-on-primary">
+<div class="scanline"></div>
+
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-desktop py-4 bg-background border-b border-outline-variant">
+  <div class="flex items-center gap-2">
+    <span class="font-headline-md text-headline-md font-bold text-primary-fixed tracking-tighter">ROOT@USER:~$</span>
+    <span class="w-2 h-6 bg-primary-fixed cursor-blink"></span>
+  </div>
+  <nav class="hidden md:flex gap-8">
+    <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary-fixed transition-colors duration-150" href="/">Index</a>
+    <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary-fixed transition-colors duration-150" href="/tags.html">Tags</a>
+    <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary-fixed transition-colors duration-150" href="/2016/4/ReadMeFirst.html">About</a>
+  </nav>
+  <div class="flex items-center gap-4">
+    <span class="material-symbols-outlined text-primary-fixed cursor-pointer">terminal</span>
+    <span class="material-symbols-outlined text-on-surface-variant hover:text-primary-fixed cursor-pointer">settings</span>
+  </div>
+</header>
+
+
+<main class="min-h-screen pt-32 pb-24 px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto">
+  <section class="mb-12 border-l-2 border-primary-fixed pl-6">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="text-primary-fixed font-code-sm text-code-sm">SYSTEM_EXPLORER v2.0.4</span>
     </div>
-    <div class="category-item" style="width: 11rem;">
-  <div class="tab-header">
-    <span class="tab-title active" data-tab="category">Category</span>
-    <span class="separator">/</span>
-    <span class="tab-title" data-tab="archives">Archives</span>
-    <span class="separator">/</span>
-    <span class="tab-title" data-tab="tags">Tags</span>
+    <h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface uppercase tracking-tight">
+      Tags<span class="inline-block w-[1ch] border-r-4 border-primary-fixed cursor-blink ml-2">&nbsp;</span>
+    </h1>
+    <p class="font-body-md text-body-md text-on-surface-variant mt-4 max-w-2xl">
+      Index of metadata classifiers. Filtered by frequency and alphabetical weight.
+      Use these identifiers to traverse the documentation archives.
+    </p>
+  </section>
+
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-0 border border-outline-variant bg-surface-container-lowest">
+    <aside class="md:col-span-3 border-r border-outline-variant p-gutter">
+      <div class="mb-8">
+        <h3 class="font-label-md text-label-md text-primary-fixed mb-4 uppercase">Statistics</h3>
+        <ul class="space-y-4 font-code-sm text-code-sm">
+          <li class="flex justify-between border-b border-outline-variant pb-2">
+            <span class="text-on-surface-variant">TOTAL_TAGS</span>
+            <span class="text-primary-fixed">01</span>
+          </li>
+          <li class="flex justify-between border-b border-outline-variant pb-2">
+            <span class="text-on-surface-variant">TOTAL_POSTS</span>
+            <span class="text-primary-fixed">--</span>
+          </li>
+          <li class="flex justify-between border-b border-outline-variant pb-2">
+            <span class="text-on-surface-variant">ACTIVE_TAGS</span>
+            <span class="text-primary-fixed">ONLINE</span>
+          </li>
+        </ul>
+      </div>
+      <div class="p-4 bg-surface-container-low border border-outline-variant">
+        <p class="font-code-sm text-code-sm text-primary-fixed leading-relaxed">
+          [!] SYSTEM MESSAGE: Select a tag to initiate a query of the local data lake.
+        </p>
+      </div>
+    </aside>
+
+    <div class="md:col-span-9 p-gutter">
+      <div class="flex flex-wrap gap-4 items-start content-start">
+        
+        <a href="/tag/PowerShell/index.html" class="group inline-flex items-center gap-2 px-6 py-3 border border-outline-variant hover:border-primary-fixed transition-all duration-200">
+          <span class="font-label-md text-label-md text-on-surface-variant group-hover:text-primary-fixed uppercase">PowerShell</span>
+          <span class="font-code-sm text-code-sm text-outline opacity-40">(1)</span>
+        </a>
+        
+      </div>
+    </div>
   </div>
-  
-  <style>
-    .tab-header {
-      margin: 20px 0 10px 0;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .tab-title {
-      cursor: pointer;
-      color: #666;
-    }
-    .tab-title.active {
-      color: #000;
-      font-weight: bold;
-    }
-    .separator {
-      color: #666;
-    }
-    .archive-list::after{
-      clear: both;
-    }
-    .archive-item {
-      min-width: 6.0rem;
-      max-width: 7.0rem;
-      display: inline-block;
-      text-align: center;
-    }
-    .sidebar-block {
-      width: 15.5rem;
-      padding-left: 15px !important;
-      padding: 5px 15px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      display: none;
-    }
-    .sidebar-block.active {
-      display: block;
-    }
-    .sidebar-block.tag-list.active {
-      display: flex;
-    }
-    .tag-list {
-      flex-wrap: wrap;
-      gap: 5px;
-    }
-    .tag-item {
-      background-color: #f0f0f0;
-      padding: 3px 8px;
-      border-radius: 3px;
-      text-decoration: none;
-      color: #333;
-    }
-  </style>
+</main>
 
-  <ul class="sidebar-block active" id="category-list">
-    
-    
-    <li style="margin-left: 0px">
-      <a href="/categories/LintCode/1.html">
-        LintCode (4)
-      </a>
-    </li>
-    
-    
-    <li style="margin-left: 0px">
-      <a href="/categories/uncategorized/1.html">
-        uncategorized (2)
-      </a>
-    </li>
-    
-    
-    <li style="margin-left: 0px">
-      <a href="/categories/Program/1.html">
-        Program (14)
-      </a>
-    </li>
-    
-    
-    <li style="margin-left: 20px">
-      <a href="/categories/Program-Python3/1.html">
-        Python3 (2)
-      </a>
-    </li>
-    
-    
-    <li style="margin-left: 20px">
-      <a href="/categories/Program-Golang/1.html">
-        Golang (3)
-      </a>
-    </li>
-    
-    
-    <li style="margin-left: 20px">
-      <a href="/categories/Program-Blog/1.html">
-        Blog (1)
-      </a>
-    </li>
-    
-    
-    <li style="margin-left: 20px">
-      <a href="/categories/Program-Backend/1.html">
-        Backend (1)
-      </a>
-    </li>
-    
-    
-    <li style="margin-left: 20px">
-      <a href="/categories/Program-Design Pattern/1.html">
-        Design Pattern (4)
-      </a>
-    </li>
-    
-    
-    <li style="margin-left: 20px">
-      <a href="/categories/Program-OpenSSL/1.html">
-        OpenSSL (3)
-      </a>
-    </li>
-    
-    
-    <li style="margin-left: 0px">
-      <a href="/categories/Mabinogi/1.html">
-        Mabinogi (1)
-      </a>
-    </li>
-    
-    
-    <li style="margin-left: 0px">
-      <a href="/categories/Problems&Solution/1.html">
-        Problems&Solution (1)
-      </a>
-    </li>
-    
-    
-    <li style="margin-left: 0px">
-      <a href="/categories/Games/1.html">
-        Games (1)
-      </a>
-    </li>
-    
-  </ul>
-
-  <div class="archive-list sidebar-block" id="archives-list">
-    
-    
-    
+<footer class="w-full py-gutter px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-4 opacity-80 border-t border-outline-variant mt-12">
+  <div class="flex items-center gap-4">
+    <span class="font-label-md text-label-md text-primary-fixed">DEV_CORE@SYSTEM:~$</span>
+    <span class="font-code-sm text-code-sm text-on-surface-variant">&copy; 2024 DEV_CORE [TERMINAL_MODE_ENABLED]</span>
   </div>
-
-  <div class="tag-list sidebar-block" id="tags-list">
-    
-      <a href="/tag/PowerShell/index.html" class="tag-item">PowerShell (1)</a>
-    
+  <div class="flex gap-6">
+    <a class="font-code-sm text-code-sm text-on-surface-variant hover:text-primary-fixed transition-colors duration-150" href="#">RSS</a>
+    <a class="font-code-sm text-code-sm text-on-surface-variant hover:text-primary-fixed transition-colors duration-150" href="#">GITHUB</a>
+    <a class="font-code-sm text-code-sm text-on-surface-variant hover:text-primary-fixed transition-colors duration-150" href="#">SOURCE</a>
   </div>
+</footer>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const tabs = document.querySelectorAll('.tab-title');
-      
-      tabs.forEach(tab => {
-        tab.addEventListener('click', function() {
-          // Remove active class from all tabs and blocks
-          tabs.forEach(t => t.classList.remove('active'));
-          document.querySelectorAll('.sidebar-block').forEach(block => {
-            block.classList.remove('active');
-          });
-          
-          // Add active class to clicked tab and corresponding block
-          this.classList.add('active');
-          const tabId = this.getAttribute('data-tab');
-          document.getElementById(`${tabId}-list`).classList.add('active');
-        });
-      });
-    });
-  </script>
-</div>
 </body>
 </html>

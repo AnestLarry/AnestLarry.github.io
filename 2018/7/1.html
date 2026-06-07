@@ -1,37 +1,554 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-
+<html class="dark" lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>66ws</title>
-  <link rel="stylesheet" href="/static/css/global.css" />
-  <link rel="stylesheet" href="/static/css/blog.css" />
-  <link rel="stylesheet" href="/static/css/category.css" />
-  <link rel="stylesheet" href="/static/css/pagination.css" />
+  <title>66ws - Archives</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "primary-fixed": "#79ff5b",
+          "on-primary": "#053900",
+          "primary-container": "#39ff14",
+          "surface": "#131314",
+          "surface-dim": "#131314",
+          "surface-bright": "#3a393a",
+          "surface-container-lowest": "#0e0e0f",
+          "surface-container-low": "#1c1b1c",
+          "surface-container": "#201f20",
+          "surface-container-high": "#2a2a2b",
+          "surface-container-highest": "#353436",
+          "on-surface": "#e5e2e3",
+          "on-surface-variant": "#baccb0",
+          "background": "#131314",
+          "on-background": "#e5e2e3",
+          "outline": "#85967c",
+          "outline-variant": "#3c4b35",
+          "surface-variant": "#353436",
+          "on-primary-container": "#107100",
+          "on-primary-fixed": "#022100",
+          "on-primary-fixed-variant": "#095300",
+          "primary-fixed-dim": "#2ae500",
+          "error": "#ffb4ab",
+          "on-error": "#690005",
+          "error-container": "#93000a",
+          "on-error-container": "#ffdad6",
+          "secondary": "#c8c6c7",
+          "on-secondary": "#303031",
+          "secondary-container": "#49494a",
+          "on-secondary-container": "#bab8b9",
+          "on-secondary-fixed": "#1b1b1c",
+          "on-secondary-fixed-variant": "#474647",
+          "tertiary": "#fbf9fb",
+          "on-tertiary": "#303032",
+          "tertiary-container": "#dfdcdf",
+          "on-tertiary-container": "#616163",
+          "tertiary-fixed": "#e4e2e4",
+          "tertiary-fixed-dim": "#c8c6c8",
+          "on-tertiary-fixed": "#1b1b1d",
+          "on-tertiary-fixed-variant": "#474649",
+          "secondary-fixed": "#e5e2e3",
+          "secondary-fixed-dim": "#c8c6c7",
+          "inverse-primary": "#106e00",
+          "inverse-surface": "#e5e2e3",
+          "inverse-on-surface": "#313031",
+          "surface-tint": "#2ae500",
+          "primary": "#efffe3"
+        },
+        spacing: {
+          "unit": "4px",
+          "gutter": "24px",
+          "margin-desktop": "64px",
+          "margin-mobile": "16px",
+          "max-width": "1100px"
+        },
+        fontFamily: {
+          "label-md": ["JetBrains Mono"],
+          "headline-md": ["JetBrains Mono"],
+          "code-sm": ["JetBrains Mono"],
+          "headline-lg": ["JetBrains Mono"],
+          "headline-lg-mobile": ["JetBrains Mono"],
+          "body-lg": ["Inter"],
+          "body-md": ["Inter"]
+        },
+        fontSize: {
+          "label-md": ["14px", { lineHeight: "1.0", fontWeight: "500" }],
+          "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+          "code-sm": ["13px", { lineHeight: "1.5", fontWeight: "400" }],
+          "headline-lg": ["40px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "700" }],
+          "headline-lg-mobile": ["28px", { lineHeight: "1.2", fontWeight: "700" }],
+          "body-lg": ["18px", { lineHeight: "1.7", fontWeight: "400" }],
+          "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }]
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  body {
+    background-color: #131314;
+    background-image: radial-gradient(circle, rgba(121, 255, 91, 0.05) 1px, transparent 1px);
+    background-size: 32px 32px;
+    scroll-behavior: smooth;
+  }
+  .scanline {
+    width: 100%;
+    height: 2px;
+    background: rgba(121, 255, 91, 0.08);
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+    pointer-events: none;
+    animation: scanline 8s linear infinite;
+  }
+  @keyframes scanline {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(100vh); }
+  }
+  .cursor-blink {
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: #131314; }
+  ::-webkit-scrollbar-thumb { background: #3c4b35; }
+  ::-webkit-scrollbar-thumb:hover { background: #79ff5b; }
+  .terminal-cursor::after {
+    content: "_";
+    animation: blink 1s step-end infinite;
+    color: #39ff14;
+  }
+  .code-block-header::before {
+    content: "● ● ●";
+    letter-spacing: 4px;
+    color: #49494a;
+    font-size: 10px;
+    margin-right: 12px;
+  }
+  .material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    vertical-align: middle;
+  }
+  article a, .post-content a, .blog-item a {
+    color: #79ff5b;
+    text-decoration: underline;
+    text-decoration-color: rgba(121, 255, 91, 0.3);
+    text-underline-offset: 3px;
+    transition: all 0.15s ease;
+  }
+  article a:hover, .post-content a:hover, .blog-item a:hover {
+    color: #39ff14;
+    text-decoration-color: #39ff14;
+  }
+</style>
+
+<script>
+  function initTerminalStats() {
+    var yr = new Date().getFullYear() % 100;
+    var cpu = document.getElementById('cpu-load');
+    if (cpu) {
+      cpu.textContent = yr + '%';
+      var bar = document.getElementById('cpu-load-bar');
+      if (bar) bar.style.width = yr + '%';
+    }
+    var origin = new Date('2016-04-23T16:33:45');
+    var now = new Date();
+    var days = Math.floor((now - origin) / 86400000);
+    var ud = document.getElementById('uptime-days');
+    if (ud) ud.textContent = days;
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTerminalStats);
+  } else {
+    initTerminalStats();
+  }
+</script>
+
 </head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden selection:bg-primary-fixed selection:text-on-primary">
+<div class="scanline"></div>
 
-<body>
-  <div class="header">
-  <h1>66ws</h1>
-</div>
-<div class="nav">
-  <a href="/">Index</a>
-  <a href="#">About</a>
-</div>
-  <!-- 主体内容 -->
-  <div class="container">
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-desktop py-4 bg-background border-b border-outline-variant">
+  <div class="flex items-center gap-2">
+    <span class="font-headline-md text-headline-md font-bold text-primary-fixed tracking-tighter">ROOT@USER:~$</span>
+    <span class="w-2 h-6 bg-primary-fixed cursor-blink"></span>
+  </div>
+  <nav class="hidden md:flex gap-8">
+    <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary-fixed transition-colors duration-150" href="/">Index</a>
+    <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary-fixed transition-colors duration-150" href="/tags.html">Tags</a>
+    <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary-fixed transition-colors duration-150" href="/2016/4/ReadMeFirst.html">About</a>
+  </nav>
+  <div class="flex items-center gap-4">
+    <span class="material-symbols-outlined text-primary-fixed cursor-pointer">terminal</span>
+    <span class="material-symbols-outlined text-on-surface-variant hover:text-primary-fixed cursor-pointer">settings</span>
+  </div>
+</header>
 
-    <!-- 左侧博客列表 -->
-    <div class="blog-list">
-      
-      <div class="blog-item">
-        <a href="/2018/7/14. 二分查找.html">
-          <h3 class="blog-item-title">14. 二分查找</h3>
-          <h4 class="blog-item-datetime">2018-07-24 17:40:33Z</h4>
+
+<main class="mt-20 min-h-screen max-w-max-width mx-auto flex flex-col md:flex-row border-x border-outline-variant">
+  <aside class="w-full md:w-1/4 border-b md:border-b-0 md:border-r border-outline-variant p-4">
+    <aside class="space-y-6">
+  <div class="border border-outline-variant bg-surface-container-low">
+    <div class="flex border-b border-outline-variant">
+      <button class="flex-1 py-2 text-label-md font-label-md text-primary-fixed bg-surface-container-high border-r border-outline-variant" id="cat-tab" onclick="switchSidebarTab('category')">CATEGORY</button>
+      <button class="flex-1 py-2 text-label-md font-label-md text-on-surface-variant hover:bg-surface-container" id="arc-tab" onclick="switchSidebarTab('archive')">ARCHIVE</button>
+    </div>
+    <div class="p-2 max-h-[500px] overflow-y-auto" id="sidebar-content">
+      <div class="space-y-1" id="category-list">
+        
+        <a href="/categories/LintCode/1.html" class="flex justify-between items-center group cursor-pointer p-1 hover:bg-primary-fixed hover:text-on-primary">
+          <span class="font-code-sm text-code-sm">[LintCode]</span>
+          <span class="font-code-sm text-code-sm">(4)</span>
         </a>
-        <hr>
-        <p>
+        
+        <a href="/categories/uncategorized/1.html" class="flex justify-between items-center group cursor-pointer p-1 hover:bg-primary-fixed hover:text-on-primary">
+          <span class="font-code-sm text-code-sm">[uncategorized]</span>
+          <span class="font-code-sm text-code-sm">(2)</span>
+        </a>
+        
+        <a href="/categories/Program/1.html" class="flex justify-between items-center group cursor-pointer p-1 hover:bg-primary-fixed hover:text-on-primary">
+          <span class="font-code-sm text-code-sm">[Program]</span>
+          <span class="font-code-sm text-code-sm">(14)</span>
+        </a>
+        
+        <a href="/categories/Program-Python3/1.html" class="flex justify-between items-center group cursor-pointer p-1 hover:bg-primary-fixed hover:text-on-primary">
+          <span class="font-code-sm text-code-sm">[Python3]</span>
+          <span class="font-code-sm text-code-sm">(2)</span>
+        </a>
+        
+        <a href="/categories/Program-Golang/1.html" class="flex justify-between items-center group cursor-pointer p-1 hover:bg-primary-fixed hover:text-on-primary">
+          <span class="font-code-sm text-code-sm">[Golang]</span>
+          <span class="font-code-sm text-code-sm">(3)</span>
+        </a>
+        
+        <a href="/categories/Program-Blog/1.html" class="flex justify-between items-center group cursor-pointer p-1 hover:bg-primary-fixed hover:text-on-primary">
+          <span class="font-code-sm text-code-sm">[Blog]</span>
+          <span class="font-code-sm text-code-sm">(1)</span>
+        </a>
+        
+        <a href="/categories/Program-Backend/1.html" class="flex justify-between items-center group cursor-pointer p-1 hover:bg-primary-fixed hover:text-on-primary">
+          <span class="font-code-sm text-code-sm">[Backend]</span>
+          <span class="font-code-sm text-code-sm">(1)</span>
+        </a>
+        
+        <a href="/categories/Program-Design Pattern/1.html" class="flex justify-between items-center group cursor-pointer p-1 hover:bg-primary-fixed hover:text-on-primary">
+          <span class="font-code-sm text-code-sm">[Design Pattern]</span>
+          <span class="font-code-sm text-code-sm">(4)</span>
+        </a>
+        
+        <a href="/categories/Program-OpenSSL/1.html" class="flex justify-between items-center group cursor-pointer p-1 hover:bg-primary-fixed hover:text-on-primary">
+          <span class="font-code-sm text-code-sm">[OpenSSL]</span>
+          <span class="font-code-sm text-code-sm">(3)</span>
+        </a>
+        
+        <a href="/categories/Mabinogi/1.html" class="flex justify-between items-center group cursor-pointer p-1 hover:bg-primary-fixed hover:text-on-primary">
+          <span class="font-code-sm text-code-sm">[Mabinogi]</span>
+          <span class="font-code-sm text-code-sm">(1)</span>
+        </a>
+        
+        <a href="/categories/Problems&Solution/1.html" class="flex justify-between items-center group cursor-pointer p-1 hover:bg-primary-fixed hover:text-on-primary">
+          <span class="font-code-sm text-code-sm">[Problems&Solution]</span>
+          <span class="font-code-sm text-code-sm">(1)</span>
+        </a>
+        
+        <a href="/categories/Games/1.html" class="flex justify-between items-center group cursor-pointer p-1 hover:bg-primary-fixed hover:text-on-primary">
+          <span class="font-code-sm text-code-sm">[Games]</span>
+          <span class="font-code-sm text-code-sm">(1)</span>
+        </a>
+        
+      </div>
+      <div class="hidden space-y-2" id="archive-list">
+        
+        
+          
+          
+            
+            <div class="year-group">
+              <a href="/2024/1.html" class="block font-code-sm text-code-sm text-primary-fixed px-1 pt-1 pb-1 hover:bg-primary-fixed hover:text-on-primary">2024</a>
+              
+          
+          
+          <a href="/2024/3/1.html" class="block pl-4 p-1 hover:bg-primary-fixed hover:text-on-primary font-code-sm text-code-sm text-on-surface-variant">3</a>
+          
+        
+          
+          
+          
+          <a href="/2024/11/1.html" class="block pl-4 p-1 hover:bg-primary-fixed hover:text-on-primary font-code-sm text-code-sm text-on-surface-variant">11</a>
+          
+        
+          
+          
+          
+        
+          
+          
+            
+              </div>
+            
+            <div class="year-group">
+              <a href="/2023/1.html" class="block font-code-sm text-code-sm text-primary-fixed px-1 pt-1 pb-1 hover:bg-primary-fixed hover:text-on-primary">2023</a>
+              
+          
+          
+          <a href="/2023/11/1.html" class="block pl-4 p-1 hover:bg-primary-fixed hover:text-on-primary font-code-sm text-code-sm text-on-surface-variant">11</a>
+          
+        
+          
+          
+          
+          <a href="/2023/10/1.html" class="block pl-4 p-1 hover:bg-primary-fixed hover:text-on-primary font-code-sm text-code-sm text-on-surface-variant">10</a>
+          
+        
+          
+          
+          
+        
+          
+          
+            
+              </div>
+            
+            <div class="year-group">
+              <a href="/2022/1.html" class="block font-code-sm text-code-sm text-primary-fixed px-1 pt-1 pb-1 hover:bg-primary-fixed hover:text-on-primary">2022</a>
+              
+          
+          
+          <a href="/2022/8/1.html" class="block pl-4 p-1 hover:bg-primary-fixed hover:text-on-primary font-code-sm text-code-sm text-on-surface-variant">8</a>
+          
+        
+          
+          
+          
+          <a href="/2022/2/1.html" class="block pl-4 p-1 hover:bg-primary-fixed hover:text-on-primary font-code-sm text-code-sm text-on-surface-variant">2</a>
+          
+        
+          
+          
+          
+        
+          
+          
+            
+              </div>
+            
+            <div class="year-group">
+              <a href="/2021/1.html" class="block font-code-sm text-code-sm text-primary-fixed px-1 pt-1 pb-1 hover:bg-primary-fixed hover:text-on-primary">2021</a>
+              
+          
+          
+          <a href="/2021/8/1.html" class="block pl-4 p-1 hover:bg-primary-fixed hover:text-on-primary font-code-sm text-code-sm text-on-surface-variant">8</a>
+          
+        
+          
+          
+          
+        
+          
+          
+            
+              </div>
+            
+            <div class="year-group">
+              <a href="/2020/1.html" class="block font-code-sm text-code-sm text-primary-fixed px-1 pt-1 pb-1 hover:bg-primary-fixed hover:text-on-primary">2020</a>
+              
+          
+          
+          <a href="/2020/8/1.html" class="block pl-4 p-1 hover:bg-primary-fixed hover:text-on-primary font-code-sm text-code-sm text-on-surface-variant">8</a>
+          
+        
+          
+          
+          
+          <a href="/2020/5/1.html" class="block pl-4 p-1 hover:bg-primary-fixed hover:text-on-primary font-code-sm text-code-sm text-on-surface-variant">5</a>
+          
+        
+          
+          
+          
+          <a href="/2020/4/1.html" class="block pl-4 p-1 hover:bg-primary-fixed hover:text-on-primary font-code-sm text-code-sm text-on-surface-variant">4</a>
+          
+        
+          
+          
+          
+          <a href="/2020/3/1.html" class="block pl-4 p-1 hover:bg-primary-fixed hover:text-on-primary font-code-sm text-code-sm text-on-surface-variant">3</a>
+          
+        
+          
+          
+          
+          <a href="/2020/12/1.html" class="block pl-4 p-1 hover:bg-primary-fixed hover:text-on-primary font-code-sm text-code-sm text-on-surface-variant">12</a>
+          
+        
+          
+          
+          
+        
+          
+          
+            
+              </div>
+            
+            <div class="year-group">
+              <a href="/2019/1.html" class="block font-code-sm text-code-sm text-primary-fixed px-1 pt-1 pb-1 hover:bg-primary-fixed hover:text-on-primary">2019</a>
+              
+          
+          
+          <a href="/2019/6/1.html" class="block pl-4 p-1 hover:bg-primary-fixed hover:text-on-primary font-code-sm text-code-sm text-on-surface-variant">6</a>
+          
+        
+          
+          
+          
+          <a href="/2019/11/1.html" class="block pl-4 p-1 hover:bg-primary-fixed hover:text-on-primary font-code-sm text-code-sm text-on-surface-variant">11</a>
+          
+        
+          
+          
+          
+          <a href="/2019/10/1.html" class="block pl-4 p-1 hover:bg-primary-fixed hover:text-on-primary font-code-sm text-code-sm text-on-surface-variant">10</a>
+          
+        
+          
+          
+          
+        
+          
+          
+            
+              </div>
+            
+            <div class="year-group">
+              <a href="/2018/1.html" class="block font-code-sm text-code-sm text-primary-fixed px-1 pt-1 pb-1 hover:bg-primary-fixed hover:text-on-primary">2018</a>
+              
+          
+          
+          <a href="/2018/7/1.html" class="block pl-4 p-1 hover:bg-primary-fixed hover:text-on-primary font-code-sm text-code-sm text-on-surface-variant">7</a>
+          
+        
+          
+          
+          
+          <a href="/2018/6/1.html" class="block pl-4 p-1 hover:bg-primary-fixed hover:text-on-primary font-code-sm text-code-sm text-on-surface-variant">6</a>
+          
+        
+          
+          
+          
+          <a href="/2018/12/1.html" class="block pl-4 p-1 hover:bg-primary-fixed hover:text-on-primary font-code-sm text-code-sm text-on-surface-variant">12</a>
+          
+        
+          
+          
+          
+          <a href="/2018/11/1.html" class="block pl-4 p-1 hover:bg-primary-fixed hover:text-on-primary font-code-sm text-code-sm text-on-surface-variant">11</a>
+          
+        
+          
+          
+          
+        
+          
+          
+            
+              </div>
+            
+            <div class="year-group">
+              <a href="/2016/1.html" class="block font-code-sm text-code-sm text-primary-fixed px-1 pt-1 pb-1 hover:bg-primary-fixed hover:text-on-primary">2016</a>
+              
+          
+          
+          <a href="/2016/4/1.html" class="block pl-4 p-1 hover:bg-primary-fixed hover:text-on-primary font-code-sm text-code-sm text-on-surface-variant">4</a>
+          
+        
+          
+          
+          
+        
+        
+          </div>
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="space-y-4">
+    <h3 class="font-label-md text-label-md text-on-surface-variant flex items-center gap-2">
+      <span class="material-symbols-outlined text-code-sm">tag</span> TAGS
+    </h3>
+    <div class="flex flex-wrap gap-2">
+      
+        
+        <a href="/tag/PowerShell/index.html" class="px-2 py-1 border border-outline-variant text-code-sm font-code-sm hover:border-primary-fixed hover:text-primary-fixed transition-colors">#PowerShell</a>
+        
+      
+    </div>
+  </div>
+
+  <div class="p-4 border border-outline-variant bg-surface-container-lowest">
+    <div class="font-code-sm text-code-sm text-on-surface-variant mb-2">Uptime: <span id="uptime-days">--</span> days</div>
+    <div class="w-full bg-surface-container h-1 mb-4 overflow-hidden">
+      <div class="bg-primary-fixed h-full" style="width: 75%"></div>
+    </div>
+    <div class="font-code-sm text-code-sm text-primary-fixed flex items-center gap-2">
+      <span class="material-symbols-outlined text-[14px]">bolt</span> HIGH_VOLTAGE_CORE
+    </div>
+  </div>
+</aside>
+
+<script>
+  function switchSidebarTab(tab) {
+    const catBtn = document.getElementById('cat-tab');
+    const arcBtn = document.getElementById('arc-tab');
+    const catList = document.getElementById('category-list');
+    const arcList = document.getElementById('archive-list');
+    if (tab === 'category') {
+      catBtn.classList.add('text-primary-fixed', 'bg-surface-container-high');
+      catBtn.classList.remove('text-on-surface-variant');
+      arcBtn.classList.remove('text-primary-fixed', 'bg-surface-container-high');
+      arcBtn.classList.add('text-on-surface-variant');
+      catList.classList.remove('hidden');
+      arcList.classList.add('hidden');
+    } else {
+      arcBtn.classList.add('text-primary-fixed', 'bg-surface-container-high');
+      arcBtn.classList.remove('text-on-surface-variant');
+      catBtn.classList.remove('text-primary-fixed', 'bg-surface-container-high');
+      catBtn.classList.add('text-on-surface-variant');
+      arcList.classList.remove('hidden');
+      catList.classList.add('hidden');
+    }
+  }
+</script>
+
+  </aside>
+
+  <div class="w-full md:w-3/4 p-gutter space-y-8">
+    <div class="flex items-center gap-2 font-code-sm text-code-sm text-on-surface-variant opacity-60 mb-4">
+      <span class="text-primary-fixed">~/users/dev/blog/archives</span>
+    </div>
+
+    <div class="space-y-12">
+      
+      <article class="group relative">
+        <div class="flex flex-col md:flex-row md:items-baseline gap-4 mb-2">
+          <span class="font-code-sm text-code-sm text-on-surface-variant whitespace-nowrap opacity-60">2018-07-24</span>
+          <h2 class="font-headline-md text-headline-md text-primary-fixed hover:underline cursor-pointer transition-all">
+            <a href="/2018/7/14. 二分查找.html">14. 二分查找</a>
+          </h2>
+        </div>
+        <div class="pl-0 md:pl-28">
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed max-w-2xl">
 ### 描述
 
 给定一个排序的整数数组（升序）和一个要查找的整数`target`,用`O(logn)`的时间查找到target第一次出现的下标（从0开始）,如果target不存在于数组中,返回`-1`.
@@ -45,28 +562,44 @@
 如果数组中的整数个数超过了2^32,你的算法是否会出错?
 
 * * </p>
-      </div>
+          <div class="mt-4 flex gap-4">
+            <a href="/2018/7/14. 二分查找.html" class="font-label-md text-label-md text-primary-fixed flex items-center gap-1 hover:translate-x-1 transition-transform">
+              [READ_MORE] <span class="material-symbols-outlined text-[16px]">arrow_right_alt</span>
+            </a>
+          </div>
+        </div>
+      </article>
       
-      <div class="blog-item">
-        <a href="/2018/7/Get Response.html">
-          <h3 class="blog-item-title">Get Response</h3>
-          <h4 class="blog-item-datetime">2018-07-27 22:29:27Z</h4>
-        </a>
-        <hr>
-        <p>
+      <article class="group relative">
+        <div class="flex flex-col md:flex-row md:items-baseline gap-4 mb-2">
+          <span class="font-code-sm text-code-sm text-on-surface-variant whitespace-nowrap opacity-60">2018-07-27</span>
+          <h2 class="font-headline-md text-headline-md text-primary-fixed hover:underline cursor-pointer transition-all">
+            <a href="/2018/7/Get Response.html">Get Response</a>
+          </h2>
+        </div>
+        <div class="pl-0 md:pl-28">
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed max-w-2xl">
 最近下载的文件,需要User-Agent和Cookie,然后发现下载工具全部挂了……
 然后尝试了py的带header下载,但是必须整段下载完,但是这个文件上g了
 很显然这并不适合opener直接open
 要分段下载,首先的联想是socket,但是利用tcp实现http又是一大坑 接下来看了个 [py获取响应头](https://blog.csdn.net/zhaoyangjian724/arti</p>
-      </div>
+          <div class="mt-4 flex gap-4">
+            <a href="/2018/7/Get Response.html" class="font-label-md text-label-md text-primary-fixed flex items-center gap-1 hover:translate-x-1 transition-transform">
+              [READ_MORE] <span class="material-symbols-outlined text-[16px]">arrow_right_alt</span>
+            </a>
+          </div>
+        </div>
+      </article>
       
-      <div class="blog-item">
-        <a href="/2018/7/HTTP Request Method  Get and Post.html">
-          <h3 class="blog-item-title">HTTP Request Method | Get and Post</h3>
-          <h4 class="blog-item-datetime">2018-07-23 19:20:52Z</h4>
-        </a>
-        <hr>
-        <p>
+      <article class="group relative">
+        <div class="flex flex-col md:flex-row md:items-baseline gap-4 mb-2">
+          <span class="font-code-sm text-code-sm text-on-surface-variant whitespace-nowrap opacity-60">2018-07-23</span>
+          <h2 class="font-headline-md text-headline-md text-primary-fixed hover:underline cursor-pointer transition-all">
+            <a href="/2018/7/HTTP Request Method  Get and Post.html">HTTP Request Method | Get and Post</a>
+          </h2>
+        </div>
+        <div class="pl-0 md:pl-28">
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed max-w-2xl">
 HTTP(HyperText Transfer Protocol) 是一种能够获取如 HTML 这样的网络资源的 protocol(通讯协议)。
 它常用的两种方式Get和Post 然后来讲讲Get和Post
 * 推荐浏览器Google Chrome,Chromium 或 Firefox 
@@ -76,15 +609,23 @@ Method:
 *  Get 
 
 首先,你打开我这网站的首页,这就是属于Get,而Get方式是从指定的资</p>
-      </div>
+          <div class="mt-4 flex gap-4">
+            <a href="/2018/7/HTTP Request Method  Get and Post.html" class="font-label-md text-label-md text-primary-fixed flex items-center gap-1 hover:translate-x-1 transition-transform">
+              [READ_MORE] <span class="material-symbols-outlined text-[16px]">arrow_right_alt</span>
+            </a>
+          </div>
+        </div>
+      </article>
       
-      <div class="blog-item">
-        <a href="/2018/7/4. 丑数 II.html">
-          <h3 class="blog-item-title">4. 丑数 II</h3>
-          <h4 class="blog-item-datetime">2018-07-14 17:30:34Z</h4>
-        </a>
-        <hr>
-        <p>
+      <article class="group relative">
+        <div class="flex flex-col md:flex-row md:items-baseline gap-4 mb-2">
+          <span class="font-code-sm text-code-sm text-on-surface-variant whitespace-nowrap opacity-60">2018-07-14</span>
+          <h2 class="font-headline-md text-headline-md text-primary-fixed hover:underline cursor-pointer transition-all">
+            <a href="/2018/7/4. 丑数 II.html">4. 丑数 II</a>
+          </h2>
+        </div>
+        <div class="pl-0 md:pl-28">
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed max-w-2xl">
 ### 描述
 
 设计一个算法，找出只含素因子`2`，`3`，`5` 的第 _n_ 小的数。 符合条件的数如：`1, 2, 3, 4, 5, 6, 8, 9, 10, 12...`
@@ -104,15 +645,23 @@ Method:
 * * *
 
 找了很久都没明白丑数几个意思,</p>
-      </div>
+          <div class="mt-4 flex gap-4">
+            <a href="/2018/7/4. 丑数 II.html" class="font-label-md text-label-md text-primary-fixed flex items-center gap-1 hover:translate-x-1 transition-transform">
+              [READ_MORE] <span class="material-symbols-outlined text-[16px]">arrow_right_alt</span>
+            </a>
+          </div>
+        </div>
+      </article>
       
-      <div class="blog-item">
-        <a href="/2018/7/SQLite3.html">
-          <h3 class="blog-item-title">SQLite3</h3>
-          <h4 class="blog-item-datetime">2018-07-26 19:20:43Z</h4>
-        </a>
-        <hr>
-        <p>
+      <article class="group relative">
+        <div class="flex flex-col md:flex-row md:items-baseline gap-4 mb-2">
+          <span class="font-code-sm text-code-sm text-on-surface-variant whitespace-nowrap opacity-60">2018-07-26</span>
+          <h2 class="font-headline-md text-headline-md text-primary-fixed hover:underline cursor-pointer transition-all">
+            <a href="/2018/7/SQLite3.html">SQLite3</a>
+          </h2>
+        </div>
+        <div class="pl-0 md:pl-28">
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed max-w-2xl">
 sqlite3是一个很方便的数据库管理工具,但是常规使用依然建议使用MYSQL
 
 * * *
@@ -125,454 +674,50 @@ sqlite3是一个很方便的数据库管理工具,但是常规使用依然建议
 `.help` 帮助
 
 2</p>
-      </div>
+          <div class="mt-4 flex gap-4">
+            <a href="/2018/7/SQLite3.html" class="font-label-md text-label-md text-primary-fixed flex items-center gap-1 hover:translate-x-1 transition-transform">
+              [READ_MORE] <span class="material-symbols-outlined text-[16px]">arrow_right_alt</span>
+            </a>
+          </div>
+        </div>
+      </article>
       
-      <!-- 博客项 -->
     </div>
 
-    <!-- 右侧分类列表 -->
-    <div class="category-list">
-      <div class="category-item" style="width: 11rem;">
-  <div class="tab-header">
-    <span class="tab-title active" data-tab="category">Category</span>
-    <span class="separator">/</span>
-    <span class="tab-title" data-tab="archives">Archives</span>
-    <span class="separator">/</span>
-    <span class="tab-title" data-tab="tags">Tags</span>
+    <div class="flex justify-between items-center font-code-sm text-code-sm mt-4 pt-12 border-t border-outline-variant">
+  
+  <span class="px-4 py-2 border border-outline-variant text-outline opacity-40 cursor-not-allowed">[ PREV ]</span>
+  
+  <div class="flex gap-2">
+    
+      
+      <span class="px-3 py-2 bg-primary-fixed text-on-primary font-code-sm text-code-sm">01</span>
+      
+    
+      
+      <a href="./2.html" class="px-3 py-2 border border-outline-variant text-on-surface-variant hover:text-primary-fixed transition-colors">02</a>
+      
+    
   </div>
   
-  <style>
-    .tab-header {
-      margin: 20px 0 10px 0;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .tab-title {
-      cursor: pointer;
-      color: #666;
-    }
-    .tab-title.active {
-      color: #000;
-      font-weight: bold;
-    }
-    .separator {
-      color: #666;
-    }
-    .archive-list::after{
-      clear: both;
-    }
-    .archive-item {
-      min-width: 6.0rem;
-      max-width: 7.0rem;
-      display: inline-block;
-      text-align: center;
-    }
-    .sidebar-block {
-      width: 15.5rem;
-      padding-left: 15px !important;
-      padding: 5px 15px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      display: none;
-    }
-    .sidebar-block.active {
-      display: block;
-    }
-    .sidebar-block.tag-list.active {
-      display: flex;
-    }
-    .tag-list {
-      flex-wrap: wrap;
-      gap: 5px;
-    }
-    .tag-item {
-      background-color: #f0f0f0;
-      padding: 3px 8px;
-      border-radius: 3px;
-      text-decoration: none;
-      color: #333;
-    }
-  </style>
-
-  <ul class="sidebar-block active" id="category-list">
-    
-    
-    <li style="margin-left: 0px">
-      <a href="/categories/LintCode/1.html">
-        LintCode (4)
-      </a>
-    </li>
-    
-    
-    <li style="margin-left: 0px">
-      <a href="/categories/uncategorized/1.html">
-        uncategorized (2)
-      </a>
-    </li>
-    
-    
-    <li style="margin-left: 0px">
-      <a href="/categories/Program/1.html">
-        Program (14)
-      </a>
-    </li>
-    
-    
-    <li style="margin-left: 20px">
-      <a href="/categories/Program-Python3/1.html">
-        Python3 (2)
-      </a>
-    </li>
-    
-    
-    <li style="margin-left: 20px">
-      <a href="/categories/Program-Golang/1.html">
-        Golang (3)
-      </a>
-    </li>
-    
-    
-    <li style="margin-left: 20px">
-      <a href="/categories/Program-Blog/1.html">
-        Blog (1)
-      </a>
-    </li>
-    
-    
-    <li style="margin-left: 20px">
-      <a href="/categories/Program-Backend/1.html">
-        Backend (1)
-      </a>
-    </li>
-    
-    
-    <li style="margin-left: 20px">
-      <a href="/categories/Program-Design Pattern/1.html">
-        Design Pattern (4)
-      </a>
-    </li>
-    
-    
-    <li style="margin-left: 20px">
-      <a href="/categories/Program-OpenSSL/1.html">
-        OpenSSL (3)
-      </a>
-    </li>
-    
-    
-    <li style="margin-left: 0px">
-      <a href="/categories/Mabinogi/1.html">
-        Mabinogi (1)
-      </a>
-    </li>
-    
-    
-    <li style="margin-left: 0px">
-      <a href="/categories/Problems&Solution/1.html">
-        Problems&Solution (1)
-      </a>
-    </li>
-    
-    
-    <li style="margin-left: 0px">
-      <a href="/categories/Games/1.html">
-        Games (1)
-      </a>
-    </li>
-    
-  </ul>
-
-  <div class="archive-list sidebar-block" id="archives-list">
-    
-    
-      
-      
-        
-        <details class="archive-year">
-          <summary>2024</summary>
-          <ul class="archive-month-list">
-        
-      
-      
-        <li class="archive-item"><a href="/2024/3">3</a></li>
-      
-    
-      
-      
-      
-        <li class="archive-item"><a href="/2024/11">11</a></li>
-      
-    
-      
-      
-      
-        <li class="archive-item"><a href="/2024">2024</a></li>
-      
-    
-      
-      
-        
-          </details>
-        
-        <details class="archive-year">
-          <summary>2023</summary>
-          <ul class="archive-month-list">
-        
-      
-      
-        <li class="archive-item"><a href="/2023/11">11</a></li>
-      
-    
-      
-      
-      
-        <li class="archive-item"><a href="/2023/10">10</a></li>
-      
-    
-      
-      
-      
-        <li class="archive-item"><a href="/2023">2023</a></li>
-      
-    
-      
-      
-        
-          </details>
-        
-        <details class="archive-year">
-          <summary>2022</summary>
-          <ul class="archive-month-list">
-        
-      
-      
-        <li class="archive-item"><a href="/2022/8">8</a></li>
-      
-    
-      
-      
-      
-        <li class="archive-item"><a href="/2022/2">2</a></li>
-      
-    
-      
-      
-      
-        <li class="archive-item"><a href="/2022">2022</a></li>
-      
-    
-      
-      
-        
-          </details>
-        
-        <details class="archive-year">
-          <summary>2021</summary>
-          <ul class="archive-month-list">
-        
-      
-      
-        <li class="archive-item"><a href="/2021/8">8</a></li>
-      
-    
-      
-      
-      
-        <li class="archive-item"><a href="/2021">2021</a></li>
-      
-    
-      
-      
-        
-          </details>
-        
-        <details class="archive-year">
-          <summary>2020</summary>
-          <ul class="archive-month-list">
-        
-      
-      
-        <li class="archive-item"><a href="/2020/8">8</a></li>
-      
-    
-      
-      
-      
-        <li class="archive-item"><a href="/2020/5">5</a></li>
-      
-    
-      
-      
-      
-        <li class="archive-item"><a href="/2020/4">4</a></li>
-      
-    
-      
-      
-      
-        <li class="archive-item"><a href="/2020/3">3</a></li>
-      
-    
-      
-      
-      
-        <li class="archive-item"><a href="/2020/12">12</a></li>
-      
-    
-      
-      
-      
-        <li class="archive-item"><a href="/2020">2020</a></li>
-      
-    
-      
-      
-        
-          </details>
-        
-        <details class="archive-year">
-          <summary>2019</summary>
-          <ul class="archive-month-list">
-        
-      
-      
-        <li class="archive-item"><a href="/2019/6">6</a></li>
-      
-    
-      
-      
-      
-        <li class="archive-item"><a href="/2019/11">11</a></li>
-      
-    
-      
-      
-      
-        <li class="archive-item"><a href="/2019/10">10</a></li>
-      
-    
-      
-      
-      
-        <li class="archive-item"><a href="/2019">2019</a></li>
-      
-    
-      
-      
-        
-          </details>
-        
-        <details class="archive-year">
-          <summary>2018</summary>
-          <ul class="archive-month-list">
-        
-      
-      
-        <li class="archive-item"><a href="/2018/7">7</a></li>
-      
-    
-      
-      
-      
-        <li class="archive-item"><a href="/2018/6">6</a></li>
-      
-    
-      
-      
-      
-        <li class="archive-item"><a href="/2018/12">12</a></li>
-      
-    
-      
-      
-      
-        <li class="archive-item"><a href="/2018/11">11</a></li>
-      
-    
-      
-      
-      
-        <li class="archive-item"><a href="/2018">2018</a></li>
-      
-    
-      
-      
-        
-          </details>
-        
-        <details class="archive-year">
-          <summary>2016</summary>
-          <ul class="archive-month-list">
-        
-      
-      
-        <li class="archive-item"><a href="/2016/4">4</a></li>
-      
-    
-      
-      
-      
-        <li class="archive-item"><a href="/2016">2016</a></li>
-      
-    
-    
-      </ul></details>
-    
-  </div>
-
-  <div class="tag-list sidebar-block" id="tags-list">
-    
-      <a href="/tag/PowerShell/index.html" class="tag-item">PowerShell (1)</a>
-    
-  </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const tabs = document.querySelectorAll('.tab-title');
-      
-      tabs.forEach(tab => {
-        tab.addEventListener('click', function() {
-          // Remove active class from all tabs and blocks
-          tabs.forEach(t => t.classList.remove('active'));
-          document.querySelectorAll('.sidebar-block').forEach(block => {
-            block.classList.remove('active');
-          });
-          
-          // Add active class to clicked tab and corresponding block
-          this.classList.add('active');
-          const tabId = this.getAttribute('data-tab');
-          document.getElementById(`${tabId}-list`).classList.add('active');
-        });
-      });
-    });
-  </script>
+  <a href="./2.html" class="px-4 py-2 border border-outline-variant text-primary-fixed hover:bg-surface-container-low transition-colors">[ NEXT ]</a>
+  
 </div>
-    </div>
 
   </div>
-  <div class="footer">
-    <div class="pagination">
-  <a id="page-left" href="/">&laquo;</a>
-  <a id="page-right" href="/">&raquo;</a>
-</div>
-<script>
-  var page = {};
-  page.PageRange = [
-  1,2,
-  ];
-  page.CurPage = 1;
-  page.init = ()=> {
-    document.querySelector(".pagination #page-left").href = `./${page.CurPage == 1 ? 1 : page.CurPage - 1}.html`;
-    document.querySelector(".pagination #page-right").href = `./${page.CurPage == page.PageRange[page.PageRange.length - 1] ? page.PageRange[page.PageRange.length - 1] : page.CurPage + 1}.html`;
-    page.PageRange.forEach((x) => {
-      var res = ` <a href="/${x}.html" ${x == page.CurPage ? "class=\"pagination-active\"" : ""}>${x}</a>`
-      document.querySelector(".pagination").insertBefore(document.createRange().createContextualFragment(res), document.querySelector("#page-right"));
-    })
-  };
-  page.init();
-</script>
-  </div>
- </body>
+</main>
 
+<footer class="w-full py-gutter px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-4 opacity-80 border-t border-outline-variant mt-12">
+  <div class="flex items-center gap-4">
+    <span class="font-label-md text-label-md text-primary-fixed">DEV_CORE@SYSTEM:~$</span>
+    <span class="font-code-sm text-code-sm text-on-surface-variant">&copy; 2024 DEV_CORE [TERMINAL_MODE_ENABLED]</span>
+  </div>
+  <div class="flex gap-6">
+    <a class="font-code-sm text-code-sm text-on-surface-variant hover:text-primary-fixed transition-colors duration-150" href="#">RSS</a>
+    <a class="font-code-sm text-code-sm text-on-surface-variant hover:text-primary-fixed transition-colors duration-150" href="#">GITHUB</a>
+    <a class="font-code-sm text-code-sm text-on-surface-variant hover:text-primary-fixed transition-colors duration-150" href="#">SOURCE</a>
+  </div>
+</footer>
+
+</body>
 </html>

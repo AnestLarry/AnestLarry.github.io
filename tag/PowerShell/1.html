@@ -1,35 +1,310 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html class="dark" lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tag: PowerShell - 66ws</title>
-    <link rel="stylesheet" href="/static/css/global.css">
-    <link rel="stylesheet" href="/static/css/blog.css">
-    <link rel="stylesheet" href="/static/css/category.css" />
-    <link rel="stylesheet" href="/static/css/pagination.css">
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tag: PowerShell - 66ws</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "primary-fixed": "#79ff5b",
+          "on-primary": "#053900",
+          "primary-container": "#39ff14",
+          "surface": "#131314",
+          "surface-dim": "#131314",
+          "surface-bright": "#3a393a",
+          "surface-container-lowest": "#0e0e0f",
+          "surface-container-low": "#1c1b1c",
+          "surface-container": "#201f20",
+          "surface-container-high": "#2a2a2b",
+          "surface-container-highest": "#353436",
+          "on-surface": "#e5e2e3",
+          "on-surface-variant": "#baccb0",
+          "background": "#131314",
+          "on-background": "#e5e2e3",
+          "outline": "#85967c",
+          "outline-variant": "#3c4b35",
+          "surface-variant": "#353436",
+          "on-primary-container": "#107100",
+          "on-primary-fixed": "#022100",
+          "on-primary-fixed-variant": "#095300",
+          "primary-fixed-dim": "#2ae500",
+          "error": "#ffb4ab",
+          "on-error": "#690005",
+          "error-container": "#93000a",
+          "on-error-container": "#ffdad6",
+          "secondary": "#c8c6c7",
+          "on-secondary": "#303031",
+          "secondary-container": "#49494a",
+          "on-secondary-container": "#bab8b9",
+          "on-secondary-fixed": "#1b1b1c",
+          "on-secondary-fixed-variant": "#474647",
+          "tertiary": "#fbf9fb",
+          "on-tertiary": "#303032",
+          "tertiary-container": "#dfdcdf",
+          "on-tertiary-container": "#616163",
+          "tertiary-fixed": "#e4e2e4",
+          "tertiary-fixed-dim": "#c8c6c8",
+          "on-tertiary-fixed": "#1b1b1d",
+          "on-tertiary-fixed-variant": "#474649",
+          "secondary-fixed": "#e5e2e3",
+          "secondary-fixed-dim": "#c8c6c7",
+          "inverse-primary": "#106e00",
+          "inverse-surface": "#e5e2e3",
+          "inverse-on-surface": "#313031",
+          "surface-tint": "#2ae500",
+          "primary": "#efffe3"
+        },
+        spacing: {
+          "unit": "4px",
+          "gutter": "24px",
+          "margin-desktop": "64px",
+          "margin-mobile": "16px",
+          "max-width": "1100px"
+        },
+        fontFamily: {
+          "label-md": ["JetBrains Mono"],
+          "headline-md": ["JetBrains Mono"],
+          "code-sm": ["JetBrains Mono"],
+          "headline-lg": ["JetBrains Mono"],
+          "headline-lg-mobile": ["JetBrains Mono"],
+          "body-lg": ["Inter"],
+          "body-md": ["Inter"]
+        },
+        fontSize: {
+          "label-md": ["14px", { lineHeight: "1.0", fontWeight: "500" }],
+          "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+          "code-sm": ["13px", { lineHeight: "1.5", fontWeight: "400" }],
+          "headline-lg": ["40px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "700" }],
+          "headline-lg-mobile": ["28px", { lineHeight: "1.2", fontWeight: "700" }],
+          "body-lg": ["18px", { lineHeight: "1.7", fontWeight: "400" }],
+          "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }]
+        }
+      }
+    }
+  }
+</script>
 
-<body>
-    <div class="header">
-  <h1>66ws</h1>
-</div>
-<div class="nav">
-  <a href="/">Index</a>
-  <a href="#">About</a>
-</div>
-    <h1 style="text-align: center;">PowerShell Tag</h1>
-    <div class="container">
-        <div class="blog-list">
-            
-            <div class="blog-item">
-                <a href="/2023/11/Sign Your PowerShell Code.html">
-                    <h3 class="blog-item-title">Sign Your PowerShell Code</h3>
-                    <h4 class="blog-item-datetime">2023-11-03 13:00:30Z</h4>
-                </a>
-                <hr>
-                <p>
+<style>
+  body {
+    background-color: #131314;
+    background-image: radial-gradient(circle, rgba(121, 255, 91, 0.05) 1px, transparent 1px);
+    background-size: 32px 32px;
+    scroll-behavior: smooth;
+  }
+  .scanline {
+    width: 100%;
+    height: 2px;
+    background: rgba(121, 255, 91, 0.08);
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+    pointer-events: none;
+    animation: scanline 8s linear infinite;
+  }
+  @keyframes scanline {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(100vh); }
+  }
+  .cursor-blink {
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: #131314; }
+  ::-webkit-scrollbar-thumb { background: #3c4b35; }
+  ::-webkit-scrollbar-thumb:hover { background: #79ff5b; }
+  .terminal-cursor::after {
+    content: "_";
+    animation: blink 1s step-end infinite;
+    color: #39ff14;
+  }
+  .code-block-header::before {
+    content: "● ● ●";
+    letter-spacing: 4px;
+    color: #49494a;
+    font-size: 10px;
+    margin-right: 12px;
+  }
+  .material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    vertical-align: middle;
+  }
+  article a, .post-content a, .blog-item a {
+    color: #79ff5b;
+    text-decoration: underline;
+    text-decoration-color: rgba(121, 255, 91, 0.3);
+    text-underline-offset: 3px;
+    transition: all 0.15s ease;
+  }
+  article a:hover, .post-content a:hover, .blog-item a:hover {
+    color: #39ff14;
+    text-decoration-color: #39ff14;
+  }
+</style>
+
+<script>
+  function initTerminalStats() {
+    var yr = new Date().getFullYear() % 100;
+    var cpu = document.getElementById('cpu-load');
+    if (cpu) {
+      cpu.textContent = yr + '%';
+      var bar = document.getElementById('cpu-load-bar');
+      if (bar) bar.style.width = yr + '%';
+    }
+    var origin = new Date('2016-04-23T16:33:45');
+    var now = new Date();
+    var days = Math.floor((now - origin) / 86400000);
+    var ud = document.getElementById('uptime-days');
+    if (ud) ud.textContent = days;
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTerminalStats);
+  } else {
+    initTerminalStats();
+  }
+</script>
+
+</head>
+<body class="bg-background text-on-background font-body-md antialiased selection:bg-primary-fixed selection:text-on-primary">
+<div class="scanline"></div>
+
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-desktop py-4 bg-background border-b border-outline-variant">
+  <div class="flex items-center gap-2">
+    <span class="font-headline-md text-headline-md font-bold text-primary-fixed tracking-tighter">ROOT@USER:~$</span>
+    <span class="w-2 h-6 bg-primary-fixed cursor-blink"></span>
+  </div>
+  <nav class="hidden md:flex gap-8">
+    <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary-fixed transition-colors duration-150" href="/">Index</a>
+    <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary-fixed transition-colors duration-150" href="/tags.html">Tags</a>
+    <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary-fixed transition-colors duration-150" href="/2016/4/ReadMeFirst.html">About</a>
+  </nav>
+  <div class="flex items-center gap-4">
+    <span class="material-symbols-outlined text-primary-fixed cursor-pointer">terminal</span>
+    <span class="material-symbols-outlined text-on-surface-variant hover:text-primary-fixed cursor-pointer">settings</span>
+  </div>
+</header>
+
+
+<main class="pt-24 pb-12 px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto flex flex-col md:flex-row gap-gutter">
+  <aside class="w-full md:w-64 shrink-0 flex flex-col gap-6">
+    <div class="border border-outline-variant bg-surface-container-lowest">
+      <div class="flex border-b border-outline-variant">
+        <button class="flex-1 py-2 font-code-sm text-code-sm text-primary-fixed border-r border-outline-variant bg-surface-container" id="cat-tab3" onclick="switchCatTab3('categories')">CATEGORIES</button>
+        <button class="flex-1 py-2 font-code-sm text-code-sm text-on-surface-variant border-r border-outline-variant hover:text-primary-fixed" id="arc-tab3" onclick="switchCatTab3('archives')">ARCHIVES</button>
+        <button class="flex-1 py-2 font-code-sm text-code-sm text-on-surface-variant hover:text-primary-fixed" id="tag-tab3" onclick="switchCatTab3('tags')">TAGS</button>
+      </div>
+      <div class="p-4 flex flex-col gap-2" id="categories-list3">
+        
+        <a href="/categories/LintCode/1.html" class="flex justify-between items-center group">
+          <span class="font-code-sm text-code-sm text-on-surface-variant group-hover:text-primary-fixed group-hover:underline">LintCode</span>
+          <span class="font-code-sm text-code-sm text-outline-variant group-hover:text-primary-fixed">[04]</span>
+        </a>
+        
+        <a href="/categories/uncategorized/1.html" class="flex justify-between items-center group">
+          <span class="font-code-sm text-code-sm text-on-surface-variant group-hover:text-primary-fixed group-hover:underline">uncategorized</span>
+          <span class="font-code-sm text-code-sm text-outline-variant group-hover:text-primary-fixed">[02]</span>
+        </a>
+        
+        <a href="/categories/Program/1.html" class="flex justify-between items-center group">
+          <span class="font-code-sm text-code-sm text-on-surface-variant group-hover:text-primary-fixed group-hover:underline">Program</span>
+          <span class="font-code-sm text-code-sm text-outline-variant group-hover:text-primary-fixed">[14]</span>
+        </a>
+        
+        <a href="/categories/Program-Python3/1.html" class="flex justify-between items-center group">
+          <span class="font-code-sm text-code-sm text-on-surface-variant group-hover:text-primary-fixed group-hover:underline">Python3</span>
+          <span class="font-code-sm text-code-sm text-outline-variant group-hover:text-primary-fixed">[02]</span>
+        </a>
+        
+        <a href="/categories/Program-Golang/1.html" class="flex justify-between items-center group">
+          <span class="font-code-sm text-code-sm text-on-surface-variant group-hover:text-primary-fixed group-hover:underline">Golang</span>
+          <span class="font-code-sm text-code-sm text-outline-variant group-hover:text-primary-fixed">[03]</span>
+        </a>
+        
+        <a href="/categories/Program-Blog/1.html" class="flex justify-between items-center group">
+          <span class="font-code-sm text-code-sm text-on-surface-variant group-hover:text-primary-fixed group-hover:underline">Blog</span>
+          <span class="font-code-sm text-code-sm text-outline-variant group-hover:text-primary-fixed">[01]</span>
+        </a>
+        
+        <a href="/categories/Program-Backend/1.html" class="flex justify-between items-center group">
+          <span class="font-code-sm text-code-sm text-on-surface-variant group-hover:text-primary-fixed group-hover:underline">Backend</span>
+          <span class="font-code-sm text-code-sm text-outline-variant group-hover:text-primary-fixed">[01]</span>
+        </a>
+        
+        <a href="/categories/Program-Design Pattern/1.html" class="flex justify-between items-center group">
+          <span class="font-code-sm text-code-sm text-on-surface-variant group-hover:text-primary-fixed group-hover:underline">Design Pattern</span>
+          <span class="font-code-sm text-code-sm text-outline-variant group-hover:text-primary-fixed">[04]</span>
+        </a>
+        
+        <a href="/categories/Program-OpenSSL/1.html" class="flex justify-between items-center group">
+          <span class="font-code-sm text-code-sm text-on-surface-variant group-hover:text-primary-fixed group-hover:underline">OpenSSL</span>
+          <span class="font-code-sm text-code-sm text-outline-variant group-hover:text-primary-fixed">[03]</span>
+        </a>
+        
+        <a href="/categories/Mabinogi/1.html" class="flex justify-between items-center group">
+          <span class="font-code-sm text-code-sm text-on-surface-variant group-hover:text-primary-fixed group-hover:underline">Mabinogi</span>
+          <span class="font-code-sm text-code-sm text-outline-variant group-hover:text-primary-fixed">[01]</span>
+        </a>
+        
+        <a href="/categories/Problems&Solution/1.html" class="flex justify-between items-center group">
+          <span class="font-code-sm text-code-sm text-on-surface-variant group-hover:text-primary-fixed group-hover:underline">Problems&Solution</span>
+          <span class="font-code-sm text-code-sm text-outline-variant group-hover:text-primary-fixed">[01]</span>
+        </a>
+        
+        <a href="/categories/Games/1.html" class="flex justify-between items-center group">
+          <span class="font-code-sm text-code-sm text-on-surface-variant group-hover:text-primary-fixed group-hover:underline">Games</span>
+          <span class="font-code-sm text-code-sm text-outline-variant group-hover:text-primary-fixed">[01]</span>
+        </a>
+        
+      </div>
+      <div class="hidden p-4 flex flex-col gap-2" id="archives-list3">
+        
+        
+        
+        
+      </div>
+      <div class="hidden p-4 flex flex-wrap gap-2" id="tags-list3">
+        
+        <a href="/tag/PowerShell/index.html" class="px-2 py-1 border border-outline-variant text-code-sm font-code-sm text-on-surface-variant hover:border-primary-fixed hover:text-primary-fixed">PowerShell</a>
+        
+      </div>
+    </div>
+  </aside>
+
+  <section class="flex-1 flex flex-col gap-6">
+    <div class="border border-outline-variant bg-surface-container-low p-4 relative overflow-hidden">
+      <div class="absolute top-0 right-0 p-2 opacity-10">
+        <span class="material-symbols-outlined text-6xl">terminal</span>
+      </div>
+      <div class="flex items-center gap-2 font-code-sm text-code-sm text-outline-variant mb-2">
+        <span>PATH:</span>
+        <span class="text-primary-fixed">~/posts/tags/PowerShell</span>
+      </div>
+      <h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary-fixed uppercase flex items-center">
+        Tag: PowerShell<span class="terminal-cursor"></span>
+      </h1>
+    </div>
+
+    <div class="flex flex-col gap-px bg-outline-variant border border-outline-variant">
+      
+      <article class="bg-background p-6 hover:bg-surface-container-low transition-colors group cursor-pointer">
+        <a href="/2023/11/Sign Your PowerShell Code.html">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
+            <div class="flex items-center gap-3">
+              <span class="font-code-sm text-code-sm text-outline">001</span>
+              <h2 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary-fixed transition-colors">Sign Your PowerShell Code</h2>
+            </div>
+            <time class="font-code-sm text-code-sm text-outline-variant">2023-11-03</time>
+          </div>
+          <p class="font-body-md text-on-surface-variant mb-4 max-w-2xl">
 ## 0x0 Environment
  * OpenSSL 3.1.3 19 Sep 2023
  * Win10
@@ -37,227 +312,67 @@
 
 ## 0x1 Get your CA certificate (optional)
 You need a CA certificate to sign this code sign certificate. You can find the way in</p>
-                <hr>
-                <div class="blog-item-tags">
-                    
-                    <a href="/tag/PowerShell/index.html" class="tag-item">PowerShell</a>
-                    
-                </div>
-            </div>
+          <div class="flex flex-wrap gap-2">
             
-        </div>
+            <span class="px-2 py-0.5 border border-outline-variant font-code-sm text-[11px] text-outline uppercase">#PowerShell</span>
+            
+          </div>
+        </a>
+      </article>
+      
+    </div>
 
-        <!-- 右侧分类列表 -->
-        <div class="category-list">
-            <div class="category-item" style="width: 11rem;">
-  <div class="tab-header">
-    <span class="tab-title active" data-tab="category">Category</span>
-    <span class="separator">/</span>
-    <span class="tab-title" data-tab="archives">Archives</span>
-    <span class="separator">/</span>
-    <span class="tab-title" data-tab="tags">Tags</span>
+    <div class="flex justify-between items-center font-code-sm text-code-sm mt-4 pt-12 border-t border-outline-variant">
+  
+  <span class="px-4 py-2 border border-outline-variant text-outline opacity-40 cursor-not-allowed">[ PREV ]</span>
+  
+  <div class="flex gap-2">
+    
+      
+      <span class="px-3 py-2 bg-primary-fixed text-on-primary font-code-sm text-code-sm">01</span>
+      
+    
   </div>
   
-  <style>
-    .tab-header {
-      margin: 20px 0 10px 0;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .tab-title {
-      cursor: pointer;
-      color: #666;
-    }
-    .tab-title.active {
-      color: #000;
-      font-weight: bold;
-    }
-    .separator {
-      color: #666;
-    }
-    .archive-list::after{
-      clear: both;
-    }
-    .archive-item {
-      min-width: 6.0rem;
-      max-width: 7.0rem;
-      display: inline-block;
-      text-align: center;
-    }
-    .sidebar-block {
-      width: 15.5rem;
-      padding-left: 15px !important;
-      padding: 5px 15px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      display: none;
-    }
-    .sidebar-block.active {
-      display: block;
-    }
-    .sidebar-block.tag-list.active {
-      display: flex;
-    }
-    .tag-list {
-      flex-wrap: wrap;
-      gap: 5px;
-    }
-    .tag-item {
-      background-color: #f0f0f0;
-      padding: 3px 8px;
-      border-radius: 3px;
-      text-decoration: none;
-      color: #333;
-    }
-  </style>
-
-  <ul class="sidebar-block active" id="category-list">
-    
-    
-    <li style="margin-left: 0px">
-      <a href="/categories/LintCode/1.html">
-        LintCode (4)
-      </a>
-    </li>
-    
-    
-    <li style="margin-left: 0px">
-      <a href="/categories/uncategorized/1.html">
-        uncategorized (2)
-      </a>
-    </li>
-    
-    
-    <li style="margin-left: 0px">
-      <a href="/categories/Program/1.html">
-        Program (14)
-      </a>
-    </li>
-    
-    
-    <li style="margin-left: 20px">
-      <a href="/categories/Program-Python3/1.html">
-        Python3 (2)
-      </a>
-    </li>
-    
-    
-    <li style="margin-left: 20px">
-      <a href="/categories/Program-Golang/1.html">
-        Golang (3)
-      </a>
-    </li>
-    
-    
-    <li style="margin-left: 20px">
-      <a href="/categories/Program-Blog/1.html">
-        Blog (1)
-      </a>
-    </li>
-    
-    
-    <li style="margin-left: 20px">
-      <a href="/categories/Program-Backend/1.html">
-        Backend (1)
-      </a>
-    </li>
-    
-    
-    <li style="margin-left: 20px">
-      <a href="/categories/Program-Design Pattern/1.html">
-        Design Pattern (4)
-      </a>
-    </li>
-    
-    
-    <li style="margin-left: 20px">
-      <a href="/categories/Program-OpenSSL/1.html">
-        OpenSSL (3)
-      </a>
-    </li>
-    
-    
-    <li style="margin-left: 0px">
-      <a href="/categories/Mabinogi/1.html">
-        Mabinogi (1)
-      </a>
-    </li>
-    
-    
-    <li style="margin-left: 0px">
-      <a href="/categories/Problems&Solution/1.html">
-        Problems&Solution (1)
-      </a>
-    </li>
-    
-    
-    <li style="margin-left: 0px">
-      <a href="/categories/Games/1.html">
-        Games (1)
-      </a>
-    </li>
-    
-  </ul>
-
-  <div class="archive-list sidebar-block" id="archives-list">
-    
-    
-    
-  </div>
-
-  <div class="tag-list sidebar-block" id="tags-list">
-    
-      <a href="/tag/PowerShell/index.html" class="tag-item">PowerShell (1)</a>
-    
-  </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const tabs = document.querySelectorAll('.tab-title');
-      
-      tabs.forEach(tab => {
-        tab.addEventListener('click', function() {
-          // Remove active class from all tabs and blocks
-          tabs.forEach(t => t.classList.remove('active'));
-          document.querySelectorAll('.sidebar-block').forEach(block => {
-            block.classList.remove('active');
-          });
-          
-          // Add active class to clicked tab and corresponding block
-          this.classList.add('active');
-          const tabId = this.getAttribute('data-tab');
-          document.getElementById(`${tabId}-list`).classList.add('active');
-        });
-      });
-    });
-  </script>
+  <span class="px-4 py-2 border border-outline-variant text-outline opacity-40 cursor-not-allowed">[ NEXT ]</span>
+  
 </div>
-        </div>
-    </div>
 
-    <div class="footer">
-        <div class="pagination">
-  <a id="page-left" href="/">&laquo;</a>
-  <a id="page-right" href="/">&raquo;</a>
-</div>
+  </section>
+</main>
+
+<footer class="w-full py-gutter px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-4 opacity-80 border-t border-outline-variant mt-12">
+  <div class="flex items-center gap-4">
+    <span class="font-label-md text-label-md text-primary-fixed">DEV_CORE@SYSTEM:~$</span>
+    <span class="font-code-sm text-code-sm text-on-surface-variant">&copy; 2024 DEV_CORE [TERMINAL_MODE_ENABLED]</span>
+  </div>
+  <div class="flex gap-6">
+    <a class="font-code-sm text-code-sm text-on-surface-variant hover:text-primary-fixed transition-colors duration-150" href="#">RSS</a>
+    <a class="font-code-sm text-code-sm text-on-surface-variant hover:text-primary-fixed transition-colors duration-150" href="#">GITHUB</a>
+    <a class="font-code-sm text-code-sm text-on-surface-variant hover:text-primary-fixed transition-colors duration-150" href="#">SOURCE</a>
+  </div>
+</footer>
+
+
 <script>
-  var page = {};
-  page.PageRange = [
-  1,
-  ];
-  page.CurPage = 1;
-  page.init = ()=> {
-    document.querySelector(".pagination #page-left").href = `./${page.CurPage == 1 ? 1 : page.CurPage - 1}.html`;
-    document.querySelector(".pagination #page-right").href = `./${page.CurPage == page.PageRange[page.PageRange.length - 1] ? page.PageRange[page.PageRange.length - 1] : page.CurPage + 1}.html`;
-    page.PageRange.forEach((x) => {
-      var res = ` <a href="/${x}.html" ${x == page.CurPage ? "class=\"pagination-active\"" : ""}>${x}</a>`
-      document.querySelector(".pagination").insertBefore(document.createRange().createContextualFragment(res), document.querySelector("#page-right"));
-    })
-  };
-  page.init();
+  function switchCatTab3(tab) {
+    const tabs = ['categories', 'archives', 'tags'];
+    const tabIds = ['cat-tab3', 'arc-tab3', 'tag-tab3'];
+    const listIds = ['categories-list3', 'archives-list3', 'tags-list3'];
+    tabs.forEach((t, i) => {
+      const btn = document.getElementById(tabIds[i]);
+      const list = document.getElementById(listIds[i]);
+      if (t === tab) {
+        btn.classList.add('text-primary-fixed', 'bg-surface-container');
+        btn.classList.remove('text-on-surface-variant');
+        list.classList.remove('hidden');
+      } else {
+        btn.classList.remove('text-primary-fixed', 'bg-surface-container');
+        btn.classList.add('text-on-surface-variant');
+        list.classList.add('hidden');
+      }
+    });
+  }
 </script>
-    </div>
- </body>
-
+</body>
 </html>
